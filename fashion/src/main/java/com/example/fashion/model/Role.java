@@ -1,7 +1,19 @@
 package com.example.fashion.model;
 
-import org.springframework.stereotype.Repository;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Repository
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "roles")
 public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
 }
