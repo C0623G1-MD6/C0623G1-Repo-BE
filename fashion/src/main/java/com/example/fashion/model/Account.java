@@ -2,6 +2,7 @@ package com.example.fashion.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,6 @@ public class Account {
     private Set<Role> roles = new HashSet<>();
 
     @OneToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Employee employee;
 }

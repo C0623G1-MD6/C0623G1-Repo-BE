@@ -1,5 +1,6 @@
 package com.example.fashion.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,6 +24,6 @@ public class Employee {
     private String email;
     private String address;
     @OneToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Account account;
 }

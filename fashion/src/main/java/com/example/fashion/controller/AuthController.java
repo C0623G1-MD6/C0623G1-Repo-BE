@@ -1,10 +1,13 @@
 package com.example.fashion.controller;
 
+import com.example.fashion.dto.ChangePassword;
 import com.example.fashion.dto.Login;
 import com.example.fashion.dto.JwtResponse;
+import com.example.fashion.model.Account;
 import com.example.fashion.model.MyUserDetail;
 import com.example.fashion.model.Role;
 import com.example.fashion.security.jwt.JwtUtils;
+import com.example.fashion.service.IAccountService;
 import com.example.fashion.service.impl.MyUserDetailService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
@@ -17,6 +20,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +42,12 @@ public class AuthController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private IAccountService accountService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody Login login,BindingResult bindingResult) {
@@ -76,8 +86,25 @@ public class AuthController {
         }
     }
 
-    @GetMapping("/test2")
-    public ResponseEntity<String> test2() {
-        return new ResponseEntity<>("Oke", HttpStatus.OK);
+    @PostMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword,BindingResult bindingResult ) {
+        Map<String, String> errors = new HashMap<>();
+        try {
+            changePassword.validate(changePassword,bindingResult);
+            if (bindingResult.hasErrors()) {
+                for (FieldError error : bindingResult.getFieldErrors()) {
+                    errors.put(error.getField(), error.getDefaultMessage());
+                }
+                return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+            }
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(changePassword.getUsername(), changePassword.getPassword()));
+            Account account = accountService.findByUsername(authentication.getName()).get();
+            account.setPassword(passwordEncoder.encode(changePassword.getPasswordNew()));
+            accountService.saveAccount(account);
+            return new ResponseEntity<>("Đổi mật khẩu thành công !", HttpStatus.OK);
+        } catch (BadCredentialsException e) {
+            errors.put("password","Mật khẩu không chính xác");
+            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+        }
     }
 }

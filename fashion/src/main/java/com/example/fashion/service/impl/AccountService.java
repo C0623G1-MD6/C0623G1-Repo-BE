@@ -21,4 +21,10 @@ public class AccountService implements IAccountService {
     public Boolean existsByUsername(String username) {
         return accountRepository.existsByUsername(username);
     }
+
+    @Override
+    public void saveAccount(Account account) {
+        accountRepository.save(account);
+    }
+
 }
