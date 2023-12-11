@@ -53,6 +53,7 @@ public class AuthController {
     public ResponseEntity<?> login(@Valid @RequestBody Login login,BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
         try {
+            login.validate(login,bindingResult);
             if (bindingResult.hasErrors()) {
                 for (FieldError error : bindingResult.getFieldErrors()) {
                     errors.put(error.getField(), error.getDefaultMessage());

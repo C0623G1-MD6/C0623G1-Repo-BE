@@ -56,6 +56,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/login").permitAll()
 //                        Trang cần có quyền hợp lệ
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
+                                .requestMatchers("/api/sale/**","/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**").authenticated()
                                 .requestMatchers("/api/changePassword").authenticated()
                                 .anyRequest().authenticated()
