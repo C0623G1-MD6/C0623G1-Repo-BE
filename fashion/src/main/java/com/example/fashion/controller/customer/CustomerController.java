@@ -15,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -110,5 +111,36 @@ public class CustomerController {
         customer.setId(id);
         customerService.editCustomerRepo(customer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+    /**
+     * method getAllCustomer
+     * create by TrungND
+     * date 12-12-2023
+     * param :
+     * return ResponseEntity and customer or null
+     */
+    @GetMapping("")
+    public ResponseEntity<List<Customer>> getAll(
+            @RequestParam(name = "nameCustomer", defaultValue = "") String name,
+            @RequestParam(name = "typeCustomer", defaultValue = "") String typeCustomer
+    ) {
+        List<Customer> customers = customerService.findAll(name, typeCustomer);
+        if (customers.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(customers, HttpStatus.OK);
+        }
+    }
+    /**
+     * method deleteCustomer
+     * create by TrungND
+     * date 12-12-2023
+     * param : id
+     * return ResponseEntity or null
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
+        customerService.remove(id);
+        return ResponseEntity.ok("Xóa Thành Công");
     }
 }

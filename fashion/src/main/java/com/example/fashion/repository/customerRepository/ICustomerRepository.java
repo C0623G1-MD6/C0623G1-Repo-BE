@@ -27,6 +27,14 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             , nativeQuery = true)
     void createCustomerRepo(@Param("customer") Customer customer);
 
+    /**
+     * method getAllCustomer
+     * create by TrungND
+     * date 12-12-2023
+     * param :name, typeCustomer
+     * return :
+     */
+
     @Query(value = "select customers.id, customers.name,customers.customer_code,customers.gender,customers.birthday, customers.phone, " +
             "customers.email, customers.point, customers.address, customers.customer_type_id, customers.is_deleted " +
             "from customers" +
@@ -35,7 +43,13 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             " customers.is_deleted = '0' " +
             " and customers.name like :name and customer_type.name like :typeCustomer", nativeQuery = true)
     List<Customer> findAllCustomer(@Param("name") String name, @Param("typeCustomer") String typeCustomer);
-
+    /**
+     * method deleteCustomer
+     * create by TrungND
+     * date 12-12-2023
+     * param :id
+     * return :
+     */
     @Modifying
     @Transactional
     @Query(value = " update customers set customers.is_deleted = 1 where customers.id = :id", nativeQuery = true)
