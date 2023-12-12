@@ -9,9 +9,10 @@ import java.util.Optional;
 public interface ICustomerTypeService {
     List<CustomerType> findAll();
 
-    Optional<CustomerType> findById(Integer id);
+    CustomerType findById(Integer id);
 
     void save(CustomerType customerType);
 
     void remove(Integer id);
+
 }
