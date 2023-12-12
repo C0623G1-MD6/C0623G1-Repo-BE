@@ -1,6 +1,7 @@
 package com.example.fashion.service.product.impl;
 
 import com.example.fashion.dto.product.IProductDTO;
+import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.repository.product.IProductRepository;
 import com.example.fashion.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +17,15 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Page<IProductDTO> getAllProducts(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName) {
         return productRepository.findAll(pageable, productName, minPrice, maxPrice, sizeName);
+    }
+
+    @Override
+    public void createProduct(ProductDTO productDTO) {
+        productRepository.save(productDTO);
+    }
+
+    @Override
+    public IProductDTO findByProductCode(String productCode) {
+        return productRepository.findByProductCode(productCode);
     }
 }
