@@ -14,13 +14,13 @@ public class CustomerService implements ICustomerService {
     private ICustomerRepository customerRepository;
 
     @Override
-    public List<Customer> findAll() {
-        return customerRepository.findAll();
+    public List<Customer> findAll(String name, String typeCustomer) {
+        return customerRepository.findAllCustomer("%" + name + "%", "%" + typeCustomer + "%");
     }
 
     @Override
-    public Optional<Customer> findById(Integer id) {
-        return customerRepository.findById(id);
+    public Customer findById(Integer id) {
+        return customerRepository.findById(id).get();
     }
 
     @Override
@@ -29,7 +29,27 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void remove(Integer id) {
-        customerRepository.deleteById(id);
+    public void remove(int id) {
+        customerRepository.deleteId(id);
+    }
+
+    @Override
+    public void editCustomerRepo(Customer customer) {
+        customerRepository.editCustomerRepo(customer);
+    }
+
+    @Override
+    public void createCustomerRepo(Customer customer) {
+        customerRepository.createCustomerRepo(customer);
+    }
+
+    @Override
+    public Customer findCustomerByPhone(String phone) {
+        return customerRepository.findCustomerByPhone("%" + phone + "%");
+    }
+
+    @Override
+    public Customer findCustomerByEmail(String email) {
+        return customerRepository.findCustomerByEmail(email);
     }
 }
