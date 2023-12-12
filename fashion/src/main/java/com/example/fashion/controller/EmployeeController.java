@@ -18,6 +18,13 @@ public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
 
+    /**
+     * Retrieves employee information by account ID.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param id The ID of the account.
+     * @return ResponseEntity containing the employee information or error message.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> getInfoEmployeeByIdAccount(@PathVariable Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

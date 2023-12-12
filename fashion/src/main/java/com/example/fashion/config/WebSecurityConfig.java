@@ -18,27 +18,58 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * This class configures web security for the application.
+ * @author: ThanhPV
+ * @date: 12/12/2023
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
     @Autowired
     private MyUserDetailService myUserDetailService;
 
+    /**
+     * Creates an authentication manager.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param authConfig The authentication configuration.
+     * @return The authentication manager.
+     * @throws Exception If an error occurs while creating the authentication manager.
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
 
+    /**
+     * Creates a password encoder using BCrypt.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @return The BCrypt password encoder.
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Creates a JWT authentication filter bean.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @return The JWT authentication filter.
+     */
     @Bean
     public JwtAuthenticationFilter authenticationJwtTokenFilter() {
         return new JwtAuthenticationFilter();
     }
 
+    /**
+     * Creates an authentication provider for DAO.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @return The DAO authentication provider.
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -47,6 +78,14 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
+    /**
+     * Configures security filters for HTTP requests.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param http The HTTP security configuration.
+     * @return The built security filter chain.
+     * @throws Exception If an error occurs while configuring the security filters.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
