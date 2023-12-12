@@ -72,19 +72,18 @@ public class JwtUtils {
      * @param authToken The JWT token.
      * @return true if the token is valid, false otherwise.
      */
-    public boolean validateJwtToken(String authToken) {
+    public boolean validateJwtToken(String authToken) throws Exception {
         try {
             Jwts.parser().setSigningKey(key()).build().parse(authToken);
             return true;
         } catch (MalformedJwtException e) {
-            System.out.println("Invalid JWT token: {}" + e.getMessage());
+            throw new Exception("Token JWT không hợp lệ: " + e.getMessage());
         } catch (ExpiredJwtException e) {
-            System.out.println("Invalid JWT token: {}" + e.getMessage());
+            throw new Exception("Token JWT đã hết hạn: " + e.getMessage());
         } catch (UnsupportedJwtException e) {
-            System.out.println("Invalid JWT token: {}" + e.getMessage());
+            throw new Exception("Token JWT không được hỗ trợ: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.println("Invalid JWT token: {}" + e.getMessage());
+            throw new Exception("Token JWT không hợp lệ: " + e.getMessage());
         }
-        return false;
     }
 }
