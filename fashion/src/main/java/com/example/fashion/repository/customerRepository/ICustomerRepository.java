@@ -18,6 +18,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             "WHERE id = :#{#customer.id} ", nativeQuery = true)
     void editCustomerRepo(@Param("customer") Customer customer);
 
+
     @Transactional
     @Modifying
     @Query(value = "insert into customers (customer_code, name, gender, birthday, point, address, email, phone) " +
@@ -39,6 +40,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     @Transactional
     @Query(value = " update customers set customers.is_deleted = 1 where customers.id = :id", nativeQuery = true)
     void deleteId(@Param("id") int id);
+
 
 
     @Query(value = "select * from customers where phone = :phone ",nativeQuery = true)

@@ -21,8 +21,8 @@ public class CustomerTypeService implements ICustomerTypeService {
     }
 
     @Override
-    public Optional<CustomerType> findById(Integer id) {
-        return customerTypeRepository.findById(id);
+    public CustomerType findById(Integer id) {
+        return customerTypeRepository.findById(id).get();
     }
 
     @Override
