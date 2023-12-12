@@ -1,11 +1,12 @@
-package com.example.fashion.model.loanttv;
+package com.example.fashion.model.product;
 
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Products {
+@Table (name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -19,16 +20,16 @@ public class Products {
     private Double price;
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private ProductCategories category;
-    @OneToMany(mappedBy = "products")
-    private List<SizeDetails> sizeDetails;
+    private ProductCategory category;
+    @OneToMany(mappedBy = "product")
+    private List<SizeDetail> sizeDetails;
 
-    public Products() {
+    public Product() {
     }
 
-    public Products(Integer id, String productCode, String name, String productImage,
-                    String qrCode, Boolean gender, Double price, ProductCategories category,
-                    List<SizeDetails> sizeDetails) {
+    public Product(Integer id, String productCode, String name, String productImage,
+                   String qrCode, Boolean gender, Double price, ProductCategory category,
+                   List<SizeDetail> sizeDetails) {
         this.id = id;
         this.productCode = productCode;
         this.name = name;
@@ -96,19 +97,19 @@ public class Products {
         this.price = price;
     }
 
-    public ProductCategories getCategory() {
+    public ProductCategory getCategory() {
         return category;
     }
 
-    public void setCategory(ProductCategories category) {
+    public void setCategory(ProductCategory category) {
         this.category = category;
     }
 
-    public List<SizeDetails> getSizeDetails() {
+    public List<SizeDetail> getSizeDetails() {
         return sizeDetails;
     }
 
-    public void setSizeDetails(List<SizeDetails> sizeDetails) {
+    public void setSizeDetails(List<SizeDetail> sizeDetails) {
         this.sizeDetails = sizeDetails;
     }
 }

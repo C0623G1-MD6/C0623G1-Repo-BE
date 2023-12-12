@@ -1,22 +1,23 @@
-package com.example.fashion.model.loanttv;
+package com.example.fashion.model.product;
 
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class ProductCategories {
+@Table (name = "product_categories")
+public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<Products> productsList;
+    private List<Product> productsList;
 
-    public ProductCategories() {
+    public ProductCategory() {
     }
 
-    public ProductCategories(Integer id, String name, List<Products> productsList) {
+    public ProductCategory(Integer id, String name, List<Product> productsList) {
         this.id = id;
         this.name = name;
         this.productsList = productsList;
@@ -38,11 +39,11 @@ public class ProductCategories {
         this.name = name;
     }
 
-    public List<Products> getProductsList() {
+    public List<Product> getProductsList() {
         return productsList;
     }
 
-    public void setProductsList(List<Products> productsList) {
+    public void setProductsList(List<Product> productsList) {
         this.productsList = productsList;
     }
 }
