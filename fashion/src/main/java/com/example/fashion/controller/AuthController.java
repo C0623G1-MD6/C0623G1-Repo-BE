@@ -49,6 +49,14 @@ public class AuthController {
     @Autowired
     private IAccountService accountService;
 
+    /**
+     * Handles user login requests.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param login          The login request object.
+     * @param bindingResult  The result of the validation.
+     * @return ResponseEntity containing the JWT response or error messages.
+     */
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody Login login,BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
@@ -87,6 +95,14 @@ public class AuthController {
         }
     }
 
+    /**
+     * Handles user password change requests.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param changePassword The change password request object.
+     * @param bindingResult  The result of the validation.
+     * @return ResponseEntity containing success message or error messages.
+     */
     @PostMapping("/changePassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword,BindingResult bindingResult ) {
         Map<String, String> errors = new HashMap<>();
