@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerService {
-    List<Customer> findAll();
+    List<Customer> findAll(String name, String typeCustomer);
 
     Customer findById(Integer id);
 
     void save(Customer customer);
 
-    void remove(Integer id);
+    void remove(int id);
 
     void editCustomerRepo(Customer customer);
 
