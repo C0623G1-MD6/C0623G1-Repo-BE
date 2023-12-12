@@ -24,12 +24,15 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<SizeDetail> sizeDetails;
 
+    @ManyToOne
+    @JoinColumn(name = "promotion_id")
+    private Promotion promotion;
+
     public Product() {
     }
 
-    public Product(Integer id, String productCode, String name, String productImage,
-                   String qrCode, Boolean gender, Double price, ProductCategory category,
-                   List<SizeDetail> sizeDetails) {
+    public Product(Integer id, String productCode, String name, String productImage, String qrCode, Boolean gender,
+                   Double price, ProductCategory category, List<SizeDetail> sizeDetails, Promotion promotion) {
         this.id = id;
         this.productCode = productCode;
         this.name = name;
@@ -39,6 +42,7 @@ public class Product {
         this.price = price;
         this.category = category;
         this.sizeDetails = sizeDetails;
+        this.promotion = promotion;
     }
 
     public Integer getId() {
@@ -111,5 +115,13 @@ public class Product {
 
     public void setSizeDetails(List<SizeDetail> sizeDetails) {
         this.sizeDetails = sizeDetails;
+    }
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
     }
 }
