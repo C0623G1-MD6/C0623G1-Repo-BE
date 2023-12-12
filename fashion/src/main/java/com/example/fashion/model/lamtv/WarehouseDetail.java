@@ -4,12 +4,12 @@ import com.example.fashion.model.loanttv.Products;
 import jakarta.persistence.*;
 
 /**
- * author: LamTV
- * date: 12/12/2023
+ * @author: LamTV
+ * @date: 12/12/2023
  */
 @Entity
 @Table(name = "warehouse_receipt_details")
-public class WarehouseReceiptDetail {
+public class WarehouseDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,9 +22,9 @@ public class WarehouseReceiptDetail {
     private Products products;
     @ManyToOne
     @JoinColumn(name = "warehouse_receipt_id",columnDefinition = "id")
-    private WarehouseReceipt warehouseReceipt;
+    private Warehouse warehouseReceipt;
 
-    public WarehouseReceiptDetail() {
+    public WarehouseDetail() {
     }
 
     public Integer getId() {
@@ -59,11 +59,11 @@ public class WarehouseReceiptDetail {
         this.products = products;
     }
 
-    public WarehouseReceipt getWarehouseReceipt() {
+    public Warehouse getWarehouseReceipt() {
         return warehouseReceipt;
     }
 
-    public void setWarehouseReceipt(WarehouseReceipt warehouseReceipt) {
+    public void setWarehouseReceipt(Warehouse warehouseReceipt) {
         this.warehouseReceipt = warehouseReceipt;
     }
 }
