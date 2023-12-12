@@ -29,5 +29,5 @@ public interface IAccountService {
      * @date: 12/12/2023
      * @param account The account to be saved.
      */
-    void saveAccount(Account account);
+    void updatePassword(Account account);
 }

@@ -39,14 +39,13 @@ public class AccountService implements IAccountService {
     }
 
     /**
-     * This method saves an account.
+     * This method update Password an account.
      * @author: ThanhPV
      * @date: 12/12/2023
-     * @param account The account to be saved.
+     * @param account The account to be updated.
      */
     @Override
-    public void saveAccount(Account account) {
-        accountRepository.save(account);
+    public void updatePassword(Account account) {
+        accountRepository.updatePasswordAccount(account.getUsername(), account.getPassword());
     }
-
 }
