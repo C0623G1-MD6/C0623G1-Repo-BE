@@ -1,4 +1,4 @@
-package com.example.fashion.model.lamtv;
+package com.example.fashion.model.warehouse;
 
 import jakarta.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.example.fashion.dto.lamtv;
+package com.example.fashion.dto.warehouse;
 
 public interface IWarehouseDTOWarehouseDetail {
 }

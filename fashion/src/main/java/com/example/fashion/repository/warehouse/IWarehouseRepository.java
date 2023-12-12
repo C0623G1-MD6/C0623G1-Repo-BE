@@ -1,6 +1,6 @@
-package com.example.fashion.repository.lamtv.warehouse;
+package com.example.fashion.repository.warehouse;
 
-import com.example.fashion.model.lamtv.Warehouse;
+import com.example.fashion.model.warehouse.Warehouse;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
