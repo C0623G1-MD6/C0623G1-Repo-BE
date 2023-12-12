@@ -1,7 +1,7 @@
 package com.example.fashion.controller.warehouse;
 
 import com.example.fashion.dto.warehouse.WarehouseDetailDTO;
-import com.example.fashion.service.lamtv.IWarehouseDetailService;
+import com.example.fashion.service.warehouse.IWarehouseDetailService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

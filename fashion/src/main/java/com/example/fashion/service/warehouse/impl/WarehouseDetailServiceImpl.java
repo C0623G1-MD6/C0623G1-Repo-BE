@@ -1,7 +1,7 @@
-package com.example.fashion.service.lamtv.impl;
+package com.example.fashion.service.warehouse.impl;
 
 import com.example.fashion.repository.warehouse.IWarehouseDetailRepository;
-import com.example.fashion.service.lamtv.IWarehouseDetailService;
+import com.example.fashion.service.warehouse.IWarehouseDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ public class WarehouseDetailServiceImpl implements IWarehouseDetailService {
     @Autowired
     private IWarehouseDetailRepository warehouseDetailRepository;
     /**
-     * @method : Import warehouse
+     * @method : Import warehouse detail
      * @author: LamTV
      * @date: 12/12/2023
      * @param productId product code

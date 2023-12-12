@@ -1,4 +1,4 @@
-package com.example.fashion.service.lamtv;
+package com.example.fashion.service.warehouse;
 
 
 public interface IWarehouseService {
