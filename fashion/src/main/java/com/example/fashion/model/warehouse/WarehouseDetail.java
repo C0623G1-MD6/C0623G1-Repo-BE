@@ -1,6 +1,6 @@
 package com.example.fashion.model.warehouse;
 
-import com.example.fashion.model.loanttv.Products;
+import com.example.fashion.model.product.Product;
 import jakarta.persistence.*;
 
 /**
@@ -19,7 +19,7 @@ public class WarehouseDetail {
     private Integer inputQuantity;
     @ManyToOne
     @JoinColumn(name = "product_id",columnDefinition = "id")
-    private Products productId;
+    private Product productId;
     @ManyToOne
     @JoinColumn(name = "warehouse_receipt_id",columnDefinition = "id")
     private Warehouse warehouseId;
@@ -51,11 +51,11 @@ public class WarehouseDetail {
         this.inputQuantity = inputQuantity;
     }
 
-    public Products getProductId() {
+    public Product getProductId() {
         return productId;
     }
 
-    public void setProductId(Products productId) {
+    public void setProductId(Product productId) {
         this.productId = productId;
     }
 
