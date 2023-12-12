@@ -1,22 +1,23 @@
-package com.example.fashion.model.loanttv;
+package com.example.fashion.model.product;
 
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Sizes {
+@Table (name = "sizes")
+public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany(mappedBy = "sizes")
-    private List<SizeDetails> sizeDetails;
+    @OneToMany(mappedBy = "size")
+    private List<SizeDetail> sizeDetails;
 
-    public Sizes() {
+    public Size() {
     }
 
-    public Sizes(Integer id, String name, List<SizeDetails> sizeDetails) {
+    public Size(Integer id, String name, List<SizeDetail> sizeDetails) {
         this.id = id;
         this.name = name;
         this.sizeDetails = sizeDetails;
@@ -38,11 +39,11 @@ public class Sizes {
         this.name = name;
     }
 
-    public List<SizeDetails> getSizeDetails() {
+    public List<SizeDetail> getSizeDetails() {
         return sizeDetails;
     }
 
-    public void setSizeDetails(List<SizeDetails> sizeDetails) {
+    public void setSizeDetails(List<SizeDetail> sizeDetails) {
         this.sizeDetails = sizeDetails;
     }
 }

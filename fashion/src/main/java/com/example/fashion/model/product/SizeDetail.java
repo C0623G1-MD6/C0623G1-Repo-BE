@@ -1,28 +1,29 @@
-package com.example.fashion.model.loanttv;
+package com.example.fashion.model.product;
 import jakarta.persistence.*;
 
 
 @Entity
-public class SizeDetails {
+@Table (name = "size_details")
+public class SizeDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Products products;
+    private Product product;
     @ManyToOne
     @JoinColumn(name = "size_id")
-    private Sizes sizes;
+    private Size size;
     @Column(columnDefinition = "int default 0")
     private Integer quantity;
 
-    public SizeDetails() {
+    public SizeDetail() {
     }
 
-    public SizeDetails(Integer id, Products products, Sizes sizes, Integer quantity) {
+    public SizeDetail(Integer id, Product product, Size size, Integer quantity) {
         this.id = id;
-        this.products = products;
-        this.sizes = sizes;
+        this.product = product;
+        this.size = size;
         this.quantity = quantity;
     }
 
@@ -34,20 +35,20 @@ public class SizeDetails {
         this.id = id;
     }
 
-    public Products getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(Products products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public Sizes getSizes() {
-        return sizes;
+    public Size getSizes() {
+        return size;
     }
 
-    public void setSizes(Sizes sizes) {
-        this.sizes = sizes;
+    public void setSizes(Size size) {
+        this.size = size;
     }
 
     public Integer getQuantity() {
