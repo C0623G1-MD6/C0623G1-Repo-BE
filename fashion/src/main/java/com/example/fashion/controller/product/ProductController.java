@@ -62,7 +62,6 @@ public class ProductController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-
     /**
      * created at 12/12/2023
      * LoanTTV
@@ -74,7 +73,7 @@ public class ProductController {
     @PostMapping("/create")
     public ResponseEntity<?> createProduct(@Valid @RequestBody ProductDTO productDTO, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
             productService.createProduct(productDTO);
             Integer productId = productService.findByProductCode(productDTO.getProductCode()).getProductId();

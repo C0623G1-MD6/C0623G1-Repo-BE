@@ -9,7 +9,7 @@ import org.springframework.validation.Validator;
 
 @Getter
 @Setter
-public class Login implements Validator {
+public class Login implements Validator  {
 
     @NotBlank
     private String username;

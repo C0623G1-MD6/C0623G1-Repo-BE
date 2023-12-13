@@ -12,6 +12,14 @@ import java.util.Optional;
 public class RoleService implements IRoleService {
     @Autowired
     private IRoleRepository roleRepository;
+
+    /**
+     * This method finds a role by name.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param name The name of the role.
+     * @return An optional containing the role if found, or an empty optional if not found.
+     */
     @Override
     public Optional<Role> findByName(String name) {
         return roleRepository.findByName(name);
