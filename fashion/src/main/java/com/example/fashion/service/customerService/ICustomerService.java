@@ -1,6 +1,9 @@
 package com.example.fashion.service.customerService;
 
+import com.example.fashion.dto.customerDto.ICustomerDto;
 import com.example.fashion.model.customer.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -20,4 +23,7 @@ public interface ICustomerService {
     void createCustomerRepo(Customer customer);
     Customer findCustomerByPhone(String phone);
     Customer findCustomerByEmail(String email);
+
+
+    Page<ICustomerDto> getAllCustomer(Pageable pageable, String keyword);
 }
