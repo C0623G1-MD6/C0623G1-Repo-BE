@@ -14,6 +14,17 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductRepository productRepository;
 
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * This method is used to get all products with these input parameters
+     * @param pageable
+     * @param productName
+     * @param minPrice
+     * @param maxPrice
+     * @param sizeName
+     * @return Page<IProductDTO>
+     */
     @Override
     public Page<IProductDTO> getAllProducts(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName) {
         return productRepository.findAll(pageable, productName, minPrice, maxPrice, sizeName);

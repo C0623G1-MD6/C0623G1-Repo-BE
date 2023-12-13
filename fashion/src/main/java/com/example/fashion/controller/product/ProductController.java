@@ -25,7 +25,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
     @Autowired
     private IProductService productService;
@@ -74,7 +74,7 @@ public class ProductController {
     @PostMapping("/create")
     public ResponseEntity<?> createProduct(@Valid @RequestBody ProductDTO productDTO, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
         } else {
             productService.createProduct(productDTO);
             Integer productId = productService.findByProductCode(productDTO.getProductCode()).getProductId();
