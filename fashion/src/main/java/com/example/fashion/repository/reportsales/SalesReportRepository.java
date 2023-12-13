@@ -1,6 +1,7 @@
 package com.example.fashion.repository.reportsales;
 
 import com.example.fashion.dto.salesreport.SalesReport;
+
 import com.example.fashion.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

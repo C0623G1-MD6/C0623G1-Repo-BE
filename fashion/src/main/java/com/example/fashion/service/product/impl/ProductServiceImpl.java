@@ -15,48 +15,105 @@ public class ProductServiceImpl implements IProductService {
 
 
     @Override
-    public Page<Product> findAllProducts(String option,Pageable pageable) {
+    public Page<Product> findAllProducts(String option, Pageable pageable) {
         Page<Product> productPage = null;
         switch (option) {
             case "price ASC":
-                return productPage = iProductRepository.findAllProducts("p.price ASC", pageable);
-            case "price DESC" :
-                return productPage = iProductRepository.findAllProducts("p.price DESC", pageable);
-            case "id DESC" :
-                return productPage = iProductRepository.findAllProducts("p.id DESC", pageable);
-
+                productPage = iProductRepository.findAllProducts("p.price ASC", pageable);
+                break;
+            case "price DESC":
+                productPage = iProductRepository.findAllProducts("p.price DESC", pageable);
+                break;
+            case "id DESC":
+                productPage = iProductRepository.findAllProducts("p.id DESC", pageable);
+                break;
         }
         return productPage;
 
     }
 
     @Override
-    public Page<Product> findAllProductsByDescId(Pageable pageable) {
-        return iProductRepository.findAllProductsByDescId(pageable);
+    public Page<Product> findAllProductsHasPromotion(String option, Pageable pageable) {
+        Page<Product> productPage = null;
+        switch (option) {
+            case "price ASC":
+                productPage = iProductRepository.findAllProductsHasPromotion("p.price ASC", pageable);
+                break;
+            case "price DESC":
+                productPage = iProductRepository.findAllProductsHasPromotion("p.price DESC", pageable);
+                break;
+            case "id DESC":
+                productPage = iProductRepository.findAllProductsHasPromotion("p.id DESC", pageable);
+                break;
+        }
+        return productPage;
     }
 
     @Override
-    public Page<Product> findAllProductsHasPromotion(Pageable pageable) {
-        return iProductRepository.findAllProductsHasPromotion(pageable);
+    public Page<Product> findAllProductsForMen(String option, Pageable pageable) {
+        Page<Product> productPage = null;
+        switch (option) {
+            case "price ASC":
+                productPage = iProductRepository.findAllProductsForMen("p.price ASC", pageable);
+                break;
+            case "price DESC":
+                productPage = iProductRepository.findAllProductsForMen("p.price DESC", pageable);
+                break;
+            case "id DESC":
+                productPage = iProductRepository.findAllProductsForMen("p.id DESC", pageable);
+                break;
+        }
+        return productPage;
     }
 
     @Override
-    public Page<Product> findAllProductsForMen(Pageable pageable) {
-        return iProductRepository.findAllProductsForMen(pageable);
+    public Page<Product> findAllProductsForWomen(String option, Pageable pageable) {
+        Page<Product> productPage = null;
+        switch (option) {
+            case "price ASC":
+                productPage = iProductRepository.findAllProductsForWomen("p.price ASC", pageable);
+                break;
+            case "price DESC":
+                productPage = iProductRepository.findAllProductsForWomen("p.price DESC", pageable);
+                break;
+            case "id DESC":
+                productPage = iProductRepository.findAllProductsForWomen("p.id DESC", pageable);
+                break;
+        }
+        return productPage;
     }
 
     @Override
-    public Page<Product> findAllProductsForWomen(Pageable pageable) {
-        return iProductRepository.findAllProductsForWomen(pageable);
+    public Page<Product> findAllProductsByCategory(Integer chosenId, String option, Pageable pageable) {
+        Page<Product> productPage = null;
+        switch (option) {
+            case "price ASC":
+                productPage = iProductRepository.findAllProductsByCategory(chosenId,"p.price ASC", pageable);
+                break;
+            case "price DESC":
+                productPage = iProductRepository.findAllProductsByCategory(chosenId,"p.price DESC", pageable);
+                break;
+            case "id DESC":
+                productPage = iProductRepository.findAllProductsByCategory(chosenId,"p.id DESC", pageable);
+                break;
+        }
+        return productPage;
     }
 
     @Override
-    public Page<Product> findAllProductsByCategory(Integer chosenId, Pageable pageable) {
-        return iProductRepository.findAllProductsByCategory(chosenId, pageable);
-    }
-
-    @Override
-    public Page<Product> findAllProductsByName(String name, Pageable pageable) {
-        return iProductRepository.findAllProductsByName(name, pageable);
+    public Page<Product> findAllProductsByName(String name, String option, Pageable pageable) {
+        Page<Product> productPage = null;
+        switch (option) {
+            case "price ASC":
+                productPage = iProductRepository.findAllProductsByName(name,"p.price ASC", pageable);
+                break;
+            case "price DESC":
+                productPage = iProductRepository.findAllProductsByName(name,"p.price DESC", pageable);
+                break;
+            case "id DESC":
+                productPage = iProductRepository.findAllProductsByName(name,"p.id DESC", pageable);
+                break;
+        }
+        return productPage;
     }
 }
