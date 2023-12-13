@@ -31,6 +31,13 @@ public class ChangePassword implements Validator {
         return false;
     }
 
+    /**
+     * Validates the ChangePassword object.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param target The object to be validated.
+     * @param errors The errors object to record validation errors.
+     */
     @Override
     public void validate(Object target, Errors errors) {
         ChangePassword changePassword = (ChangePassword) target;
