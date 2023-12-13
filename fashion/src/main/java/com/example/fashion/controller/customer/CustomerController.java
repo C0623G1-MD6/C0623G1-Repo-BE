@@ -8,6 +8,10 @@ import com.example.fashion.service.customerService.ICustomerTypeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -112,6 +116,7 @@ public class CustomerController {
         customerService.editCustomerRepo(customer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
+
     /**
      * method getAllCustomer
      * create by TrungND
@@ -120,17 +125,25 @@ public class CustomerController {
      * return ResponseEntity and customer or null
      */
     @GetMapping("")
-    public ResponseEntity<List<Customer>> getAll(
+    public ResponseEntity<?> getAll(
             @RequestParam(name = "nameCustomer", defaultValue = "") String name,
-            @RequestParam(name = "typeCustomer", defaultValue = "") String typeCustomer
+            @RequestParam(name = "typeCustomer", defaultValue = "") String typeCustomer,
+            @RequestParam(defaultValue = "0", required = false) int page
+
     ) {
-        List<Customer> customers = customerService.findAll(name, typeCustomer);
-        if (customers.isEmpty()) {
+        Pageable pageable = PageRequest.of(page, 5);
+        Page<Customer> customerDtos = customerService.findAllCustomer(pageable, name, typeCustomer);
+        if (name == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (customerDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(customers, HttpStatus.OK);
+            return new ResponseEntity<>(customerDtos, HttpStatus.OK);
         }
     }
+
+
     /**
      * method deleteCustomer
      * create by TrungND

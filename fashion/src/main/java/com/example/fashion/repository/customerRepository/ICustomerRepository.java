@@ -2,14 +2,16 @@ package com.example.fashion.repository.customerRepository;
 
 import com.example.fashion.model.customer.Customer;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import java.util.List;
 
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
+
     @Transactional
     @Modifying
     @Query(value = "update customers set name = :#{#customer.name}, gender = :#{#customer.gender}, " +
@@ -42,7 +44,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             " where " +
             " customers.is_deleted = '0' " +
             " and customers.name like :name and customer_type.name like :typeCustomer", nativeQuery = true)
-    List<Customer> findAllCustomer(@Param("name") String name, @Param("typeCustomer") String typeCustomer);
+    Page<Customer> findAllCustomer(Pageable pageable, @Param("name") String name, @Param("typeCustomer") String typeCustomer);
+
+
     /**
      * method deleteCustomer
      * create by TrungND
@@ -50,16 +54,16 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
      * param :id
      * return :
      */
+
     @Modifying
     @Transactional
     @Query(value = " update customers set customers.is_deleted = 1 where customers.id = :id", nativeQuery = true)
     void deleteId(@Param("id") int id);
 
 
-
-    @Query(value = "select * from customers where phone = :phone ",nativeQuery = true)
+    @Query(value = "select * from customers where phone = :phone ", nativeQuery = true)
     Customer findCustomerByPhone(@Param("phone") String phone);
 
-    @Query(value = "select * from customers where email = :email ",nativeQuery = true)
+    @Query(value = "select * from customers where email = :email ", nativeQuery = true)
     Customer findCustomerByEmail(@Param("email") String email);
 }
