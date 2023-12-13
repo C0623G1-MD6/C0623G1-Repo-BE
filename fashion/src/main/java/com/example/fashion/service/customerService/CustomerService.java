@@ -3,19 +3,37 @@ package com.example.fashion.service.customerService;
 import com.example.fashion.model.customer.Customer;
 import com.example.fashion.repository.customerRepository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository customerRepository;
 
+    /**
+     * method findAllCustomer
+     * create by TrungND
+     * date 12-12-2023
+     * param : pageable,name,typeCustomer
+     * return :customerRepository.findAllCustomer
+     */
     @Override
-    public List<Customer> findAll(String name, String typeCustomer) {
-        return customerRepository.findAllCustomer("%" + name + "%", "%" + typeCustomer + "%");
+    public Page<Customer> findAllCustomer(Pageable pageable, String name, String typeCustomer) {
+        return customerRepository.findAllCustomer(pageable,"%" + name + "%", "%" + typeCustomer + "%");
+    }
+
+    /**
+     * method remove
+     * create by TrungND
+     * date 12-12-2023
+     * param : id
+     * return :customerRepository.deleteId
+     */
+    @Override
+    public void remove(int id) {
+        customerRepository.deleteId(id);
     }
 
     @Override
@@ -28,10 +46,7 @@ public class CustomerService implements ICustomerService {
         customerRepository.save(customer);
     }
 
-    @Override
-    public void remove(int id) {
-        customerRepository.deleteId(id);
-    }
+
 
     @Override
     public void editCustomerRepo(Customer customer) {
