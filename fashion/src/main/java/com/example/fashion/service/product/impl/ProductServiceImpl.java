@@ -1,5 +1,7 @@
 package com.example.fashion.service.product.impl;
 
+import com.example.fashion.dto.product.IProductDTO;
+import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.model.product.Product;
 import com.example.fashion.repository.product.IProductRepository;
@@ -13,7 +15,33 @@ import org.springframework.stereotype.Service;
 public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductRepository iProductRepository;
+    @Autowired
+    private IProductRepository productRepository;
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * This method is used to get all products with these input parameters
+     * @param pageable
+     * @param productName
+     * @param minPrice
+     * @param maxPrice
+     * @param sizeName
+     * @return Page<IProductDTO>
+     */
+    @Override
+    public Page<IProductDTO> getAllProducts(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName) {
+        return productRepository.findAll(pageable, productName, minPrice, maxPrice, sizeName);
+    }
 
+    @Override
+    public void createProduct(ProductDTO productDTO) {
+        productRepository.save(productDTO);
+    }
+
+    @Override
+    public IProductDTO findByProductCode(String productCode) {
+        return productRepository.findByProductCode(productCode);
+    }
 
     /**
      * Author: LyDTH

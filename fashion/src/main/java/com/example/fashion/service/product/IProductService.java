@@ -1,5 +1,7 @@
 package com.example.fashion.service.product;
 
+import com.example.fashion.dto.product.IProductDTO;
+import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.model.product.Product;
 import org.springframework.data.domain.Page;
@@ -51,4 +53,28 @@ public interface IProductService {
      * @param pageable
      */
     Page<IProductResponse> findAllProductsByName(String name , Pageable pageable);
+    /**
+     * LoanTTV
+     * @param pageable
+     * @param productName
+     * @param minPrice
+     * @param maxPrice
+     * @param sizeName
+     * @return
+     */
+    Page<IProductDTO> getAllProducts(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName);
+
+    /**
+     * LoanTTV
+     * @param productDTO
+     */
+    void createProduct(ProductDTO productDTO);
+
+    /**
+     * LoanTTV
+     * @param productCode
+     * @return
+     */
+    IProductDTO findByProductCode(String productCode);
+
 }
