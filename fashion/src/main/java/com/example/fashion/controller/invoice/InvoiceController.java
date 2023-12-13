@@ -2,7 +2,6 @@ package com.example.fashion.controller.invoice;
 
 import com.example.fashion.dto.customerDto.ICustomerDto;
 import com.example.fashion.dto.invoice.InvoiceDto;
-import com.example.fashion.model.customer.Customer;
 import com.example.fashion.model.invoice.Invoice;
 import com.example.fashion.service.customerService.ICustomerService;
 import com.example.fashion.service.invoice.IInvoiceService;
