@@ -1,6 +1,5 @@
 package com.example.fashion.dto.warehouse;
 
-import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -9,7 +8,7 @@ public class WarehouseDetailDTO implements Validator {
     private String receiptDate;
     private Double inputPrice;
     private Integer inputQuantity;
-    @NotNull(message = "Vui lòng chọn sản phẩm")
+
     private Integer product;
     private Integer warehouse;
     private static final String PRODUCT_ID_WAREHOUSE_DTO = "productId";
