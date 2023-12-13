@@ -18,7 +18,7 @@ public class ChangePassword implements Validator {
     @NotBlank(message = "Trường password không được để trống.")
     private String password;
 
-    @Size(min = 7,message = "Mật khẩu mới phải trên 8 kí tự")
+    @Size(min = 8,message = "Mật khẩu mới phải trên 8 kí tự")
     @Size(max = 100,message = "Không được nhiều hơn 100 ký tự")
     @NotBlank(message = "Trường mật khẩu mới không được để trống.")
     private String passwordNew;
