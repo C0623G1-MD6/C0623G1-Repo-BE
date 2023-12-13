@@ -15,12 +15,12 @@ import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/warehouse/")
+@RequestMapping("/api/warehouse")
 public class WarehouseController {
     @Autowired
     private IWarehouseService warehouseService;
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Object> saveWarehouse(@Valid @RequestBody WarehouseDetailDTO warehouseDetailDTO,
                                                 BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
