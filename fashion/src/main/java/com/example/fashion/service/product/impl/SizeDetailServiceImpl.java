@@ -7,9 +7,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SizeDetailServiceImpl implements ISizeDetailService {
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     */
     @Autowired
     private ISizeDetailRepository sizeDetailRepository;
 
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * @param productId
+     * @param sizeId
+     */
     @Override
     public void save(Integer productId, Integer sizeId) {
         sizeDetailRepository.save(productId, sizeId);
