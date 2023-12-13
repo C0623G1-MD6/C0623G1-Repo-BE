@@ -2,6 +2,7 @@ package com.example.fashion.service.invoice.impl;
 
 import com.example.fashion.model.customer.Customer;
 import com.example.fashion.model.invoice.Invoice;
+import com.example.fashion.repository.customerRepository.ICustomerRepository;
 import com.example.fashion.repository.invoice.IInvoiceRepository;
 import com.example.fashion.service.invoice.IInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,16 @@ public class InvoiceService implements IInvoiceService {
     @Autowired
     private IInvoiceRepository invoiceRepository;
 
+    @Autowired
+    private ICustomerRepository customerRepository;
+
     /**
-     * method saveInvoice
-     * create by NhatNK
-     * date 12/12/2023
-     * return Boolean
+     * The method help to save invoices.
+     * @author NhatNk
+     * @since 2023-12-12
+     * @param invoice is an object containing invoice information
+     * @return 200 Ok If no exception occurs
+     * @return 400 Bad Request If an exception occurs
      */
     @Override
     public Boolean saveInvoice(Invoice invoice) {
@@ -30,21 +36,4 @@ public class InvoiceService implements IInvoiceService {
         }
     }
 
-    @Override
-    public Page<Customer> getAllCustomer(Pageable pageable, String keyword) {
-        try {
-            return invoiceRepository.getAllC(pageable, "%"+keyword+"%");
-        } catch (Exception e){
-            return null;
-        }
-    }
-
-    @Override
-    public Page<Invoice> getAllInvoice(Pageable pageable, String keyword) {
-        try {
-            return invoiceRepository.getAllInvoice(pageable, "%"+keyword+"%");
-        } catch (Exception e){
-            return null;
-        }
-    }
 }

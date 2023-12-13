@@ -12,22 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface IInvoiceRepository extends JpaRepository<Invoice, Integer> {
 
+    /**
+     * The method help to save invoices to database.
+     * @author NhatNk
+     * @since 2023-12-12
+     * @param invoice is an object containing invoice information
+     */
     @Transactional
     @Modifying
     @Query(value = "insert into invoices (invoice_code, invoice_printing_date, customer_id, employee_id) " +
             "values ( :#{#invoice.invoiceCode}, :#{#invoice.invoicePrintingDate}, :#{#invoice.customer.id}, :#{#invoice.employee.id})",
             nativeQuery = true)
     void saveInvoice(@Param("invoice") Invoice invoice);
-
-    @Query(value = "SELECT customers.id, customers.customer_code, customers.name, customers.phone, customers.is_deleted, customer_type.discount_percent" +
-            "from customers "+
-            "JOIN customer_type " +
-            "ON customers.customer_type_id = customer_type.id "+
-            "where " +
-            "customers.is_deleted = '0' "+
-            "and (customers.customer_code like :keyword " +
-            "or customers.name like :keyword" +
-            "or customers.phone like :keyword)"
-            , nativeQuery = true)
-    Page<Customer> getAllC(Pageable pageable, @Param("keyword") String keyword);
 }
