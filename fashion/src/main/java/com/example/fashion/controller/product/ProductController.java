@@ -3,10 +3,12 @@ package com.example.fashion.controller.product;
 import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.model.product.Product;
+import com.example.fashion.model.product.Size;
 import com.example.fashion.repository.product.IProductRepository;
 import com.example.fashion.repository.product.ISizeDetailRepository;
 import com.example.fashion.service.product.IProductService;
 import com.example.fashion.service.product.ISizeDetailService;
+import com.example.fashion.service.product.ISizeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,12 +18,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -32,6 +37,9 @@ public class ProductController {
 
     @Autowired
     private ISizeDetailService sizeDetailService;
+
+    @Autowired
+    private ISizeService sizeService;
 
     /**
      * created at 12/12/2023
@@ -73,7 +81,9 @@ public class ProductController {
     @PostMapping("/create")
     public ResponseEntity<?> createProduct(@Valid @RequestBody ProductDTO productDTO, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            HashMap<String, Object> errors = new HashMap<>();
+            bindingResult.getFieldErrors().forEach( e -> errors.put(e.getField(), e.getDefaultMessage()));
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         } else {
             productService.createProduct(productDTO);
             Integer productId = productService.findByProductCode(productDTO.getProductCode()).getProductId();
@@ -84,4 +94,23 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
+
+    @GetMapping("/size")
+    public ResponseEntity<List<Size>> getAllSizes() {
+        List<Size> sizeList = sizeService.getAllSize();
+        if (sizeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(sizeList, HttpStatus.OK);
+    }
+
+    @GetMapping("/size/{id}")
+    public ResponseEntity<Size> findSizeById(@PathVariable Integer id) {
+        Optional<Size> size = sizeService.findById(id);
+        if (!size.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(size.get(), HttpStatus.OK);
+    }
+
 }
