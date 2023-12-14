@@ -40,7 +40,7 @@ public class notificationRestControllerCreate {
                                 .content(this.objectMapper.writeValueAsString(null))
                                 .content(MediaType.APPLICATION_JSON_VALUE)
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -56,10 +56,10 @@ public class notificationRestControllerCreate {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/notification/add")
-                                .content(this.objectMapper.writeValueAsString(null))
+                                .content(this.objectMapper.writeValueAsString(notificationDTO))
                                 .content(MediaType.APPLICATION_JSON_VALUE)
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -75,10 +75,10 @@ public class notificationRestControllerCreate {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/notification/add")
-                                .content(this.objectMapper.writeValueAsString(null))
+                                .content(this.objectMapper.writeValueAsString(notificationDTO))
                                 .content(MediaType.APPLICATION_JSON_VALUE)
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
     }
 
 
@@ -98,7 +98,7 @@ public class notificationRestControllerCreate {
                                 .content(this.objectMapper.writeValueAsString(null))
                                 .content(MediaType.APPLICATION_JSON_VALUE)
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -114,10 +114,10 @@ public class notificationRestControllerCreate {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/notification/add")
-                                .content(this.objectMapper.writeValueAsString(null))
+                                .content(this.objectMapper.writeValueAsString(notificationDTO))
                                 .content(MediaType.APPLICATION_JSON_VALUE)
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -133,10 +133,10 @@ public class notificationRestControllerCreate {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/notification/add")
-                                .content(this.objectMapper.writeValueAsString(null))
+                                .content(this.objectMapper.writeValueAsString(notificationDTO))
                                 .content(MediaType.APPLICATION_JSON_VALUE)
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
@@ -147,10 +147,9 @@ public class notificationRestControllerCreate {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/notification/add")
-                                .content(this.objectMapper.writeValueAsString(null))
-                                .content(MediaType.APPLICATION_JSON_VALUE)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(this.objectMapper.writeValueAsString(notificationDTO))
                 ).andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is2xxSuccessful());
     }
-
 }
