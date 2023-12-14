@@ -494,4 +494,23 @@ public class AuthController_changePassword {
                 .andExpect(jsonPath("$.passwordNewAgain").value("Mật khẩu nhập lại không khớp."));
         ;
     }
+
+    @Test
+    public void changePassword_success_24() throws Exception {
+        ChangePassword changePassword = new ChangePassword();
+        changePassword.setUsername("admin123");
+        changePassword.setPassword("123456789");
+        changePassword.setPasswordNew("123456789adm");
+        changePassword.setPasswordNewAgain("123456789adm");
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .patch("/api/changePassword")
+                                .header("Authorization", "Bearer " + TOKEN_VALID)
+                                .content(this.objectMapper.writeValueAsString(changePassword))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$").value("Đổi mật khẩu thành công !"));
+        ;
+    }
 }
