@@ -7,18 +7,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class OverviewController_getTotalCustomer {
+public class OverviewController_getTotalRevenue {
     @Autowired
     private MockMvc mockMvc;
 
-    private final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjU0MjExNCwiZXhwIjoxNzg4OTQyMTE0fQ.9hTozHVVGmI_x6rMY1fVKkL4UVU7HAt2UKu7qQleWNc";
+    private final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjU0NzQzMSwiZXhwIjoxNzg4OTQ3NDMxfQ.7k2MZSS6GGwrUiwJRt_1mlcG00lngi9TOxHuSiL1XkI";
 
     /**
      * @Creator: TruongNQ
@@ -27,10 +26,10 @@ public class OverviewController_getTotalCustomer {
      * @Throw: Exception
      */
     @Test
-    public void getTotalCustomer_time_1() throws Exception {
+    public void getTotalRevenue_time_1() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/overview/total_customer")
+                                .get("/api/overview/revenue")
                                 .header("Authorization", "Bearer " + TOKEN_VALID)
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -44,10 +43,10 @@ public class OverviewController_getTotalCustomer {
      * @Throw: Exception
      */
     @Test
-    public void getTotalCustomer_time_2() throws Exception {
+    public void getTotalRevenue_time_2() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/overview/total_customer/{time}", "")
+                                .get("/api/overview/revenue/{time}", "")
                                 .header("Authorization", "Bearer " + TOKEN_VALID)
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -61,10 +60,10 @@ public class OverviewController_getTotalCustomer {
      * @Throw: Exception
      */
     @Test
-    public void getTotalCustomer_time_4() throws Exception {
+    public void getTotalRevenue_time_4() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/overview/total_customer/{time}", "month")
+                                .get("/api/overview/revenue/{time}", "month")
                                 .header("Authorization", "Bearer " + TOKEN_VALID)
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

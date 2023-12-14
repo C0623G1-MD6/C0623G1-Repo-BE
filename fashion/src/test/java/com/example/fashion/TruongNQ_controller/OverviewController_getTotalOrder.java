@@ -22,7 +22,7 @@ public class OverviewController_getTotalOrder {
     /**
      * @Creator: TruongNQ
      * @parameter time
-     * @Goal: HttpStatus = 400
+     * @Goal: HttpStatus = 403
      * @Throw: Exception
      */
     @Test
@@ -39,7 +39,7 @@ public class OverviewController_getTotalOrder {
     /**
      * @Creator: TruongNQ
      * @parameter time
-     * @Goal: HttpStatus = 400
+     * @Goal: HttpStatus = 403
      * @Throw: Exception
      */
     @Test
