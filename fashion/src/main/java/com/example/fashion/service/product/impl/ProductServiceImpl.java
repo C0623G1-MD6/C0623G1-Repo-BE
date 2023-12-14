@@ -103,7 +103,7 @@ public class ProductServiceImpl implements IProductService {
     public Page<IProductResponse> findAllProductsByCategory(String categoryName, Pageable pageable) {
 
         return iProductRepository.findAllProductsByCategory(categoryName, pageable);
-    }
+        }
 
     /**
      * Author: LyDTH
