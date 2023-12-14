@@ -9,5 +9,6 @@ public interface IProductResponse {
     Double getPrice();
     String getCategoryName();
     Double getPercent();
+    String getProductSize();
 
 }
