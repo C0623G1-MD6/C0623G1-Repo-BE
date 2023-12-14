@@ -1,10 +1,13 @@
 package com.example.fashion.controller.salesreport;
 
+import com.example.fashion.dto.salesreport.SalesReport;
 import com.example.fashion.service.salesreport.ISalesReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 @CrossOrigin("*")
 @RestController
@@ -12,4 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class SalesReportController {
     @Autowired
     private ISalesReportService salesReportService;
+    @GetMapping("/daily")
+    public ResponseEntity<?> getDaily( @RequestParam("startDate") String startDate,
+                                             @RequestParam("endDate") String endDate) {
+        List<SalesReport> data = salesReportService.getDataDaily(startDate,endDate);
+        return ResponseEntity.ok(data);
+    }
 }

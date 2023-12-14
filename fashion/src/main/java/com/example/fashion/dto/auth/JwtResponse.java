@@ -1,4 +1,4 @@
-package com.example.fashion.dto;
+package com.example.fashion.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

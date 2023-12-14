@@ -1,4 +1,4 @@
-package com.example.fashion.model;
+package com.example.fashion.model.auth;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
