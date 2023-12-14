@@ -38,6 +38,4 @@ public class WarehouseController {
         warehouseDetailService.saveWarehouseDetail(warehouseDetailDTO.getProduct(),warehouseDetailDTO.getInputQuantity(),warehouseDetailDTO.getWarehouse());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
-
 }
