@@ -18,8 +18,7 @@ public interface INotificationRepository extends JpaRepository<Notification,Inte
             " join  employees emp on nodt.employee_id = emp.id " +
             " join accounts acc on emp.account_id = acc.id " +
             " join user_roles usr on acc.id = usr.user_id " +
-            " join roles ro on usr.role_id = ro.id " +
-            " WHERE (usr.role_id = 1 OR usr.role_id = 3 )  ", nativeQuery = true)
+            " join roles ro on usr.role_id = ro.id " , nativeQuery = true)
     Page<Notification> findAllEmployee(Pageable pageable);
 
     @Query(value = " select notifi.id as id , notifi.title as title, notifi.content as content, notifi.deleted as deleted, notifi.notice_posting_date " +
