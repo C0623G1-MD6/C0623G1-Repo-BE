@@ -11,12 +11,12 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/sales-report/")
+@RequestMapping("/api/sales-report")
 public class SalesReportController {
     @Autowired
     private ISalesReportService salesReportService;
-    @GetMapping("/daily")
-    public ResponseEntity<?> getDaily( @RequestParam("startDate") String startDate,
+    @GetMapping("/statistical")
+    public ResponseEntity<?> getSalesReport( @RequestParam("startDate") String startDate,
                                              @RequestParam("endDate") String endDate) {
         List<SalesReport> data = salesReportService.getDataDaily(startDate,endDate);
         return ResponseEntity.ok(data);
