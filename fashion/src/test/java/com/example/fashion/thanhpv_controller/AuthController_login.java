@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -36,10 +37,11 @@ public class AuthController_login {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/login")
-                                .content(this.objectMapper.writeValueAsString(null))
+                                .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.username").value("Trường username không được null"));
     }
 
     /**
@@ -59,7 +61,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.username").value("Trường username không được để trống."));
     }
 
     /**
@@ -79,7 +82,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.username").value("Chỉ được chứa ký tự alphabet, số và dấu gạch dưới"));
     }
 
     /**
@@ -99,7 +103,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.username").value("Username phải trên 8 kí tự"));
     }
 
     /**
@@ -119,7 +124,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.username").value("Username không được nhiều hơn 30 ký tự"));
     }
 
     /**
@@ -139,7 +145,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.username").value("Username " +login.getUsername()+  " không tồn tại"));
     }
 
     /**
@@ -156,11 +163,13 @@ public class AuthController_login {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/login")
-                                .content(this.objectMapper.writeValueAsString(null))
+                                .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.password").value("Trường password không được null"));
     }
+
     /**
      * @Creator: ThanhPV
      * @parameter password is empty
@@ -178,8 +187,10 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.password").value("Trường password không được để trống."));
     }
+
     /**
      * @Creator: ThanhPV
      * @parameter password is not in correct format
@@ -197,7 +208,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.password").value("Chỉ được chứa ký tự alphabet, số và dấu gạch dưới"));
     }
 
     /**
@@ -217,7 +229,8 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.password").value("Mật khẩu phải trên 8 kí tự"));
     }
 
     /**
@@ -229,15 +242,16 @@ public class AuthController_login {
     @Test
     public void login_password_17() throws Exception {
         Login login = new Login();
-        login.setUsername("C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G");
-        login.setPassword("123456789");
+        login.setPassword("C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G1C0623G");
+        login.setUsername("123456789");
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .post("/api/login")
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.password").value("Mật khẩu phải ít hơn 100 ký tự"));
     }
 
     /**
@@ -257,8 +271,10 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.password").value("Mật khẩu không chính xác"));
     }
+
     /**
      * @Creator: ThanhPV
      * @parameter username and password valid
@@ -276,6 +292,10 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.tokenType").value("Bearer"))
+                .andExpect(jsonPath("$.id").value(3))
+                .andExpect(jsonPath("$.username").value("admin123"))
+                .andExpect(jsonPath("$.roles[0]").value("ROLE_MANAGER"));
     }
 }

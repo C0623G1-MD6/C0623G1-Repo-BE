@@ -20,10 +20,11 @@ public class EmployeeController {
 
     /**
      * Retrieves employee information by account ID.
-     * @author: ThanhPV
-     * @date: 12/12/2023
+     *
      * @param id The ID of the account.
      * @return ResponseEntity containing the employee information or error message.
+     * @author: ThanhPV
+     * @date: 12/12/2023
      */
     @GetMapping("/{id}")
     public ResponseEntity<?> getInfoEmployeeByIdAccount(@PathVariable Long id) {
@@ -31,7 +32,7 @@ public class EmployeeController {
         MyUserDetail userDetail = (MyUserDetail) authentication.getPrincipal();
         if (userDetail.getAccount().getId() == id) {
             Employee employee = employeeService.getEmployeeByAccountId(id);
-            return new ResponseEntity<>(employee,HttpStatus.OK);
+            return new ResponseEntity<>(employee, HttpStatus.OK);
         }
         return new ResponseEntity<>("Bạn không có quyền truy cập vào tài nguyên này", HttpStatus.UNAUTHORIZED);
     }
