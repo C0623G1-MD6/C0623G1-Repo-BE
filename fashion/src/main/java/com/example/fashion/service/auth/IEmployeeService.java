@@ -1,6 +1,6 @@
-package com.example.fashion.service;
+package com.example.fashion.service.auth;
 
-import com.example.fashion.model.Employee;
+import com.example.fashion.model.auth.Employee;
 
 public interface IEmployeeService {
     /**

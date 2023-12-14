@@ -5,11 +5,17 @@ import com.example.fashion.dto.salesreport.SalesReport;
 import com.example.fashion.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 
 public interface SalesReportRepository extends JpaRepository<Product, Integer> {
+    /**
+     * @author: LamTV
+     * @date: 13/12/2023
+     * @param startDate date start
+     * @param endDate date end
+     * @return List<SalesReport>
+     * @method getData()
+     */
     @Query(value = "WITH RECURSIVE DateRange AS (" +
             "  SELECT :startDate AS `date` " +
             "  UNION ALL " +
@@ -32,7 +38,14 @@ public interface SalesReportRepository extends JpaRepository<Product, Integer> {
             "FROM DateRange dr " +
             "ORDER BY `date`;", nativeQuery = true)
     List<SalesReport> getDataSpend(String startDate, String endDate);
-
+    /**
+     * @author: LamTV
+     * @date: 13/12/2023
+     * @param startDate date start
+     * @param endDate date end
+     * @return List<SalesReport>
+     * @method getData()
+     */
     @Query(value = "WITH RECURSIVE DateRange AS ("
             + "SELECT :startDate AS `date` "
             + "UNION ALL "

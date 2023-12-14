@@ -46,26 +46,26 @@ public class NotificationController {
         return new ResponseEntity<>(notifications, HttpStatus.OK);
     }
 
-    /**
-     * author: TriVN
-     * date: 12/12/2023
-     * goal: notification
-     *
-     * @param page
-     * @param pageSize
-     * @return HttpStatus
-     */
-    @GetMapping("list/warehouse")
-    public ResponseEntity<?> showNotificationWarehouse(
-            @RequestParam(name = "page", defaultValue = "0") int page,
-            @RequestParam(name = "limit", defaultValue = "5") int pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        Page<Notification> notifications = iNotificationService.findAllWarehouse(pageable);
-        if (notifications.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(notifications, HttpStatus.OK);
-    }
+//    /**
+//     * author: TriVN
+//     * date: 12/12/2023
+//     * goal: notification
+//     *
+//     * @param page
+//     * @param pageSize
+//     * @return HttpStatus
+//     */
+//    @GetMapping("list/warehouse")
+//    public ResponseEntity<?> showNotificationWarehouse(
+//            @RequestParam(name = "page", defaultValue = "0") int page,
+//            @RequestParam(name = "limit", defaultValue = "5") int pageSize) {
+//        Pageable pageable = PageRequest.of(page, pageSize);
+//        Page<Notification> notifications = iNotificationService.findAllWarehouse(pageable);
+//        if (notifications.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(notifications, HttpStatus.OK);
+//    }
 
     /**
      * author: TriVN
