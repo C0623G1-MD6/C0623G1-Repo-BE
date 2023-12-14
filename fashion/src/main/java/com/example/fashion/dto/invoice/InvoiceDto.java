@@ -1,6 +1,6 @@
 package com.example.fashion.dto.invoice;
 
-import com.example.fashion.model.Employee;
+import com.example.fashion.model.auth.Employee;
 import com.example.fashion.model.customer.Customer;
 import com.example.fashion.model.invoice.InvoiceDetail;
 import org.springframework.validation.Errors;

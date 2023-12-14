@@ -1,8 +1,8 @@
 package com.example.fashion.service.impl;
 
-import com.example.fashion.model.Account;
-import com.example.fashion.model.MyUserDetail;
-import com.example.fashion.repository.IAccountRepository;
+import com.example.fashion.model.auth.Account;
+import com.example.fashion.model.auth.MyUserDetail;
+import com.example.fashion.repository.auth.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

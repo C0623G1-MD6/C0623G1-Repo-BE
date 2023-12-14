@@ -1,8 +1,8 @@
-package com.example.fashion.controller;
+package com.example.fashion.controller.employee;
 
-import com.example.fashion.model.Employee;
-import com.example.fashion.model.MyUserDetail;
-import com.example.fashion.service.IEmployeeService;
+import com.example.fashion.model.auth.Employee;
+import com.example.fashion.model.auth.MyUserDetail;
+import com.example.fashion.service.auth.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

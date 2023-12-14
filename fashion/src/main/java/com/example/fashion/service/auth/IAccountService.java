@@ -1,6 +1,6 @@
-package com.example.fashion.service;
+package com.example.fashion.service.auth;
 
-import com.example.fashion.model.Account;
+import com.example.fashion.model.auth.Account;
 
 import java.util.Optional;
 

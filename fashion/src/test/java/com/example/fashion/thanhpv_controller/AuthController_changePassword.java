@@ -1,7 +1,6 @@
 package com.example.fashion.thanhpv_controller;
 
-import com.example.fashion.dto.ChangePassword;
-import com.example.fashion.dto.Login;
+import com.example.fashion.dto.auth.ChangePassword;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

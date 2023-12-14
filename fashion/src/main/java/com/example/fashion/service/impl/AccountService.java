@@ -1,8 +1,8 @@
 package com.example.fashion.service.impl;
 
-import com.example.fashion.model.Account;
-import com.example.fashion.repository.IAccountRepository;
-import com.example.fashion.service.IAccountService;
+import com.example.fashion.model.auth.Account;
+import com.example.fashion.repository.auth.IAccountRepository;
+import com.example.fashion.service.auth.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

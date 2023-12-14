@@ -1,6 +1,6 @@
-package com.example.fashion.service;
+package com.example.fashion.service.auth;
 
-import com.example.fashion.model.Role;
+import com.example.fashion.model.auth.Role;
 
 import java.util.Optional;
 

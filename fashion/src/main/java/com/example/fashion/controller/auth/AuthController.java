@@ -1,16 +1,14 @@
-package com.example.fashion.controller;
+package com.example.fashion.controller.auth;
 
-import com.example.fashion.dto.ChangePassword;
-import com.example.fashion.dto.Login;
-import com.example.fashion.dto.JwtResponse;
-import com.example.fashion.model.Account;
-import com.example.fashion.model.MyUserDetail;
-import com.example.fashion.model.Role;
+import com.example.fashion.dto.auth.ChangePassword;
+import com.example.fashion.dto.auth.Login;
+import com.example.fashion.dto.auth.JwtResponse;
+import com.example.fashion.model.auth.Account;
+import com.example.fashion.model.auth.MyUserDetail;
 import com.example.fashion.security.jwt.JwtUtils;
-import com.example.fashion.service.IAccountService;
+import com.example.fashion.service.auth.IAccountService;
 import com.example.fashion.service.impl.MyUserDetailService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +24,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
