@@ -31,6 +31,8 @@ public class OverviewService implements IOverviewService{
             case "year":
                 result=repository.getTotalCustomerYear().size();
                 break;
+            default:
+                result=0;
         }
         return result;
     }
@@ -54,6 +56,8 @@ public class OverviewService implements IOverviewService{
             case "year":
                 result=repository.getTotalOrderYear();
                 break;
+            default:
+                result=0;
         }
         return result;
     }
@@ -78,6 +82,8 @@ public class OverviewService implements IOverviewService{
             case "year":
                 result=repository.getTotalRevenueYear();
                 break;
+            default:
+                result=0.0;
         }
         return result;
     }

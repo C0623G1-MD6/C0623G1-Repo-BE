@@ -17,7 +17,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return list Integer
      */
-    @Query(value = "select distinct i.id_customer from invoice as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
+    @Query(value = "select distinct i.customer_id from invoices as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
     List<Integer> getTotalCustomerWeek();
 
     /**
@@ -26,7 +26,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Integer
      */
-    @Query(value = "select count(i.id) from invoice as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
+    @Query(value = "select count(i.id) from invoices as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
     Integer getTotalOrderWeek();
 
     /**
@@ -35,7 +35,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Double
      */
-    @Query(value = "select sum(total_payment) from invoice as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
+    @Query(value = "select sum(total_payment) from invoices as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
     Double getTotalRevenueWeek();
 
     /**
@@ -44,7 +44,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return list Interger
      */
-    @Query(value = "select distinct i.id_customer from invoice as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
+    @Query(value = "select distinct i.customer_id from invoices as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
     List<Integer> getTotalCustomerMonth();
 
     /**
@@ -53,7 +53,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Integer
      */
-    @Query(value = "select count(i.id) from invoice as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
+    @Query(value = "select count(i.id) from invoices as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
     Integer getTotalOrderMonth();
 
     /**
@@ -62,7 +62,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Double
      */
-    @Query(value = "select sum(total_payment) from invoice as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
+    @Query(value = "select sum(total_payment) from invoices as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
     Double getTotalRevenueMonth();
 
     /**
@@ -71,7 +71,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return list Integer
      */
-    @Query(value = "select distinct i.id_customer from invoice as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
+    @Query(value = "select distinct i.customer_id from invoices as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
     List<Integer> getTotalCustomerYear();
 
     /**
@@ -80,7 +80,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Integer
      */
-    @Query(value = "select count(i.id) from invoice as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
+    @Query(value = "select count(i.id) from invoices as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
     Integer getTotalOrderYear();
 
     /**
@@ -89,7 +89,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Double
      */
-    @Query(value = "select sum(total_payment) from invoice as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
+    @Query(value = "select sum(total_payment) from invoices as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
     Double getTotalRevenueYear();
 
     /**
@@ -100,7 +100,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      */
     @Query(value =
             "select e.id, e.name, sum(i.total_payment) as revenue, count(i.id) as quantity\n" +
-                    "from invoice as i\n" +
+                    "from invoices as i\n" +
                     "join employee as e\n" +
                     "on i.id_employee=e.id\n" +
                     "group by e.id\n" +
@@ -115,8 +115,8 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * return list ITopNewOrder
      */
     @Query(value =
-            "select i.id,c.name as name, i.total_payment as total, i.date\n" +
-                    "from invoice as i\n" +
+            "select i.id,c.name as name, i.total_payment as total, i.invoice_printing_date\n" +
+                    "from invoices as i\n" +
                     "join customer as c\n" +
                     "on i.id_employee=c.id\n" +
                     "order by i.invoice_printing_date desc\n" +
