@@ -1,6 +1,6 @@
 package com.example.fashion.model.notification;
 
-import com.example.fashion.model.Employee;
+import com.example.fashion.model.auth.Employee;
 import jakarta.persistence.*;
 
 @Entity

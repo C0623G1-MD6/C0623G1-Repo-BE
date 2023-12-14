@@ -1,4 +1,17 @@
 package com.example.fashion.service.product.impl;
 
-public class SizeDetailServiceImpl {
+import com.example.fashion.repository.product.ISizeDetailRepository;
+import com.example.fashion.service.product.ISizeDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SizeDetailServiceImpl implements ISizeDetailService {
+    @Autowired
+    private ISizeDetailRepository sizeDetailRepository;
+
+    @Override
+    public void save(Integer productId, Integer sizeId) {
+        sizeDetailRepository.save(productId, sizeId);
+    }
 }

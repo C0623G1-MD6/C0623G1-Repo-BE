@@ -1,9 +1,12 @@
 package com.example.fashion.service.invoice.impl;
 
+import com.example.fashion.model.customer.Customer;
 import com.example.fashion.model.invoice.InvoiceDetail;
 import com.example.fashion.repository.invoice.IInvoiceDetailRepository;
 import com.example.fashion.service.invoice.IInvoiceDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,4 +23,5 @@ public class InvoiceDetailService implements IInvoiceDetailService {
             return false;
         }
     }
+
 }

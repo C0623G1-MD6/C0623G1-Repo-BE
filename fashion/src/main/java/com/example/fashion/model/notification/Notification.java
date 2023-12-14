@@ -14,9 +14,8 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String noticePostingDate;
-    @NotNull
+
     private String title;
-    @NotNull
     private String content;
     private Boolean deleted;
 
