@@ -8,10 +8,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class SizeDetailServiceImpl implements ISizeDetailService {
     @Autowired
-    private ISizeDetailRepository sizeDetailRepository;
-
-    @Override
-    public void save(Integer productId, Integer sizeId) {
-        sizeDetailRepository.save(productId, sizeId);
-    }
+    private ISizeDetailRepository iSizeDetailRepository;
 }

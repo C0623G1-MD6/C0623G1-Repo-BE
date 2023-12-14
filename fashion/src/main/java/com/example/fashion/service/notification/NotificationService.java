@@ -1,9 +1,7 @@
 package com.example.fashion.service.notification;
 
-import com.example.fashion.dto.notificationDto.NotificationDTO;
 import com.example.fashion.model.notification.Notification;
 import com.example.fashion.repository.notificationRepository.INotificationRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +23,7 @@ public class NotificationService implements INotificationService{
     }
 
     @Override
-    public void createNotification( Notification notification) {
+    public void createNotification(Notification notification) {
         iNotificationRepository.createNotification(notification);
     }
 

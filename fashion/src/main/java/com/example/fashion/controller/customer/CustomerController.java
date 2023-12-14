@@ -8,10 +8,6 @@ import com.example.fashion.service.customerService.ICustomerTypeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -19,7 +15,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -115,45 +110,5 @@ public class CustomerController {
         customer.setId(id);
         customerService.editCustomerRepo(customer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
-    }
-
-    /**
-     * method getAllCustomer
-     * create by TrungND
-     * date 12-12-2023
-     * param :
-     * return ResponseEntity and customer or null
-     */
-    @GetMapping("")
-    public ResponseEntity<?> getAll(
-            @RequestParam(name = "nameCustomer", defaultValue = "") String name,
-            @RequestParam(name = "typeCustomer", defaultValue = "") String typeCustomer,
-            @RequestParam(defaultValue = "0", required = false) int page
-
-    ) {
-        Pageable pageable = PageRequest.of(page, 5);
-        Page<Customer> customerDtos = customerService.findAllCustomer(pageable, name, typeCustomer);
-        if (name == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        if (customerDtos.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(customerDtos, HttpStatus.OK);
-        }
-    }
-
-
-    /**
-     * method deleteCustomer
-     * create by TrungND
-     * date 12-12-2023
-     * param : id
-     * return ResponseEntity or null
-     */
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
-        customerService.remove(id);
-        return ResponseEntity.ok("Xóa Thành Công");
     }
 }

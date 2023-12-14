@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import java.util.List;
 
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
-
     @Transactional
     @Modifying
     @Query(value = "update customers set name = :#{#customer.name}, gender = :#{#customer.gender}, " +
@@ -121,5 +121,6 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             "or customers.phone like :keyword)"
             , nativeQuery = true)
     Page<ICustomerDto> getAllCustomer(Pageable pageable, @Param("keyword") String keyword);
+
 
 }
