@@ -1,4 +1,4 @@
-package com.example.fashion.dto;
+package com.example.fashion.dto.auth;
 
 import jakarta.validation.constraints.*;
 import lombok.Getter;
@@ -14,7 +14,7 @@ public class Login implements Validator  {
     @NotNull(message = "Trường username không được null")
     @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
     @Size(min = 8,message = "Username phải trên 8 kí tự")
-    @Size(max = 100,message = "Username phải ít hơn 100 ký tự")
+    @Size(max = 30,message = "Username không được nhiều hơn 30 ký tự")
     private String username;
 
     @NotBlank(message = "Trường password không được để trống.")
