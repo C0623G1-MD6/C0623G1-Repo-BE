@@ -31,6 +31,15 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
             "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
+            ,
+            countQuery = " SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+            "   p.gender as gender,\n" +
+            "   p.price as price, c.name as categoryName, pm.percent as percent\n" +
+            "FROM products p\n" +
+            "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
+            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+            "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
     )
     Page<IProductResponse> findAllProducts(Pageable pageable);
 
