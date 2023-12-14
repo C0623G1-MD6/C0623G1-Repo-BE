@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class AuthController_getInfoEmployeeByIdAccount {
 
+    private static final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjUyMzcxMCwiZXhwIjoxNzg4OTIzNzEwfQ.dMI9BADFNcu5fjXUuD4O804bNLtYAkS0J6hp7Es0gEo";
     @Autowired
     private MockMvc mockMvc;
 
@@ -29,7 +30,7 @@ public class AuthController_getInfoEmployeeByIdAccount {
     public void getInformation_1() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/employee/{id}",1))
+                                .get("/api/employee/{id}", 1))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
