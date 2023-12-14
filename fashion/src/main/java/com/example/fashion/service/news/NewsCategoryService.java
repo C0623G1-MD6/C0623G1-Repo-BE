@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NewsCategoryService implements INewsCategoryService{
@@ -17,6 +18,11 @@ public class NewsCategoryService implements INewsCategoryService{
     @Override
     public List<NewsCategory> findAllNewsCategory() {
         return newsCategoryRepository.findAll();
+    }
+
+    @Override
+    public Optional<NewsCategory> findById(Integer id) {
+        return newsCategoryRepository.findById(id);
     }
 
 

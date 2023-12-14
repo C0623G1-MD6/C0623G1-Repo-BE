@@ -1,7 +1,10 @@
 package com.example.fashion.controller.news;
 
+import com.example.fashion.dto.newsdto.INewsDto;
 import com.example.fashion.dto.newsdto.NewsDto;
 import com.example.fashion.model.news.News;
+import com.example.fashion.model.news.NewsCategory;
+import com.example.fashion.service.news.INewsCategoryService;
 import com.example.fashion.service.news.INewsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
@@ -20,21 +23,27 @@ import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/api/news")
-@CrossOrigin("**")
+@CrossOrigin("*")
 @RestController
 public class NewsController {
     @Autowired
     private INewsService newsService;
+    @Autowired
+    private INewsCategoryService newsCategoryService;
 
     /**
      * method findAllNews
      * Create HungHLP
      * Date 11-12-2023
+     * Goal show News List
      * return News List
      */
-    @GetMapping("")
-    public ResponseEntity<List<News>> findAll() {
-        List<News> newsList = newsService.findAllNews();
+    @GetMapping("/{newsCategoryId}")
+    public ResponseEntity<List<INewsDto>> findAll(@PathVariable() Integer newsCategoryId) {
+        if (newsCategoryService.findById(newsCategoryId).isEmpty()){
+            return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<INewsDto> newsList = newsService.findAllNews(newsCategoryId);
         if (newsList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -48,27 +57,30 @@ public class NewsController {
      * Date 11-12-2023
      * Goal create news
      * return HttpStatus
-     */
+     **/
 
     @PostMapping("/create")
-    @Transactional
-    @Modifying
-    @ResponseBody
     public ResponseEntity<Object> create(@Valid @RequestBody NewsDto newsDto, BindingResult bindingResult) {
         Map<String, String> newsDtomap = new HashMap<>();
+
         new NewsDto().validate(newsDto, bindingResult);
         if (bindingResult.hasErrors()) {
             for (FieldError error : bindingResult.getFieldErrors()) {
                 newsDtomap.put(error.getField(), error.getDefaultMessage());
             }
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(newsDtomap, HttpStatus.BAD_REQUEST);
         }
+
         News news = new News();
-        BeanUtils.copyProperties(newsDto, news);
-        LocalDateTime dateTime = LocalDateTime.now();
-        news.setDateCreate(dateTime);
+        news.setDeleted(false);
+        news.setDateCreate(newsDto.getDateCreate());
+        news.setName(newsDto.getName());
+        news.setImage(newsDto.getImage());
+        news.setContent(newsDto.getContent());
+        news.setNewsCategory(new NewsCategory(newsDto.getNewsCategoryId()));
+
         newsService.saveNews(news);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
 

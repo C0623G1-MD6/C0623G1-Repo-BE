@@ -53,9 +53,9 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
-                                .requestMatchers("/api/login","/api/news").permitAll()
+                                .requestMatchers("/api/login","/api/news/**","/api/category").permitAll()
 //                        Trang cần có quyền hợp lệ
-                                .requestMatchers("/api/test2","/api/news/create").hasRole("MANAGER")
+                                .requestMatchers("/api/test2").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**","/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**").authenticated()
                                 .requestMatchers("/api/changePassword").authenticated()

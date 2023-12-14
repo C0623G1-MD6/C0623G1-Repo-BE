@@ -1,5 +1,7 @@
 package com.example.fashion.service.news;
 
+import com.example.fashion.dto.newsdto.INewsDto;
+import com.example.fashion.dto.newsdto.NewsDto;
 import com.example.fashion.model.news.News;
 import com.example.fashion.model.news.NewsCategory;
 import com.example.fashion.repository.news.INewsRepository;
@@ -13,8 +15,8 @@ public class NewsService implements INewsService{
     @Autowired
     private INewsRepository newsRepository;
     @Override
-    public List<News> findAllNews() {
-        return newsRepository.findAllNews();
+    public List<INewsDto> findAllNews(Integer newsCategoryId) {
+        return newsRepository.findAllNews(newsCategoryId);
     }
 
     @Override
@@ -22,6 +24,7 @@ public class NewsService implements INewsService{
 //        NewsCategory newsCategory = new NewsCategory(1);
 //        news.setNewsCategory(newsCategory);
         newsRepository.saveNews(news);
+//        newsRepository.save(news);
 //        newsRepository.save(news);
     }
 }
