@@ -32,11 +32,22 @@ public class ProductServiceImpl implements IProductService {
         return productRepository.findAll(pageable, productName, minPrice, maxPrice, sizeName);
     }
 
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * @param productDTO
+     */
     @Override
     public void createProduct(ProductDTO productDTO) {
         productRepository.save(productDTO);
     }
 
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * @param productCode
+     * @return
+     */
     @Override
     public IProductDTO findByProductCode(String productCode) {
         return productRepository.findByProductCode(productCode);

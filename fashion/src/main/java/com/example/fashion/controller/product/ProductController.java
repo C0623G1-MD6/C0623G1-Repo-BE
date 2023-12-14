@@ -2,10 +2,7 @@ package com.example.fashion.controller.product;
 
 import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.ProductDTO;
-import com.example.fashion.model.product.Product;
 import com.example.fashion.model.product.Size;
-import com.example.fashion.repository.product.IProductRepository;
-import com.example.fashion.repository.product.ISizeDetailRepository;
 import com.example.fashion.service.product.IProductService;
 import com.example.fashion.service.product.ISizeDetailService;
 import com.example.fashion.service.product.ISizeService;
@@ -15,13 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -87,7 +80,7 @@ public class ProductController {
         } else {
             productService.createProduct(productDTO);
             Integer productId = productService.findByProductCode(productDTO.getProductCode()).getProductId();
-            List<Integer> sizeDetailIdList = productDTO.getSizeDetailId();
+            List<Integer> sizeDetailIdList = productDTO.getSizeId();
             for(Integer i : sizeDetailIdList){
                 sizeDetailService.save(productId, i);
             }
