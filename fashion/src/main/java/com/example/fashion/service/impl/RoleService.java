@@ -1,8 +1,8 @@
 package com.example.fashion.service.impl;
 
-import com.example.fashion.model.Role;
-import com.example.fashion.repository.IRoleRepository;
-import com.example.fashion.service.IRoleService;
+import com.example.fashion.model.auth.Role;
+import com.example.fashion.repository.auth.IRoleRepository;
+import com.example.fashion.service.auth.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

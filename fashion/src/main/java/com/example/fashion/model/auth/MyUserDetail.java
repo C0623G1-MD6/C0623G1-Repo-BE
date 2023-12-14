@@ -1,4 +1,4 @@
-package com.example.fashion.model;
+package com.example.fashion.model.auth;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

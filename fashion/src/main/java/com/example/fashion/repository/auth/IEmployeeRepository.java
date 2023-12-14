@@ -1,7 +1,7 @@
-package com.example.fashion.repository;
+package com.example.fashion.repository.auth;
 
 
-import com.example.fashion.model.Employee;
+import com.example.fashion.model.auth.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
