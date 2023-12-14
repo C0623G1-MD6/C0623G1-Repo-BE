@@ -31,7 +31,7 @@ public class WarehouseDetailController {
             }
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
-        warehouseDetailService.saveWarehouseDetail(warehouseDetailDTO.getProductId(),warehouseDetailDTO.getInputQuantity(),warehouseDetailDTO.getWarehouseId());
+        warehouseDetailService.saveWarehouseDetail(warehouseDetailDTO.getProduct(),warehouseDetailDTO.getInputQuantity(),warehouseDetailDTO.getWarehouse());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

@@ -1,28 +1,20 @@
-package com.example.fashion.model.notification;
+package com.example.fashion.dto.notificationDto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
+import com.example.fashion.model.notification.Notification;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import java.time.LocalDateTime;
-
-@Entity
-public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class NotificationDTO implements Validator {
     private Integer id;
     private String noticePostingDate;
-
     private String title;
     private String content;
     private Boolean deleted;
 
-    public Notification() {
+    public NotificationDTO() {
     }
 
-    public Notification(Integer id, String noticePostingDate, String title, String content, Boolean deleted) {
+    public NotificationDTO(Integer id, String noticePostingDate, String title, String content, Boolean deleted) {
         this.id = id;
         this.noticePostingDate = noticePostingDate;
         this.title = title;
@@ -67,6 +59,24 @@ public class Notification {
     }
 
     public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
+        if (deleted == null) {
+            this.deleted = true;
+        } else {
+            this.deleted = deleted;
+        }
     }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        NotificationDTO notificationDTO = (NotificationDTO) target;
+        ValidateNotificationDTO.checkValidateNotificationTitle(notificationDTO.getTitle(),errors);
+        ValidateNotificationDTO.checkValidateNotificationTitle(notificationDTO.getContent(),errors);
+    }
+
+
 }

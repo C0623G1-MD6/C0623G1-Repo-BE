@@ -1,6 +1,5 @@
 package com.example.fashion.dto.warehouse;
 
-import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -9,9 +8,9 @@ public class WarehouseDetailDTO implements Validator {
     private String receiptDate;
     private Double inputPrice;
     private Integer inputQuantity;
-    @NotNull(message = "Vui lòng chọn sản phẩm")
-    private Integer productId;
-    private Integer warehouseId;
+
+    private Integer product;
+    private Integer warehouse;
     private static final String PRODUCT_ID_WAREHOUSE_DTO = "productId";
     private static final String INPUT_QUANTITY = "inputQuantity";
     private static final String INPUT_PRICE = "inputPrice";
@@ -48,20 +47,20 @@ public class WarehouseDetailDTO implements Validator {
         this.inputQuantity = inputQuantity;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public Integer getProduct() {
+        return product;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProduct(Integer product) {
+        this.product = product;
     }
 
-    public Integer getWarehouseId() {
-        return warehouseId;
+    public Integer getWarehouse() {
+        return warehouse;
     }
 
-    public void setWarehouseId(Integer warehouseId) {
-        this.warehouseId = warehouseId;
+    public void setWarehouse(Integer warehouse) {
+        this.warehouse = warehouse;
     }
 
     @Override
@@ -90,7 +89,7 @@ public class WarehouseDetailDTO implements Validator {
         } else if (warehouseDetailDTO.getInputQuantity() > 1000000000) {
             errors.rejectValue(INPUT_PRICE, "Vui lòng nhập đơn giá không quá 1000000000");
         }
-        if (warehouseDetailDTO.getProductId() == null) {
+        if (warehouseDetailDTO.getProduct() == null) {
             errors.rejectValue(PRODUCT_ID_WAREHOUSE_DTO, "", "Vui lòng không để trống sản phẩm");
         }
     }
