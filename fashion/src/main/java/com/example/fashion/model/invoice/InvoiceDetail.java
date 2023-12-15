@@ -18,6 +18,7 @@ public class InvoiceDetail {
     @JoinColumn(name = "invoice_id", referencedColumnName = "id")
     private Invoice invoice;
 
+    //ok
     @ManyToOne
     @JoinColumn(name = "size_detail_id", referencedColumnName = "id")
     private SizeDetail sizeDetail;
