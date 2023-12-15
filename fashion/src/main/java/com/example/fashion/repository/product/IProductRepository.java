@@ -23,7 +23,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = " SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = " SELECT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "   p.price as price, c.name as categoryName, s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
@@ -50,7 +50,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
@@ -78,7 +78,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
@@ -106,7 +106,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
@@ -135,7 +135,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
@@ -164,7 +164,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
@@ -195,7 +195,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param sizeName
      * @return Page<IProductDTO>
      */
-    @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
+    @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName,p.product_image as productImage, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
             "from products p \n" +
             "join product_categories pc on p.category_id = pc.id\n" +
             "join size_details sd on p.id = sd.product_id\n" +

@@ -33,7 +33,7 @@ public class HomePageController {
      */
     @GetMapping
     public ResponseEntity<?> findAllProducts(
-            @RequestParam(name = "option", required = false) String option,
+            @RequestParam(name = "option", defaultValue = "",required = false) String option,
             @RequestParam(name = "sort", defaultValue = "ASC", required = false) String sort,
             @RequestParam(name = "page", defaultValue = "0", required = false) Integer page)
     {
@@ -50,7 +50,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProducts(pageable);
 //        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
@@ -69,13 +69,13 @@ public class HomePageController {
      */
     @GetMapping("/promotion")
     public ResponseEntity<?> findAllProductsHasPromotion(
-            @RequestParam(name = "option", required = false) String option,
+            @RequestParam(required = false, name = "option", defaultValue = "price") String option,
             @RequestParam(name = "sort", defaultValue = "ASC") String sort,
             @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
-        if (option == null || option.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+//        if (option == null || option.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
         Sort sortable = null;
         if (sort.equals("ASC")) {
             sortable = Sort.by(option).ascending();
@@ -85,7 +85,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsHasPromotion(pageable);
 //                List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
@@ -120,7 +120,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
 //        Page<IProductResponse> products = productService.findAllProductsForMen(pageable);
         List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
@@ -155,7 +155,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsForWomen(pageable);
 //        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
@@ -191,7 +191,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsByCategory(categoryName, pageable);
 //        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
@@ -227,7 +227,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsByName(productName, pageable);
 //        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {

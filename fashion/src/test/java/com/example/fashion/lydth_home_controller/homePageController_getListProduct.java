@@ -24,6 +24,10 @@ public class homePageController_getListProduct {
      * @Goal: HttpStatus = 400
      * @Throw: Exception
      */
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void findAllProducts_7() throws Exception {
         this.mockMvc.perform((MockMvcRequestBuilders.get("/api/home")))
