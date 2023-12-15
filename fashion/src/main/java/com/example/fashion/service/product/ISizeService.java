@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface ISizeService {
     List<Size> getAllSize();
 
-    Optional<Size> findById(Integer id);
+//    Optional<Size> findById(Integer id);
 }

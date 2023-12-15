@@ -292,7 +292,7 @@ public class ProductRestController_createProduct {
         productDTO.setName("Áo Khoác ANORAK Giả Da Dáng Ngắn May Chần Bông");
         productDTO.setProductCode("B-0004");
         productDTO.setProductImage("abc");
-        productDTO.setQrCode("abc");
+        productDTO.setQrCode(null);
         productDTO.setGender(true);
         productDTO.setPrice(100000d);
         productDTO.setCategoryId(2);
@@ -514,10 +514,10 @@ public class ProductRestController_createProduct {
         sizeDetails.add(2);
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName("Áo Khoác ANORAK Giả Da Dáng Ngắn May Chần Bông");
-        productDTO.setProductCode("B-0204");
+        productDTO.setProductCode("B-0207");
         productDTO.setProductImage("abc");
         productDTO.setQrCode("abc");
-        productDTO.setGender(true);
+        productDTO.setGender(false);
         productDTO.setPrice(700000d);
         productDTO.setCategoryId(2);
         productDTO.setSizeId(sizeDetails);

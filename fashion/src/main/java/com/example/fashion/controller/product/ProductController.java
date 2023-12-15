@@ -97,13 +97,6 @@ public class ProductController {
         return new ResponseEntity<>(sizeList, HttpStatus.OK);
     }
 
-    @GetMapping("/size/{id}")
-    public ResponseEntity<Size> findSizeById(@PathVariable Integer id) {
-        Optional<Size> size = sizeService.findById(id);
-        if (!size.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(size.get(), HttpStatus.OK);
-    }
+
 
 }

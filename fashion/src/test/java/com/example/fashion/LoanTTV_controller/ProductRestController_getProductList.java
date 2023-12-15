@@ -39,10 +39,10 @@ public class ProductRestController_getProductList {
                 .andExpect(jsonPath("content[0].productPrice").value(1299000.0))
                 .andExpect(jsonPath("content[0].productQuantity").value(5))
                 .andExpect(jsonPath("content[0].sizeName").value("M"))
-                .andExpect(jsonPath("content[4].productId").value(21))
-                .andExpect(jsonPath("content[4].productCode").value("Q-0001"))
-                .andExpect(jsonPath("content[4].productName").value("Quần Cargo Có Túi Cài Khóa Kéo"))
-                .andExpect(jsonPath("content[4].productPrice").value(1999000.0))
+                .andExpect(jsonPath("content[4].productId").value(20))
+                .andExpect(jsonPath("content[4].productCode").value("A-0004"))
+                .andExpect(jsonPath("content[4].productName").value("Quần Lông Ống Suông"))
+                .andExpect(jsonPath("content[4].productPrice").value(1990000.0))
                 .andExpect(jsonPath("content[4].productQuantity").value(0))
                 .andExpect(jsonPath("content[4].sizeName").value("M"));
     }
@@ -68,10 +68,10 @@ public class ProductRestController_getProductList {
                 .andExpect(jsonPath("content[0].productPrice").value(1299000.0))
                 .andExpect(jsonPath("content[0].productQuantity").value(5))
                 .andExpect(jsonPath("content[0].sizeName").value("M"))
-                .andExpect(jsonPath("content[4].productId").value(21))
-                .andExpect(jsonPath("content[4].productCode").value("Q-0001"))
-                .andExpect(jsonPath("content[4].productName").value("Quần Cargo Có Túi Cài Khóa Kéo"))
-                .andExpect(jsonPath("content[4].productPrice").value(1999000.0))
+                .andExpect(jsonPath("content[4].productId").value(20))
+                .andExpect(jsonPath("content[4].productCode").value("A-0004"))
+                .andExpect(jsonPath("content[4].productName").value("Quần Lông Ống Suông"))
+                .andExpect(jsonPath("content[4].productPrice").value(1990000.0))
                 .andExpect(jsonPath("content[4].productQuantity").value(0))
                 .andExpect(jsonPath("content[4].sizeName").value("M"));
     }
@@ -127,10 +127,10 @@ public class ProductRestController_getProductList {
                 .andExpect(jsonPath("content[0].productPrice").value(1299000.0))
                 .andExpect(jsonPath("content[0].productQuantity").value(5))
                 .andExpect(jsonPath("content[0].sizeName").value("M"))
-                .andExpect(jsonPath("content[4].productId").value(28))
-                .andExpect(jsonPath("content[4].productCode").value("A-0006"))
-                .andExpect(jsonPath("content[4].productName").value("Áo Sơ Mi Vải Lyocell Có Túi"))
-                .andExpect(jsonPath("content[4].productPrice").value(1299000.0))
+                .andExpect(jsonPath("content[4].productId").value(27))
+                .andExpect(jsonPath("content[4].productCode").value("A-0005"))
+                .andExpect(jsonPath("content[4].productName").value("Áo Sơ Mi Thêu Họa Tiết Nổi"))
+                .andExpect(jsonPath("content[4].productPrice").value(1699000.0))
                 .andExpect(jsonPath("content[4].productQuantity").value(0))
                 .andExpect(jsonPath("content[4].sizeName").value("M"));
     }
@@ -156,10 +156,10 @@ public class ProductRestController_getProductList {
                 .andExpect(jsonPath("content[0].productPrice").value(1299000.0))
                 .andExpect(jsonPath("content[0].productQuantity").value(5))
                 .andExpect(jsonPath("content[0].sizeName").value("M"))
-                .andExpect(jsonPath("content[4].productId").value(27))
-                .andExpect(jsonPath("content[4].productCode").value("A-0005"))
-                .andExpect(jsonPath("content[4].productName").value("Áo Sơ Mi Thêu Họa Tiết Nổi"))
-                .andExpect(jsonPath("content[4].productPrice").value(1699000.0))
+                .andExpect(jsonPath("content[4].productId").value(26))
+                .andExpect(jsonPath("content[4].productCode").value("AK-0001"))
+                .andExpect(jsonPath("content[4].productName").value("Áo Khóa Len Lông Thú"))
+                .andExpect(jsonPath("content[4].productPrice").value(3999000.0))
                 .andExpect(jsonPath("content[4].productQuantity").value(0))
                 .andExpect(jsonPath("content[4].sizeName").value("M"));
     }
@@ -185,10 +185,10 @@ public class ProductRestController_getProductList {
                 .andExpect(jsonPath("content[0].productPrice").value(1299000.0))
                 .andExpect(jsonPath("content[0].productQuantity").value(5))
                 .andExpect(jsonPath("content[0].sizeName").value("M"))
-                .andExpect(jsonPath("content[4].productId").value(27))
-                .andExpect(jsonPath("content[4].productCode").value("A-0005"))
-                .andExpect(jsonPath("content[4].productName").value("Áo Sơ Mi Thêu Họa Tiết Nổi"))
-                .andExpect(jsonPath("content[4].productPrice").value(1699000.0))
+                .andExpect(jsonPath("content[4].productId").value(26))
+                .andExpect(jsonPath("content[4].productCode").value("AK-0001"))
+                .andExpect(jsonPath("content[4].productName").value("Áo Khóa Len Lông Thú"))
+                .andExpect(jsonPath("content[4].productPrice").value(3999000.0))
                 .andExpect(jsonPath("content[4].productQuantity").value(0))
                 .andExpect(jsonPath("content[4].sizeName").value("M"));
     }
@@ -244,10 +244,10 @@ public class ProductRestController_getProductList {
                 .andExpect(jsonPath("content[0].productPrice").value(1299000.0))
                 .andExpect(jsonPath("content[0].productQuantity").value(5))
                 .andExpect(jsonPath("content[0].sizeName").value("M"))
-                .andExpect(jsonPath("content[4].productId").value(28))
-                .andExpect(jsonPath("content[4].productCode").value("A-0006"))
-                .andExpect(jsonPath("content[4].productName").value("Áo Sơ Mi Vải Lyocell Có Túi"))
-                .andExpect(jsonPath("content[4].productPrice").value(1299000.0))
+                .andExpect(jsonPath("content[4].productId").value(27))
+                .andExpect(jsonPath("content[4].productCode").value("A-0005"))
+                .andExpect(jsonPath("content[4].productName").value("Áo Sơ Mi Thêu Họa Tiết Nổi"))
+                .andExpect(jsonPath("content[4].productPrice").value(1699000.0))
                 .andExpect(jsonPath("content[4].productQuantity").value(0))
                 .andExpect(jsonPath("content[4].sizeName").value("M"));
     }

@@ -12,6 +12,6 @@ public interface ISizeRepository extends JpaRepository<Size, Integer> {
     @Query(nativeQuery = true, value = "select * from sizes")
     List<Size> findAll();
 
-    @Query(nativeQuery = true, value = "select name from sizes where id = :sizeId")
-    Optional<Size> findSizeBySizeId(Integer sizeId);
+//    @Query(nativeQuery = true, value = "select name from sizes where id = :sizeId")
+//    Optional<Size> findSizeBySizeId(Integer sizeId);
 }

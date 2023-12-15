@@ -19,8 +19,8 @@ public class SizeServiceImpl implements ISizeService {
         return iSizeRepository.findAll();
     }
 
-    @Override
-    public Optional<Size> findById(Integer id) {
-        return iSizeRepository.findSizeBySizeId(id);
-    }
+//    @Override
+//    public Optional<Size> findById(Integer id) {
+//        return iSizeRepository.findSizeBySizeId(id);
+//    }
 }
