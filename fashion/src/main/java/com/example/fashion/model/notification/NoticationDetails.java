@@ -1,6 +1,7 @@
 package com.example.fashion.model.notification;
 
 import com.example.fashion.model.auth.Employee;
+import com.example.fashion.model.auth.Role;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,8 +10,8 @@ public class NoticationDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    private Employee employee;
+    @JoinColumn(name = "roles_id", referencedColumnName = "id")
+    private Role role;
     @ManyToOne
     @JoinColumn(name = "notification_id", referencedColumnName = "id")
     private Notification notification;
@@ -18,9 +19,9 @@ public class NoticationDetails {
     public NoticationDetails() {
     }
 
-    public NoticationDetails(Integer id, Employee employee, Notification notification) {
+    public NoticationDetails(Integer id, Role role, Notification notification) {
         this.id = id;
-        this.employee = employee;
+        this.role = role;
         this.notification = notification;
     }
 
@@ -32,12 +33,12 @@ public class NoticationDetails {
         this.id = id;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Role getRole() {
+        return role;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Notification getNotification() {

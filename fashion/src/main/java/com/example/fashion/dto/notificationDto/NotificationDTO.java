@@ -1,13 +1,19 @@
 package com.example.fashion.dto.notificationDto;
 
 import com.example.fashion.model.notification.Notification;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class NotificationDTO implements Validator {
     private Integer id;
     private String noticePostingDate;
+    @NotBlank(message = "không để trống")
+    @Size(max = 100, message = "Không được dài quá 100 từ")
     private String title;
+    @NotBlank(message = "không để trống")
+    @Size(max = 1000, message = "Không được dài quá 1000 từ")
     private String content;
     private Boolean deleted;
 
@@ -74,8 +80,7 @@ public class NotificationDTO implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         NotificationDTO notificationDTO = (NotificationDTO) target;
-        ValidateNotificationDTO.checkValidateNotificationTitle(notificationDTO.getTitle(),errors);
-        ValidateNotificationDTO.checkValidateNotificationTitle(notificationDTO.getContent(),errors);
+
     }
 
 

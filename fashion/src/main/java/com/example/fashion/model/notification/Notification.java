@@ -1,9 +1,6 @@
 package com.example.fashion.model.notification;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
@@ -17,6 +14,7 @@ public class Notification {
 
     private String title;
     private String content;
+    @Column(columnDefinition = "int(1) default 1")
     private Boolean deleted;
 
     public Notification() {

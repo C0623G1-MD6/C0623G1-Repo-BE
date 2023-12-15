@@ -15,26 +15,20 @@ public interface INotificationRepository extends JpaRepository<Notification,Inte
     @Query(value = " select notifi.id as id , notifi.title as title, notifi.content as content, notifi.deleted as deleted, notifi.notice_posting_date " +
             " from notification notifi " +
             " join notication_details nodt on notifi.id = nodt.notification_id " +
-            " join  employees emp on nodt.employee_id = emp.id " +
-            " join accounts acc on emp.account_id = acc.id " +
-            " join user_roles usr on acc.id = usr.user_id " +
-            " join roles ro on usr.role_id = ro.id " , nativeQuery = true)
+            " join roles ro on nodt.roles_id = ro.id " , nativeQuery = true)
     Page<Notification> findAllEmployee(Pageable pageable);
 
     @Query(value = " select notifi.id as id , notifi.title as title, notifi.content as content, notifi.deleted as deleted, notifi.notice_posting_date " +
             " from notification notifi " +
             " join notication_details nodt on notifi.id = nodt.notification_id " +
-            " join  employees emp on nodt.employee_id = emp.id " +
-            " join accounts acc on emp.account_id = acc.id " +
-            " join user_roles usr on acc.id = usr.user_id " +
-            " join roles ro on usr.role_id = ro.id " +
-            " WHERE (usr.role_id = 2 OR usr.role_id = 3 )  ", nativeQuery = true)
+            " join roles ro on nodt.roles_id = ro.id " +
+            " where nodt.roles_id = 2 or nodt.roles_id 3 " , nativeQuery = true)
     Page<Notification> findAllWarehouse(Pageable pageable);
 
 
     @Transactional
     @Modifying
     @Query(value = " INSERT INTO notification (title, content, deleted, notice_posting_date) " +
-            " Value (:#{#notification.title},:#{#notification.content},:#{#notification.deleted}, :#{#noticePostingDate}) ", nativeQuery = true)
+            " Value (:#{#notification.title},:#{#notification.content},:#{#notification.deleted}, CURRENT_TIMESTAMP()) ", nativeQuery = true)
     void createNotification(Notification notification);
 }
