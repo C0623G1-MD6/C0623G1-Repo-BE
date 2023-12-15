@@ -107,7 +107,7 @@ public class AuthController {
     public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
         if (changePassword.getPasswordNew() == null || changePassword.getPasswordNew().equals("")) {
-            errors.put("passwordNew", "Mật khẩu mới không được trống");
+            errors.put("passwordNew", "Mật khẩu mới không được trống hoặc null");
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
         changePassword.validate(changePassword, bindingResult);
