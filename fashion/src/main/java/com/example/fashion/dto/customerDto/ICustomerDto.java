@@ -1,7 +1,5 @@
 package com.example.fashion.dto.customerDto;
 
-import com.example.fashion.model.customer.CustomerType;
-
 public interface ICustomerDto {
     Integer getId();
 
