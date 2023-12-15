@@ -93,7 +93,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
                                 .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
-                                .requestMatchers("/api/invoices/**").permitAll()
+                                .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
 //                        Trang cần có quyền hợp lệ
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
