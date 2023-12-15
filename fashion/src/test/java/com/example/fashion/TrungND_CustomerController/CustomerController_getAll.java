@@ -30,7 +30,7 @@ public class CustomerController_getAll {
     @Test
     public void getListCustomer_7() throws Exception {
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/api/customer/"))
+                        MockMvcRequestBuilders.get("/api/customer"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -62,6 +62,7 @@ public class CustomerController_getAll {
                 .andExpect(jsonPath("content[0].deleted").value(false));
 
     }
+
     /**
      * create by TrungND
      * date 14-12-2023
@@ -69,9 +70,9 @@ public class CustomerController_getAll {
      * return HttpStatus 2xx
      */
     @Test
-    public void getListCustomer_9() throws Exception{
+    public void getListCustomer_9() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/api/customer?nameCustomer=&typeCustomer=abc&page="))
+                        MockMvcRequestBuilders.get("/api/customer?nameCustomer=&typeCustomer=abc&page="))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -85,9 +86,9 @@ public class CustomerController_getAll {
      */
 
     @Test
-    public void getListCustomer_10() throws Exception{
+    public void getListCustomer_10() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/api/customer?nameCustomer=W&typeCustomer=member&page="))
+                        MockMvcRequestBuilders.get("/api/customer?nameCustomer=W&typeCustomer=member&page="))
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
@@ -100,9 +101,9 @@ public class CustomerController_getAll {
      * return HttpStatus 2xx
      */
     @Test
-    public void getListCustomer_11() throws Exception{
+    public void getListCustomer_11() throws Exception {
         this.mockMvc.perform(
-                MockMvcRequestBuilders.get("/api/customer?nameCustomer=T&typeCustomer=member&page=0"))
+                        MockMvcRequestBuilders.get("/api/customer?nameCustomer=T&typeCustomer=member&page=0"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("content[0].name").value("Nguyễn Thị Thảo"))

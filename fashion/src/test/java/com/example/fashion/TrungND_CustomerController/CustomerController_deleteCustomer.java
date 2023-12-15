@@ -19,7 +19,7 @@ public class CustomerController_deleteCustomer {
     /**
      * create by TrungND
      * date 14-12-2023
-     * goal: deleteCustomer with parameter equal null
+     * goal: deleteCustomer with parameter is null
      * return HttpStatus 4xx
      */
 
@@ -65,8 +65,8 @@ public class CustomerController_deleteCustomer {
     /**
      * create by TrungND
      * date 14-12-2023
-     * goal: deleteCustomer with parameter is in of bound
-     * return HttpStatus 4xx
+     * goal: delete customer with parameter is in of bound
+     * return HttpStatus 2xx
      */
     @Test
     public void deleteCustomer_id_28() throws Exception{
