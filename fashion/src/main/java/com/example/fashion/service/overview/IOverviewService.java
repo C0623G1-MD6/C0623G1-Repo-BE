@@ -36,9 +36,10 @@ public interface IOverviewService {
      * method getTopFiveSeller
      * Create TruongNQ
      * Date 12-12-2023
+     * @param time
      * return list ITopFiveSeller
      */
-    List<ITopFiveSeller> getTopFiveSeller();
+    List<ITopFiveSeller> getTopFiveSeller(String time);
     /**
      * method getTopFiveNewOrder
      * Create TruongNQ
