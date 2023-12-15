@@ -61,7 +61,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findCustomerByPhone(String phone) {
-        return customerRepository.findCustomerByPhone("%" + phone + "%");
+        return customerRepository.findCustomerByPhone(phone);
     }
 
     @Override

@@ -52,7 +52,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
      * param : phone
      * return Customer
      */
-    @Query(value = "select * from customers where phone = :phone ", nativeQuery = true)
+    @Query(value = " select * from customers where phone = :phone ", nativeQuery = true)
     Customer findCustomerByPhone(@Param("phone") String phone);
 
     /**
@@ -62,7 +62,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
      * param : email
      * return Customer
      */
-    @Query(value = "select * from customers where email = :email ", nativeQuery = true)
+    @Query(value = "select * from customers where email like :email ", nativeQuery = true)
     Customer findCustomerByEmail(@Param("email") String email);
 
     /**
@@ -72,7 +72,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
      * param : code
      * return Customer
      */
-    @Query(value = "select * from customers where customer_code = :code ", nativeQuery = true)
+    @Query(value = "select * from customers where customer_code like :code ", nativeQuery = true)
     Customer findCustomerByCode(@Param("code") String code);
 
     /**
