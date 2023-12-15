@@ -33,7 +33,7 @@ public class HomePageController {
      */
     @GetMapping
     public ResponseEntity<?> findAllProducts(
-            @RequestParam(name = "option", required = false) String option,
+            @RequestParam(name = "option", defaultValue = "",required = false) String option,
             @RequestParam(name = "sort", defaultValue = "ASC", required = false) String sort,
             @RequestParam(name = "page", defaultValue = "0", required = false) Integer page)
     {
@@ -50,7 +50,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProducts(pageable);
 //        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
@@ -69,13 +69,13 @@ public class HomePageController {
      */
     @GetMapping("/promotion")
     public ResponseEntity<?> findAllProductsHasPromotion(
-            @RequestParam(name = "option", defaultValue = "price") String option,
+            @RequestParam(required = false, name = "option", defaultValue = "price") String option,
             @RequestParam(name = "sort", defaultValue = "ASC") String sort,
             @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
-        if (option == null || option.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+//        if (option == null || option.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
         Sort sortable = null;
         if (sort.equals("ASC")) {
             sortable = Sort.by(option).ascending();
@@ -85,8 +85,9 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsHasPromotion(pageable);
+//                List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -102,8 +103,9 @@ public class HomePageController {
      * @return: the page of products for men
      */
     @GetMapping("/men")
-    public ResponseEntity<?> findAllProductsForMen(@RequestParam(name = "option", defaultValue = "price") String option,
-                                                   @RequestParam(name = "sort", defaultValue = "ASC") String sort, @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
+    public ResponseEntity<?> findAllProductsForMen(@RequestParam(name = "option", required = false) String option,
+                                                   @RequestParam(name = "sort", defaultValue = "ASC") String sort,
+                                                   @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
 
         if (option == null || option.isEmpty()) {
@@ -118,8 +120,9 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
-        Page<IProductResponse> products = productService.findAllProductsForMen(pageable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
+//        Page<IProductResponse> products = productService.findAllProductsForMen(pageable);
+        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -136,8 +139,9 @@ public class HomePageController {
      */
 
     @GetMapping("/women")
-    public ResponseEntity<?> findAllProductsForWomen(@RequestParam(name = "option", defaultValue = "price") String option,
-                                                     @RequestParam(name = "sort", defaultValue = "ASC") String sort, @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
+    public ResponseEntity<?> findAllProductsForWomen(@RequestParam(name = "option", required = false) String option,
+                                                     @RequestParam(name = "sort", defaultValue = "ASC") String sort,
+                                                     @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
         if (option == null || option.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -151,8 +155,9 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsForWomen(pageable);
+//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -169,11 +174,12 @@ public class HomePageController {
      * @return: the page of products (by category name)
      */
     @GetMapping("/category")
-    public ResponseEntity<?> findAllProductsByCategory(@RequestParam(name = "option", defaultValue = "price") String option,
+    public ResponseEntity<?> findAllProductsByCategory(@RequestParam(name = "option", required = false) String option,
                                                        @RequestParam(name = "sort", defaultValue = "ASC") String sort,
-                                                       @RequestParam(name = "categoryName") String categoryName, @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
+                                                       @RequestParam(name = "categoryName", required = false) String categoryName,
+                                                       @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
-        if (option == null || option.isEmpty()) {
+        if (option == null || option.isEmpty() || categoryName == null || categoryName.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Sort sortable = null;
@@ -185,8 +191,9 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsByCategory(categoryName, pageable);
+//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -203,9 +210,10 @@ public class HomePageController {
      * @return: the page of products (by product name)
      */
     @GetMapping("/productName")
-    public ResponseEntity<?> findAllProductsByName(@RequestParam(name = "option", defaultValue = "price") String option,
+    public ResponseEntity<?> findAllProductsByName(@RequestParam(name = "option", required = false) String option,
                                                    @RequestParam(name = "sort", defaultValue = "ASC") String sort,
-                                                   @RequestParam(name = "productName") String productName,  @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
+                                                   @RequestParam(name = "productName") String productName,
+                                                   @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
         if (option == null || option.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -219,13 +227,16 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 4, sortable);
+        Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsByName(productName, pageable);
+//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+
 
 }
 
