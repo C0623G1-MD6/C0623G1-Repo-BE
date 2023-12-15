@@ -139,7 +139,7 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * return list ITopNewOrder
      */
     @Query(value =
-            "select e.id, e.name,  id.selling_quantity as total, i.invoice_printing_date as date\n" +
+            "select i.id, e.name,  id.selling_quantity as total, i.invoice_printing_date as date\n" +
                     "from invoices as i \n" +
                     "join invoice_details as id\n" +
                     "on i.id=id.invoice_id\n" +

@@ -18,7 +18,7 @@ public class OverviewController_getTopFiveSeller {
     @Autowired
     private MockMvc mockMvc;
 
-    private final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjU0NzQzMSwiZXhwIjoxNzg4OTQ3NDMxfQ.7k2MZSS6GGwrUiwJRt_1mlcG00lngi9TOxHuSiL1XkI";
+    private final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjYwNDM5MCwiZXhwIjoxNzg5MDA0MzkwfQ.vkzdQTnNCzibRAbTRMq055No6pDsGGBpnntvL3Qxy9o";
 
     /**
      * @Creator: TruongNQ

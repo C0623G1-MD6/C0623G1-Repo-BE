@@ -18,7 +18,7 @@ public class OverviewController_getTopFiveNewOrder {
     @Autowired
     private MockMvc mockMvc;
 
-    private final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjU0NzQzMSwiZXhwIjoxNzg4OTQ3NDMxfQ.7k2MZSS6GGwrUiwJRt_1mlcG00lngi9TOxHuSiL1XkI";
+    private final String TOKEN_VALID = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyMyIsImlhdCI6MTcwMjYwNDM5MCwiZXhwIjoxNzg5MDA0MzkwfQ.vkzdQTnNCzibRAbTRMq055No6pDsGGBpnntvL3Qxy9o";
 
     /**
      * @Creator: TruongNQ
@@ -39,9 +39,9 @@ public class OverviewController_getTopFiveNewOrder {
                 .andExpect(jsonPath("[0].id").value(1))
                 .andExpect(jsonPath("[0].date").value("2023-12-14 00:00:00.0"))
                 .andExpect(jsonPath("[0].total").value(4.0))
-                .andExpect(jsonPath("[4].name").value("Nguyễn Văn D"))
-                .andExpect(jsonPath("[4].id").value(4))
+                .andExpect(jsonPath("[4].name").value("Nguyễn Văn E"))
+                .andExpect(jsonPath("[4].id").value(5))
                 .andExpect(jsonPath("[4].date").value("2023-12-14 00:00:00.0"))
-                .andExpect(jsonPath("[4].total").value(3.0));
+                .andExpect(jsonPath("[4].total").value(8.0));
     }
 }
