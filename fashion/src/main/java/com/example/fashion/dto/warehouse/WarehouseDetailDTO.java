@@ -1,5 +1,6 @@
 package com.example.fashion.dto.warehouse;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -8,9 +9,9 @@ public class WarehouseDetailDTO implements Validator {
     private String receiptDate;
     private Double inputPrice;
     private Integer inputQuantity;
+    @NotNull(message = "Vui lòng chọn sản phẩm")
     private Integer product;
     private Integer warehouse;
-    private Integer size;
     private static final String PRODUCT_ID_WAREHOUSE_DTO = "productId";
     private static final String INPUT_QUANTITY = "inputQuantity";
     private static final String INPUT_PRICE = "inputPrice";
@@ -61,14 +62,6 @@ public class WarehouseDetailDTO implements Validator {
 
     public void setWarehouse(Integer warehouse) {
         this.warehouse = warehouse;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public void setSize(Integer size) {
-        this.size = size;
     }
 
     @Override

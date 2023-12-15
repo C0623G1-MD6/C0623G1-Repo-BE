@@ -46,7 +46,6 @@ public class AuthController_changePassword {
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.username").value("Trường username không được để trống."));
-        ;
     }
 
     /**
@@ -511,6 +510,5 @@ public class AuthController_changePassword {
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$").value("Đổi mật khẩu thành công !"));
-        ;
     }
 }

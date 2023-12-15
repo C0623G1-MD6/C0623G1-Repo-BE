@@ -1,25 +1,26 @@
 package com.example.fashion.dto.invoice;
 
-import com.example.fashion.model.invoice.Invoice;
-import com.example.fashion.model.product.Product;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-public class InvoiceDetailDto {
+public class InvoiceDetailDto implements Validator {
     private Integer id;
 
     private Integer sellingQuantity;
+    private Double sellingPrice;
 
-    private Invoice invoice;
+    private Integer invoiceId;
 
-    private Product product;
+    private Integer sizeDetailId;
 
     public InvoiceDetailDto() {
     }
 
-    public InvoiceDetailDto(Integer id, Integer sellingQuantity, Invoice invoice, Product product) {
-        this.id = id;
+    public InvoiceDetailDto(Integer sellingQuantity, Double sellingPrice, Integer invoiceId, Integer sizeDetailId) {
         this.sellingQuantity = sellingQuantity;
-        this.invoice = invoice;
-        this.product = product;
+        this.sellingPrice = sellingPrice;
+        this.invoiceId = invoiceId;
+        this.sizeDetailId = sizeDetailId;
     }
 
     public Integer getId() {
@@ -38,19 +39,50 @@ public class InvoiceDetailDto {
         this.sellingQuantity = sellingQuantity;
     }
 
-    public Invoice getInvoice() {
-        return invoice;
+    public Double getSellingPrice() {
+        return sellingPrice;
     }
 
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 
-    public Product getProduct() {
-        return product;
+    public Integer getInvoiceId() {
+        return invoiceId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setInvoiceId(Integer invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+
+    public Integer getSizeDetailId() {
+        return sizeDetailId;
+    }
+
+    public void setSizeDetailId(Integer sizeDetailId) {
+        this.sizeDetailId = sizeDetailId;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        InvoiceDetailDto invoiceDetailDto = (InvoiceDetailDto) target;
+        if ("".equals(invoiceDetailDto.getSellingQuantity())) {
+            errors.rejectValue("sellingQuantity", null, "Vui lòng nhập số lượng");
+        } else if (invoiceDetailDto.getSellingQuantity()<=0){
+            errors.rejectValue("sellingQuantity", null, "Số lượng phải lớn hơn 0");
+        }
+
+        if ("".equals(invoiceDetailDto.getInvoiceId())) {
+            errors.rejectValue("invoiceId", null, "Vui lòng chọn hóa đơn");
+        }
+
+        if ("".equals(invoiceDetailDto.getSizeDetailId())) {
+            errors.rejectValue("sizeDetailId", null, "Vui lòng chọn size");
+        }
     }
 }

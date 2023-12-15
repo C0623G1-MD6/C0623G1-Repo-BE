@@ -1,7 +1,7 @@
 package com.example.fashion.controller.warehouse;
 
 import com.example.fashion.dto.warehouse.WarehouseDetailDTO;
-import com.example.fashion.service.warehouse.IWarehouseService;
+import com.example.fashion.service.warehouse.IWarehouseDetailService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +15,10 @@ import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/warehouse/")
-public class WarehouseController {
+@RequestMapping("/api/warehouse-details/")
+public class WarehouseDetailController {
     @Autowired
-    private IWarehouseService warehouseService;
+    private IWarehouseDetailService warehouseDetailService;
 
     @PostMapping
     public ResponseEntity<Object> saveWarehouse(@Valid @RequestBody WarehouseDetailDTO warehouseDetailDTO,
@@ -31,7 +31,7 @@ public class WarehouseController {
             }
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
-        warehouseService.saveWarehouse(warehouseDetailDTO.getReceiptCode());
+        warehouseDetailService.saveWarehouseDetail(warehouseDetailDTO.getProduct(),warehouseDetailDTO.getInputQuantity(),warehouseDetailDTO.getWarehouse());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

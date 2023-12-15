@@ -1,4 +1,4 @@
-package com.example.fashion.controller;
+package com.example.fashion.controller.auth;
 
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.model.product.Product;

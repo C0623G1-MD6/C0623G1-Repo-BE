@@ -1,5 +1,7 @@
 package com.example.fashion.repository.product;
 
+import com.example.fashion.dto.customerDto.ICustomerDto;
+import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.ProductDTO;
@@ -180,4 +182,39 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "select id as productId from products where product_code = :productCode")
     IProductDTO findByProductCode(String productCode);
+
+
+
+
+    /**
+     * The method help to get list product from database.
+     * @author NhatNk
+     * @since 2023-12-14
+     * @param keyword is String entered from input box on the screen
+     * @return List IProductInvoiceDto If the query is correct
+     * @return Exception or null If the query is incorrect
+     * @see List<IProductInvoiceDto>
+     */
+    @Query(value = "select p.product_code, p.name, p.price, pr.percent\n" +
+            "from products p \n" +
+            "join promotions pr on p.promotion_id = pr.id\n" +
+            "join size_details sd on p.id = sd.product_id\n" +
+            "where p.product_code like :keyword or p.name like  :keyword\n" +
+            "group by p.product_code, p.name, p.price, pr.percent\n" +
+            "having sum(sd.quantity) > 0",nativeQuery = true)
+    List<IProductInvoiceDto> getListProduct(@Param("keyword") String keyword);
+
+    /**
+     * The method help to get info product from database with productCode.
+     * @author NhatNk
+     * @since 2023-12-14
+     * @param productCode is parameter select from List Product
+     * @return IProductInvoiceDto If the query is correct
+     * @return Exception or null If the query is incorrect
+     * @see IProductInvoiceDto
+     */
+    @Query(value = "select p.product_code, p.name, p.price, pr.percent from products p \n" +
+            "join promotions pr on p.promotion_id = pr.id\n" +
+            "where p.product_code = :productCode",nativeQuery = true)
+    IProductInvoiceDto getProductByProductCode(@Param("productCode") String productCode);
 }
