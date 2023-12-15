@@ -1,6 +1,6 @@
-package com.example.fashion.repository;
+package com.example.fashion.repository.auth;
 
-import com.example.fashion.model.Account;
+import com.example.fashion.model.auth.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -1,13 +1,12 @@
-package com.example.fashion.controller;
+package com.example.fashion.controller.auth;
 
-import com.example.fashion.dto.ChangePassword;
-import com.example.fashion.dto.Login;
-import com.example.fashion.dto.JwtResponse;
-import com.example.fashion.model.Account;
-import com.example.fashion.model.MyUserDetail;
-import com.example.fashion.model.Role;
+import com.example.fashion.dto.auth.ChangePassword;
+import com.example.fashion.dto.auth.Login;
+import com.example.fashion.dto.auth.JwtResponse;
+import com.example.fashion.model.auth.Account;
+import com.example.fashion.model.auth.MyUserDetail;
 import com.example.fashion.security.jwt.JwtUtils;
-import com.example.fashion.service.IAccountService;
+import com.example.fashion.service.auth.IAccountService;
 import com.example.fashion.service.impl.MyUserDetailService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
@@ -25,7 +24,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,23 +49,24 @@ public class AuthController {
 
     /**
      * Handles user login requests.
+     *
+     * @param login         The login request object.
+     * @param bindingResult The result of the validation.
+     * @return ResponseEntity containing the JWT response or map error messages.
      * @author: ThanhPV
      * @date: 12/12/2023
-     * @param login          The login request object.
-     * @param bindingResult  The result of the validation.
-     * @return ResponseEntity containing the JWT response or map error messages.
      */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody Login login,BindingResult bindingResult) {
+    public ResponseEntity<?> login(@Valid @RequestBody Login login, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
-        try {
-            login.validate(login,bindingResult);
-            if (bindingResult.hasErrors()) {
-                for (FieldError error : bindingResult.getFieldErrors()) {
-                    errors.put(error.getField(), error.getDefaultMessage());
-                }
-                return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+        login.validate(login, bindingResult);
+        if (bindingResult.hasErrors()) {
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
             }
+            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+        }
+        try {
             myUserDetailService.loadUserByUsername(login.getUsername());
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -75,7 +74,7 @@ public class AuthController {
 
             // Tạo đối tượng để trả về
             JwtResponse jwtResponse = new JwtResponse();
-            BeanUtils.copyProperties(myUserDetail.getAccount(),jwtResponse);
+            BeanUtils.copyProperties(myUserDetail.getAccount(), jwtResponse);
             // Create Token cho đối tượng trả về;
             String jwt = jwtProvider.createToken((MyUserDetail) authentication.getPrincipal());
             jwtResponse.setAccessToken(jwt);
@@ -87,41 +86,51 @@ public class AuthController {
             jwtResponse.setRoles(roles);
             return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
-            errors.put("username",e.getMessage());
+            errors.put("username", e.getMessage());
             return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
         } catch (BadCredentialsException e) {
-            errors.put("password","Mật khẩu không chính xác");
+            errors.put("password", "Mật khẩu không chính xác");
             return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
         }
     }
 
     /**
      * Handles user password change requests.
-     * @author: ThanhPV
-     * @date: 12/12/2023
+     *
      * @param changePassword The change password request object.
      * @param bindingResult  The result of the validation.
      * @return ResponseEntity containing success message or error messages.
+     * @author: ThanhPV
+     * @date: 12/12/2023
      */
-    @PostMapping("/changePassword")
-    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword,BindingResult bindingResult ) {
+    @PatchMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
-        try {
-            changePassword.validate(changePassword,bindingResult);
-            if (bindingResult.hasErrors()) {
-                for (FieldError error : bindingResult.getFieldErrors()) {
-                    errors.put(error.getField(), error.getDefaultMessage());
-                }
-                return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+        if (changePassword.getPasswordNew() == null || changePassword.getPasswordNew().equals("")) {
+            errors.put("passwordNew", "Mật khẩu mới không được trống hoặc null");
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+        changePassword.validate(changePassword, bindingResult);
+        if (bindingResult.hasErrors()) {
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
             }
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+        try {
+
+            myUserDetailService.loadUserByUsername(changePassword.getUsername());
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(changePassword.getUsername(), changePassword.getPassword()));
             Account account = accountService.findByUsername(authentication.getName()).get();
             account.setPassword(passwordEncoder.encode(changePassword.getPasswordNew()));
             accountService.updatePassword(account);
             return new ResponseEntity<>("Đổi mật khẩu thành công !", HttpStatus.OK);
+        } catch (UsernameNotFoundException e) {
+            errors.put("username", "Username không tồn tại");
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         } catch (BadCredentialsException e) {
-            errors.put("password","Mật khẩu không chính xác");
-            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+            errors.put("password", "Mật khẩu không chính xác");
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }
 }

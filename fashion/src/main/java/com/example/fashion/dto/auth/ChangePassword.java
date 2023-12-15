@@ -1,6 +1,5 @@
-package com.example.fashion.dto;
+package com.example.fashion.dto.auth;
 
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
