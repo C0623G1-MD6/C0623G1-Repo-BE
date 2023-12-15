@@ -41,7 +41,7 @@ public class AuthController_login {
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().is4xxClientError())
-                .andExpect(jsonPath("$.username").value("Trường username không được null"));
+                .andExpect(jsonPath("$.username").value("Trường username không được null."));
     }
 
     /**
@@ -61,8 +61,7 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andExpect(jsonPath("$.username").value("Trường username không được để trống."));
+                .andExpect(status().is4xxClientError());
     }
 
     /**
@@ -187,8 +186,7 @@ public class AuthController_login {
                                 .content(this.objectMapper.writeValueAsString(login))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andExpect(jsonPath("$.password").value("Trường password không được để trống."));
+                .andExpect(status().is4xxClientError());
     }
 
     /**

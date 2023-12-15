@@ -18,6 +18,7 @@ public class Invoice {
     @Column(name = "invoice_code",nullable = false, unique = true, columnDefinition = "varchar(50)")
     private String invoiceCode;
 
+
     @Column(name = "invoice_printing_date", nullable = false, columnDefinition = "datetime")
     private LocalDateTime invoicePrintingDate;
 
