@@ -20,4 +20,6 @@ public interface ICustomerService {
     void createCustomerRepo(Customer customer);
     Customer findCustomerByPhone(String phone);
     Customer findCustomerByEmail(String email);
+
+    Customer findCustomerByCode(String code);
 }
