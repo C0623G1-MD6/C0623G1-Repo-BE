@@ -143,8 +143,11 @@ public class AuthController {
      * @date: 12/12/2023
      */
     @PostMapping("/recoverPassword")
-    public ResponseEntity<?> recoverPassword(@RequestParam(name = "emailRecover") String emailRecover ) {
-        System.out.println(emailRecover);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> recoverPassword(@RequestBody String emailRecover ) {
+        Account account = accountService.getAccountByEmail(emailRecover);
+        if (account == null) {
+            return new ResponseEntity<>("Email không chính xác !",HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>("Oke",HttpStatus.OK);
     }
 }
