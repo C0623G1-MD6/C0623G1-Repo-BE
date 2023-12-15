@@ -1,5 +1,6 @@
 package com.example.fashion.repository.customerRepository;
 
+import com.example.fashion.dto.customerDto.ICustomerDto;
 import com.example.fashion.model.customer.Customer;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -66,4 +67,59 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
     @Query(value = "select * from customers where email = :email ", nativeQuery = true)
     Customer findCustomerByEmail(@Param("email") String email);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * The method help to get page customer from database.
+     * @author NhatNk
+     * @since 2023-12-13
+     * @param pageable
+     * @param keyword is String entered from input box on the screen
+     * @return Page ICustomerDto If the query is correct
+     * @return Exception or null If the query is incorrect
+     * @see Page<ICustomerDto>
+     */
+    @Query(value = "select customers.id, customers.customer_code, customers.name, customers.phone, customers.point, customers.is_deleted, customer_type.discount_percent \n" +
+            "from customers join customer_type on customers.customer_type_id = customer_type.id \n"+
+            "where customers.is_deleted = '0' \n"+
+            "and (customers.customer_code like :keyword \n" +
+            "or customers.name like :keyword \n" +
+            "or customers.phone like :keyword)"
+            , nativeQuery = true)
+    Page<ICustomerDto> getAllCustomer(Pageable pageable, @Param("keyword") String keyword);
+
 }

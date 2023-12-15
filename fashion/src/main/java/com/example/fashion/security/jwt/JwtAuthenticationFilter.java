@@ -1,8 +1,6 @@
 package com.example.fashion.security.jwt;
 
-import com.example.fashion.model.MyUserDetail;
 import com.example.fashion.service.impl.MyUserDetailService;
-import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +15,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
+/**
+ * This class implements a JWT authentication filter for Spring Security.
+ * @author: ThanhPV
+ * @date: 12/10/2023
+ */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
@@ -25,6 +28,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private MyUserDetailService userDetailsService;
 
+    /**
+     * This method filters the incoming requests and performs JWT authentication.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param request     The HTTP servlet request.
+     * @param response    The HTTP servlet response.
+     * @param filterChain The filter chain for the request.
+     * @throws ServletException If the servlet encounters a servlet-specific problem.
+     * @throws IOException      If an I/O exception occurs.
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
@@ -47,6 +60,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    /**
+     * This method retrieves the JWT token from the request header.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param request The HTTP servlet request.
+     * @return The JWT token if it exists in the request header, null otherwise.
+     */
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         // Kiểm tra xem header Authorization có chứa thông tin jwt không
