@@ -111,26 +111,67 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
             "on id.invoice_id=p.id\n" +
             "where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
     Double getTotalRevenueYear();
-
     /**
      * method getTopFiveSeller
      * Create TruongNQ
      * Date 12-12-2023
-     * return list getTopFiveSeller
+     * return list getTopFiveSellerWeek
      */
     @Query(value =
             "select e.id,e.name, sum(id.selling_quantity * p.price) as revenue, sum(id.selling_quantity) as quantity\n" +
-                    "from invoices as i \n" +
+                    "from invoices as i\n" +
                     "join invoice_details as id\n" +
                     "on i.id=id.invoice_id\n" +
                     "join products as p\n" +
                     "on id.invoice_id=p.id\n" +
                     "join employees as e\n" +
                     "on i.employee_id = e.id\n" +
+                    "where week(i.invoice_printing_date)=week(curdate())\n" +
                     "group by e.id\n" +
                     "order by sum(id.selling_quantity * p.price) desc\n" +
                     "limit 5;", nativeQuery = true)
-    List<ITopFiveSeller> getTopFiveSeller();
+    List<ITopFiveSeller> getTopFiveSellerWeek();
+    /**
+     * method getTopFiveSeller
+     * Create TruongNQ
+     * Date 12-12-2023
+     * return list getTopFiveSellerMonth
+     */
+    @Query(value =
+            "select e.id,e.name, sum(id.selling_quantity * p.price) as revenue, sum(id.selling_quantity) as quantity\n" +
+                    "from invoices as i\n" +
+                    "join invoice_details as id\n" +
+                    "on i.id=id.invoice_id\n" +
+                    "join products as p\n" +
+                    "on id.invoice_id=p.id\n" +
+                    "join employees as e\n" +
+                    "on i.employee_id = e.id\n" +
+                    "where month(i.invoice_printing_date)=month(curdate())\n" +
+                    "group by e.id\n" +
+                    "order by sum(id.selling_quantity * p.price) desc\n" +
+                    "limit 5;", nativeQuery = true)
+    List<ITopFiveSeller> getTopFiveSellerMonth();
+
+    /**
+     * method getTopFiveSeller
+     * Create TruongNQ
+     * Date 12-12-2023
+     * return list getTopFiveSellerYear
+     */
+    @Query(value =
+            "select e.id,e.name, sum(id.selling_quantity * p.price) as revenue, sum(id.selling_quantity) as quantity\n" +
+                    "from invoices as i\n" +
+                    "join invoice_details as id\n" +
+                    "on i.id=id.invoice_id\n" +
+                    "join products as p\n" +
+                    "on id.invoice_id=p.id\n" +
+                    "join employees as e\n" +
+                    "on i.employee_id = e.id\n" +
+                    "where year(i.invoice_printing_date)=year(curdate())\n" +
+                    "group by e.id\n" +
+                    "order by sum(id.selling_quantity * p.price) desc\n" +
+                    "limit 5;", nativeQuery = true)
+    List<ITopFiveSeller> getTopFiveSellerYear();
 
     /**
      * method getTopFiveNewOrder

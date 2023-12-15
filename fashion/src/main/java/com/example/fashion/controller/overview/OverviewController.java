@@ -58,6 +58,9 @@ public class OverviewController {
     @GetMapping("/revenue/{time}")
     public ResponseEntity<Double> getTotalRevenue(@PathVariable String time) {
         Double totalRevenue = service.getTotalRevenue(time);
+        if (totalRevenue==null){
+            totalRevenue=0.0d;
+        }
         return new ResponseEntity<>(totalRevenue, HttpStatus.OK);
     }
 
@@ -67,9 +70,9 @@ public class OverviewController {
      * Date 12-12-2023
      * return list iTopFiveSeller
      */
-    @GetMapping("/top_seller")
-    public ResponseEntity<List<ITopFiveSeller>> getTopFiveSeller() {
-        List<ITopFiveSeller> list = service.getTopFiveSeller();
+    @GetMapping("/top_seller/{time}")
+    public ResponseEntity<List<ITopFiveSeller>> getTopFiveSeller(@PathVariable ("time") String time) {
+        List<ITopFiveSeller> list = service.getTopFiveSeller(time);
         if (list.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
