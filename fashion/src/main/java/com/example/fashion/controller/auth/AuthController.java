@@ -133,4 +133,18 @@ public class AuthController {
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * Recover password by email.
+     *
+     * @param emailRecover The email link account.
+     * @return ResponseEntity containing success message or error messages.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     */
+    @PostMapping("/recoverPassword")
+    public ResponseEntity<?> recoverPassword(@RequestParam(name = "emailRecover") String emailRecover ) {
+        System.out.println(emailRecover);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
