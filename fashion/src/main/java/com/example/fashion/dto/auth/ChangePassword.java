@@ -1,37 +1,28 @@
 package com.example.fashion.dto.auth;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class ChangePassword implements Validator {
 
     @NotBlank(message = "Trường username không được để trống.")
-    @Size(min = 8,message = "Username phải trên 8 kí tự")
-    @Size(max = 30,message = "Username không được nhiều hơn 30 ký tự")
-    @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
     private String username;
 
     @NotBlank(message = "Trường password không được để trống.")
-    @Size(min = 8,message = "Password phải trên 8 kí tự")
-    @Size(max = 30,message = "Password không được nhiều hơn 100 ký tự")
-    @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
     private String password;
 
     @Size(min = 8,message = "Mật khẩu mới phải trên 8 kí tự")
-    @Size(max = 100,message = "Mật khẩu mới không được nhiều hơn 100 ký tự")
-    @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
+    @Size(max = 100,message = "Không được nhiều hơn 100 ký tự")
+    @NotBlank(message = "Trường mật khẩu mới không được để trống.")
     private String passwordNew;
 
-    @Size(min = 8,message = "Trường nhập lại mật khẩu mới phải trên 8 kí tự")
-    @Size(max = 100,message = "Trường nhập lại mật khẩu không nhiều hơn 100 ký tự")
-    @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
+    @NotBlank(message = "Trường nhập lại mật khẩu mới không được để trống.")
     private String passwordNewAgain;
 
     @Override

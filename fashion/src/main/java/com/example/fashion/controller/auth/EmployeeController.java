@@ -1,4 +1,4 @@
-package com.example.fashion.controller.employee;
+package com.example.fashion.controller.auth;
 
 import com.example.fashion.model.auth.Employee;
 import com.example.fashion.model.auth.MyUserDetail;
@@ -20,11 +20,10 @@ public class EmployeeController {
 
     /**
      * Retrieves employee information by account ID.
-     *
-     * @param id The ID of the account.
-     * @return ResponseEntity containing the employee information or error message.
      * @author: ThanhPV
      * @date: 12/12/2023
+     * @param id The ID of the account.
+     * @return ResponseEntity containing the employee information or error message.
      */
     @GetMapping("/{id}")
     public ResponseEntity<?> getInfoEmployeeByIdAccount(@PathVariable Long id) {
@@ -32,7 +31,7 @@ public class EmployeeController {
         MyUserDetail userDetail = (MyUserDetail) authentication.getPrincipal();
         if (userDetail.getAccount().getId() == id) {
             Employee employee = employeeService.getEmployeeByAccountId(id);
-            return new ResponseEntity<>(employee, HttpStatus.OK);
+            return new ResponseEntity<>(employee,HttpStatus.OK);
         }
         return new ResponseEntity<>("Bạn không có quyền truy cập vào tài nguyên này", HttpStatus.UNAUTHORIZED);
     }
