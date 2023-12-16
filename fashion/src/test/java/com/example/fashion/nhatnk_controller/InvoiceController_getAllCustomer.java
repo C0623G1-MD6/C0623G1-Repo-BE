@@ -21,7 +21,7 @@ public class InvoiceController_getAllCustomer {
     /**
      * The method helps check in case the parameter is null
      *
-     * @param page    = null
+     * @param page = null
      * @param keyword = null
      * @return page iCustomerDto and 200 Ok
      * @throws Exception

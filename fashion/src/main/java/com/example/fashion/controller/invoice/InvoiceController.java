@@ -94,8 +94,8 @@ public class InvoiceController {
                                                              @RequestParam(value = "keyword", defaultValue = "", required = false) String keyword) {
         Pageable pageable = PageRequest.of(page, 5);
         Page<ICustomerDto> iCustomerDtoPage = customerService.getAllCustomer(pageable, keyword);
-        if (iCustomerDtoPage == null||iCustomerDtoPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (iCustomerDtoPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(iCustomerDtoPage, HttpStatus.OK);
     }
@@ -113,7 +113,7 @@ public class InvoiceController {
     @GetMapping("/products")
     public ResponseEntity<List<IProductInvoiceDto>> getListProduct(@RequestParam(value = "keyword", defaultValue = "", required = false) String keyword) {
         List<IProductInvoiceDto> iProductInvoiceDtoList = productService.getListProduct(keyword);
-        if (iProductInvoiceDtoList == null||iProductInvoiceDtoList.isEmpty()) {
+        if (iProductInvoiceDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(iProductInvoiceDtoList, HttpStatus.OK);
