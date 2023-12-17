@@ -3,6 +3,12 @@ package com.example.fashion.service.product;
 import com.example.fashion.dto.product.ISizeDetailDto;
 
 public interface ISizeDetailService {
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * @param productId
+     * @param sizeId
+     */
     void save(Integer productId, Integer sizeId);
     ISizeDetailDto getQuantityByProductCodeAndSizeName(String productCode, String sizeName);
 

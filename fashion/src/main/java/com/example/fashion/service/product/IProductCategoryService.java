@@ -5,6 +5,7 @@ import com.example.fashion.model.product.ProductCategory;
 import java.util.List;
 
 public interface IProductCategoryService {
+
     /**
      * @author LyDTH
      * @date 16/12/2023
@@ -12,4 +13,7 @@ public interface IProductCategoryService {
      * @return list of category
      */
     List<ProductCategory> getAllProductsCategory();
+
+    List<ProductCategory> getAllCategories();
+
 }
