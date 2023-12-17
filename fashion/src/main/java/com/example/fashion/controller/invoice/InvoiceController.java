@@ -4,10 +4,14 @@ import com.example.fashion.dto.customerDto.ICustomerDto;
 import com.example.fashion.dto.invoice.InvoiceDetailDto;
 import com.example.fashion.dto.invoice.InvoiceDto;
 import com.example.fashion.dto.product.IProductInvoiceDto;
+import com.example.fashion.dto.product.ISizeDetailDto;
+import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.service.customerService.ICustomerService;
 import com.example.fashion.service.invoice.IInvoiceDetailService;
 import com.example.fashion.service.invoice.IInvoiceService;
 import com.example.fashion.service.product.IProductService;
+import com.example.fashion.service.product.ISizeDetailService;
+import com.example.fashion.service.product.ISizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +21,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -35,8 +41,14 @@ public class InvoiceController {
     @Autowired
     private IProductService productService;
 
+    @Autowired
+    private ISizeService sizeService;
+
+    @Autowired
+    private ISizeDetailService sizeDetailService;
+
     /**
-     * The method help to save invoices.
+     * The method help to save invoices, save invoiceDetail, update point customer, update quantity product.
      * @author NhatNk
      * @since 2023-12-12
      * @param invoiceDto is an InvoiceDto object containing invoice information received from FE via an API call
@@ -44,40 +56,36 @@ public class InvoiceController {
      * @return 400 Bad Request If save invoice failed
      */
     @PostMapping("/save-invoice")
-    public ResponseEntity<Void> saveInvoice(@RequestBody InvoiceDto invoiceDto, BindingResult bindingResult) {
-        new InvoiceDto().validate(invoiceDto,bindingResult);
-        if(bindingResult.hasErrors()){
+    public ResponseEntity<Void> saveInvoice(@RequestBody InvoiceDto invoiceDto) {
+//        new InvoiceDto().validate(invoiceDto,bindingResult);
+//        if(bindingResult.hasErrors()){
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+
+        invoiceDto.setInvoiceCode(invoiceService.createInvoiceCode());
+        invoiceDto.setInvoicePrintingDate(LocalDateTime.now());
+        Boolean statusInvoice = invoiceService.saveInvoice(invoiceDto);
+        if (!statusInvoice) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        Boolean status = invoiceService.saveInvoice(invoiceDto);
-        if (!status) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            Integer invoiceId = invoiceService.getInvoiceIdByInvoiceCode(invoiceDto.getInvoiceCode());
+            Double total = 0.0;
+            for (InvoiceDetailDto invoiceDetailDto : invoiceDto.getInvoiceDetailDtoSet()) {
+                invoiceDetailDto.setInvoiceId(invoiceId);
+                Boolean statusInvoiceDetail = invoiceDetailService.saveInvoiceDetail(invoiceDetailDto);
+                {
+                    if (!statusInvoiceDetail){
+                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                    } else {
+                        sizeDetailService.updateQuantity(invoiceDetailDto.getSellingQuantity(),invoiceDetailDto.getSizeDetailId());
+                        total += invoiceDetailDto.getSellingPrice()*invoiceDetailDto.getSellingQuantity();
+                    }
+                }
+            }
+            customerService.updatePoint(Long.valueOf(Math.round(total/1000)).intValue(),invoiceDto.getCustomerId());
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-    /**
-     * The method help to save invoice detail.
-     * @author NhatNk
-     * @since 2023-12-13
-     * @param invoiceDetailDto is an InvoiceDetailDto object containing invoiceDetail information received from FE via an API call
-     * @return 200 Ok If save invoiceDetail successfully
-     * @return 400 Bad Request If save invoiceDetail failed
-     */
-    @PostMapping("/save-invoice-detail")
-    public ResponseEntity<Void> saveInvoiceDetail(@RequestBody InvoiceDetailDto invoiceDetailDto, BindingResult bindingResult){
-        new InvoiceDetailDto().validate(invoiceDetailDto,bindingResult);
-        if (bindingResult.hasErrors()){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        Boolean status = invoiceDetailService.saveInvoiceDetail(invoiceDetailDto);
-        if (!status){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
 
     /**
      * The method help to get page customer.
@@ -123,7 +131,7 @@ public class InvoiceController {
      * The method help to get info product.
      * @author NhatNk
      * @since 2023-12-14
-     * @param productCode s parameter select from List Product
+     * @param productCode is parameter select from product list
      * @return 400 Bad Request If iProductInvoiceDto equal null
      * @return page IProductInvoiceDto and 200 Ok If iProductInvoiceDto is not null
      * @see List<IProductInvoiceDto>
@@ -132,10 +140,46 @@ public class InvoiceController {
     public ResponseEntity<IProductInvoiceDto> getProductByProductCode(@PathVariable String productCode){
         IProductInvoiceDto iProductInvoiceDto = productService.getProductByProductCode(productCode);
         if (iProductInvoiceDto==null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(iProductInvoiceDto, HttpStatus.OK);
     }
 
+    /**
+     * The method help to get size list of product.
+     * @author NhatNk
+     * @since 2023-12-15
+     * @param productCode is parameter select from product list
+     * @return 204 No Content If iSizeDtoList is empty
+     * @return iSizeDtoList and 200 Ok If iSizeDtoList is not empty
+     * @see List<ISizeDto>
+     */
+    @GetMapping("/sizes/{productCode}")
+    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable String productCode){
+        List<ISizeDto> iSizeDtoList = sizeService.getListSizeByProductCode(productCode);
+        if (iSizeDtoList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(iSizeDtoList,HttpStatus.OK);
+    }
 
+    /**
+     * The method help to get sizeDetail.
+     * @author NhatNk
+     * @since 2023-12-15
+     * @param productCode is parameter select from product list or scan QR code
+     * @param sizeName is parameter select from size list of product
+     * @return 204 No Content If iSizeDtoList is null
+     * @return iSizeDetailDto and 200 Ok If iSizeDetailDto is not null
+     * @see ISizeDetailDto
+     */
+    @GetMapping("/size-details/{productCode}/{sizeName}")
+    public ResponseEntity<ISizeDetailDto> getQuantityByProductCodeAndSizeName(@PathVariable String productCode,
+                                                                              @PathVariable String sizeName){
+        ISizeDetailDto iSizeDetailDto = sizeDetailService.getQuantityByProductCodeAndSizeName(productCode,sizeName);
+        if(iSizeDetailDto==null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(iSizeDetailDto,HttpStatus.OK);
+    }
 }

@@ -1,10 +1,5 @@
 package com.example.fashion.dto.invoice;
 
-import com.example.fashion.dto.customerDto.CustomerDto;
-import com.example.fashion.dto.employee.EmployeeDto;
-import com.example.fashion.model.auth.Employee;
-import com.example.fashion.model.customer.Customer;
-import com.example.fashion.model.invoice.InvoiceDetail;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -21,15 +16,17 @@ public class InvoiceDto implements Validator{
     private Integer customerId;
     private Integer employeeId;
 
+    private Set<InvoiceDetailDto> invoiceDetailDtoSet;
+
     public InvoiceDto() {
     }
 
-    public InvoiceDto(Integer id, String invoiceCode, LocalDateTime invoicePrintingDate, Integer customerId, Integer employeeId) {
-        this.id = id;
+    public InvoiceDto(String invoiceCode, LocalDateTime invoicePrintingDate, Integer customerId, Integer employeeId, Set<InvoiceDetailDto> invoiceDetailDtoSet) {
         this.invoiceCode = invoiceCode;
         this.invoicePrintingDate = invoicePrintingDate;
         this.customerId = customerId;
         this.employeeId = employeeId;
+        this.invoiceDetailDtoSet = invoiceDetailDtoSet;
     }
 
     public Integer getId() {
@@ -70,6 +67,14 @@ public class InvoiceDto implements Validator{
 
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public Set<InvoiceDetailDto> getInvoiceDetailDtoSet() {
+        return invoiceDetailDtoSet;
+    }
+
+    public void setInvoiceDetailDtoSet(Set<InvoiceDetailDto> invoiceDetailDtoSet) {
+        this.invoiceDetailDtoSet = invoiceDetailDtoSet;
     }
 
     @Override
