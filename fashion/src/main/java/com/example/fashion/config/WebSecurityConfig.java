@@ -92,6 +92,7 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
+                                .requestMatchers("/api/login","/api/news/**","/api/category").permitAll()
                                 .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
                                 .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
