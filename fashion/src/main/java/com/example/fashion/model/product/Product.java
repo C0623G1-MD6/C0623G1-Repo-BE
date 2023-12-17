@@ -1,5 +1,8 @@
 package com.example.fashion.model.product;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -21,6 +24,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private ProductCategory category;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "product")
     private List<SizeDetail> sizeDetails;
 

@@ -4,10 +4,11 @@ package com.example.fashion.repository.product;
 import com.example.fashion.model.product.Size;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public interface ISizeRepository extends JpaRepository<Size, Integer> {
     @Query(nativeQuery = true, value = "select * from sizes")
     List<Size> findAll();

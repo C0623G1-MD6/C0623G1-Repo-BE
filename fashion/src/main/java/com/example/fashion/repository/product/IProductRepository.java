@@ -197,6 +197,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param sizeName
      * @return Page<IProductDTO>
      */
+
     @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName,p.product_image as productImage, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
             "from products p \n" +
             "join product_categories pc on p.category_id = pc.id\n" +
@@ -227,9 +228,6 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "select id as productId from products where product_code = :productCode")
     IProductDTO findByProductCode(String productCode);
-
-
-
 
     /**
      * The method help to get list product from database.

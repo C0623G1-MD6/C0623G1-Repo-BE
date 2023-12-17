@@ -1,5 +1,6 @@
 package com.example.fashion.dto.product;
 
+import com.example.fashion.service.product.IProductService;
 import jakarta.validation.constraints.*;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -39,6 +40,8 @@ public class ProductDTO implements Validator {
 
     @NotNull(message = "Vui lòng chọn mã giảm giá")
     private Integer promotionId;
+
+    private IProductService productService;
 
     public ProductDTO() {
     }
@@ -124,6 +127,11 @@ public class ProductDTO implements Validator {
         return sizeId;
     }
 
+
+    public void setProductService(IProductService productService) {
+        this.productService = productService;
+    }
+
     public void setSizeId(List<Integer> sizeId) {
         this.sizeId = sizeId;
     }
@@ -138,11 +146,15 @@ public class ProductDTO implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return ProductDTO.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        ProductDTO productDTO = (ProductDTO) target;
+        IProductDTO iProductDTO = productService.findByProductCode(productDTO.getProductCode());
+        if (iProductDTO != null) {
+            errors.rejectValue("productCode", "existed", "Mã sản phẩm đã tồn tại!");
+        }
     }
 }
