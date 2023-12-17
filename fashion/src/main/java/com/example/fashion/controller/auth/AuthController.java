@@ -8,6 +8,8 @@ import com.example.fashion.model.auth.MyUserDetail;
 import com.example.fashion.security.jwt.JwtUtils;
 import com.example.fashion.service.auth.IAccountService;
 import com.example.fashion.service.impl.MyUserDetailService;
+import com.example.fashion.utils.PasswordGenerator;
+import com.example.fashion.utils.JavaMailUtils;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,9 @@ public class AuthController {
 
     @Autowired
     private IAccountService accountService;
+
+    @Autowired
+    private JavaMailUtils javaMailUtils;
 
     /**
      * Handles user login requests.
@@ -131,6 +136,32 @@ public class AuthController {
         } catch (BadCredentialsException e) {
             errors.put("password", "Mật khẩu không chính xác");
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Recover password by email.
+     *
+     * @param emailRecover The email link account.
+     * @return ResponseEntity containing success message or error messages.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     */
+    @PostMapping("/recoverPassword")
+    public ResponseEntity<?> recoverPassword(@RequestParam String emailRecover ) {
+        Account account = accountService.getAccountByEmail(emailRecover);
+        if (account == null) {
+            return new ResponseEntity<>("Email này không liên kết với tài khoản nào !",HttpStatus.BAD_REQUEST);
+        } else {
+            try {
+                String passwordNew = PasswordGenerator.generateRandomPassword(10);
+                account.setPassword(passwordEncoder.encode(passwordNew));
+                accountService.updatePassword(account);
+                javaMailUtils.sendPasswordNew(emailRecover,account.getUsername(), passwordNew);
+                return new ResponseEntity<>("Đặt lại mật khẩu thành công !, vui lòng kiểm tra lại email",HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>("Đã có lỗi xảy ra, vui lòng thử lại sau",HttpStatus.NOT_FOUND);
+            }
         }
     }
 }
