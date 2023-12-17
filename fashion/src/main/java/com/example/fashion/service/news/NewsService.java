@@ -10,21 +10,56 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class NewsService implements INewsService{
+public class NewsService implements INewsService {
     @Autowired
     private INewsRepository newsRepository;
+
     @Override
-    public List<INewsDto> findAllNews(Integer newsCategoryId) {
-        return newsRepository.findAllNews(newsCategoryId);
+    public List<INewsDto> findAllNews(Integer newsCategoryId, Integer roleId) {
+        if (roleId == 1) {
+            return newsRepository.sortByManCategory(newsCategoryId);
+        } else if (roleId == 2) {
+            return newsRepository.sortByWomanCategory(newsCategoryId);
+        } else if (roleId == 3) {
+            return newsRepository.sortByTipsCategory(newsCategoryId);
+        } else if (roleId == 4) {
+            return newsRepository.sortByPromotionCategory(newsCategoryId);
+        } else {
+            return newsRepository.findAllNews(newsCategoryId);
+        }
+    }
+
+    @Override
+    public List<INewsDto> findAllByPromotionCategory() {
+        return newsRepository.findAllByPromotionCategory();
+    }
+
+    @Override
+    public List<INewsDto> findAllByDateCreate() {
+        return newsRepository.findAllByDateCreate();
+    }
+
+    @Override
+    public List<INewsDto> findAllAnotherNews() {
+        return newsRepository.findAllAnotherNews();
     }
 
     @Override
     public void saveNews(News news) {
-//        NewsCategory newsCategory = new NewsCategory(1);
-//        news.setNewsCategory(newsCategory);
         newsRepository.saveNews(news);
-//        newsRepository.save(news);
-//        newsRepository.save(news);
+
+    }
+
+
+    @Override
+    public INewsDto showNewsDetails(Integer id) {
+        return newsRepository.showNewsDetails(id);
+    }
+
+    @Override
+    public News findById(Integer id) {
+        return newsRepository.findById(id).get();
     }
 }

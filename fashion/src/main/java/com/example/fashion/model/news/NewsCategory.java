@@ -1,17 +1,8 @@
 package com.example.fashion.model.news;
-
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 @Entity
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Getter
-//@Setter
+
 @Table(name = "news_category")
 public class NewsCategory {
     @Id

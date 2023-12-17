@@ -10,10 +10,6 @@ import org.springframework.validation.Validator;
 
 import java.time.LocalDateTime;
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Getter
-//@Setter
 public class NewsDto implements Validator {
 
     private String name;
@@ -30,7 +26,7 @@ public class NewsDto implements Validator {
     public NewsDto() {
     }
 
-    public NewsDto( String name, String content, String image, LocalDateTime dateCreate, boolean deleted, Integer newsCategoryId) {
+    public NewsDto(String name, String content, String image, LocalDateTime dateCreate, boolean deleted, Integer newsCategoryId) {
         this.name = name;
         this.content = content;
         this.image = image;

@@ -16,7 +16,6 @@ import java.util.List;
 public class NewsCategoryController {
     @Autowired
     private INewsCategoryService newsCategoryService;
-
     @GetMapping("")
     public ResponseEntity<List<NewsCategory>> findAll() {
         List<NewsCategory>newsList = newsCategoryService.findAllNewsCategory();

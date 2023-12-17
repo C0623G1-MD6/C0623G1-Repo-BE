@@ -5,14 +5,14 @@ import java.time.LocalDateTime;
 public interface INewsDto {
     Integer getId();
 
-     String getName();
+    String getName();
 
     String getContent();
 
-     String getImage();
+    String getImage();
 
-     LocalDateTime getDateCreate();
+    LocalDateTime getDateCreate();
 
-     Integer getNewsCategoryId();
+    Integer getNewsCategoryId();
 
 }
