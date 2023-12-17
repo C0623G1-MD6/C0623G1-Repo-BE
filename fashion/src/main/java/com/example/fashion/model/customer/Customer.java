@@ -26,7 +26,7 @@ public class Customer {
     private String birthday;
     @Column(name = "phone", columnDefinition = "varchar(255)")
     private String phone;
-    @Column(name = "point", columnDefinition = "int")
+    @Column(name = "point", columnDefinition = "int default 0")
     private Integer point;
     @Column(name = "email", columnDefinition = "varchar(255)")
     private String email;

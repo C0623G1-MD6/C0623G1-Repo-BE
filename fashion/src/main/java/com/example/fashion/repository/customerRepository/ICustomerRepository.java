@@ -39,9 +39,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "insert into customers (customer_code, name, gender, birthday, point, address, email, phone) " +
+    @Query(value = "insert into customers (customer_code, name, gender, birthday, point, address, email, phone, customer_type_id) " +
             "value ( :#{#customer.customerCode}, :#{#customer.name}, :#{#customer.gender}, :#{#customer.birthday}, " +
-            ":#{#customer.point},  :#{#customer.address}, :#{#customer.email}, :#{#customer.phone}) "
+            ":#{#customer.point},  :#{#customer.address}, :#{#customer.email}, :#{#customer.phone}, :#{#customer.customerType.id} ) "
             , nativeQuery = true)
     void createCustomerRepo(@Param("customer") Customer customer);
 
