@@ -1,6 +1,6 @@
 package com.example.fashion.model.invoice;
 
-import com.example.fashion.model.product.Product;
+import com.example.fashion.model.product.SizeDetail;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,21 +13,25 @@ public class InvoiceDetail {
     @Column(name = "selling_quantity", nullable = false)
     private Integer sellingQuantity;
 
+    @Column(name = "selling_price", nullable = false)
+    private Double sellingPrice;
+
     @ManyToOne
     @JoinColumn(name = "invoice_id", referencedColumnName = "id")
     private Invoice invoice;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
+    @JoinColumn(name = "size_detail_id", referencedColumnName = "id")
+    private SizeDetail sizeDetail;
 
     public InvoiceDetail() {
     }
 
-    public InvoiceDetail(Integer sellingQuantity, Invoice invoice, Product product) {
+    public InvoiceDetail(Integer sellingQuantity, Double sellingPrice, Invoice invoice, SizeDetail sizeDetail) {
         this.sellingQuantity = sellingQuantity;
+        this.sellingPrice = sellingPrice;
         this.invoice = invoice;
-        this.product = product;
+        this.sizeDetail = sizeDetail;
     }
 
     public Integer getId() {
@@ -54,11 +58,19 @@ public class InvoiceDetail {
         this.invoice = invoice;
     }
 
-    public Product getProduct() {
-        return product;
+    public SizeDetail getSizeDetail() {
+        return sizeDetail;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setSizeDetail(SizeDetail sizeDetail) {
+        this.sizeDetail = sizeDetail;
+    }
+
+    public Double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 }

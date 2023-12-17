@@ -1,9 +1,7 @@
 package com.example.fashion.model.warehouse;
 
-
-
 import com.example.fashion.model.product.Product;
-
+import com.example.fashion.model.product.SizeDetail;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
@@ -22,17 +20,22 @@ public class WarehouseDetail {
     @Column(columnDefinition = "int",nullable = false,name = "input_quantity")
     private Integer inputQuantity;
     @ManyToOne
-
     @JsonBackReference
-    @JoinColumn(name = "product_id",referencedColumnName = "id")
-    private Product product;
-
+    @JoinColumn(name = "size_detail_id",referencedColumnName = "id")
+    private SizeDetail sizeDetail;
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "warehouse_receipt_id",referencedColumnName = "id")
     private Warehouse warehouse;
 
     public WarehouseDetail() {
+    }
+
+    public WarehouseDetail(Double inputPrice, Integer inputQuantity, SizeDetail sizeDetail, Warehouse warehouse) {
+        this.inputPrice = inputPrice;
+        this.inputQuantity = inputQuantity;
+        this.sizeDetail = sizeDetail;
+        this.warehouse = warehouse;
     }
 
     public Integer getId() {
@@ -59,15 +62,12 @@ public class WarehouseDetail {
         this.inputQuantity = inputQuantity;
     }
 
-
-
-    public Product getProduct() {
-        return product;
+    public SizeDetail getSizeDetail() {
+        return sizeDetail;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-
+    public void setSizeDetail(SizeDetail sizeDetail) {
+        this.sizeDetail = sizeDetail;
     }
 
     public Warehouse getWarehouse() {

@@ -1,7 +1,7 @@
 package com.example.fashion.security.jwt;
 
 
-import com.example.fashion.model.MyUserDetail;
+import com.example.fashion.model.auth.MyUserDetail;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

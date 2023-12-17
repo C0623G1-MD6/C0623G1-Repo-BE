@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer> {
+
     /**
      * created at 12/12/2023
      * LoanTTV
@@ -21,8 +22,4 @@ public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer
     @Modifying
     @Query (nativeQuery = true, value = "insert into size_details (product_id, size_id) values (:productId, :sizeId)")
     void save(Integer productId, Integer sizeId);
-
-
-
-
 }

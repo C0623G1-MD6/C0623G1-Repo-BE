@@ -92,14 +92,19 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
-                                .requestMatchers("/api/login","/api/customer/**", "/api/product/size").permitAll()
+                                .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
+                                .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/home/**").permitAll()
+                                .requestMatchers("/api/product/size").permitAll()
 //                        Trang cần có quyền hợp lệ
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
                                 .requestMatchers("/api/notification/list/**").hasAnyRole("WAREHOUSE","SALES","MANAGER")
                                 .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**","/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/invoices/**","/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**","/api/product/list").authenticated()
+                                .requestMatchers("/api/employee/**").authenticated()
                                 .requestMatchers("/api/changePassword").authenticated()
                                 .anyRequest().authenticated()
                 )

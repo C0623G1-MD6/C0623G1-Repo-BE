@@ -1,6 +1,6 @@
 package com.example.fashion.model.invoice;
 
-import com.example.fashion.model.Employee;
+import com.example.fashion.model.auth.Employee;
 import com.example.fashion.model.customer.Customer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -17,6 +17,7 @@ public class Invoice {
 
     @Column(name = "invoice_code",nullable = false, unique = true, columnDefinition = "varchar(50)")
     private String invoiceCode;
+
 
     @Column(name = "invoice_printing_date", nullable = false, columnDefinition = "datetime")
     private LocalDateTime invoicePrintingDate;
