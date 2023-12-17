@@ -1,6 +1,7 @@
 package com.example.fashion.service.auth;
 
 import com.example.fashion.model.auth.Account;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
@@ -30,4 +31,11 @@ public interface IAccountService {
      * @param account The account to be saved.
      */
     void updatePassword(Account account);
+    /**
+     * Get Account By Email.
+     * @author: ThanhPV
+     * @date: 12/12/2023
+     * @param email The account to be saved.
+     */
+    Account getAccountByEmail(String email);
 }

@@ -91,12 +91,12 @@ public class WebSecurityConfig {
         http
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
-//                        Trang không cần đăng nhập
                                 .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
                                 .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
                                 .requestMatchers("/api/product/size").permitAll()
-//                        Trang cần có quyền hợp lệ
+                                .requestMatchers("/api/recoverPassword").permitAll()
+                                .requestMatchers("/api/sendMail").permitAll()
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
                                 .requestMatchers("/api/notification/list/**").hasAnyRole("WAREHOUSE","SALES","MANAGER")
                                 .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
