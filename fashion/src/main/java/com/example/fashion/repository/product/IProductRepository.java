@@ -27,11 +27,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = " SELECT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
-            "   p.price as price, c.name as categoryName, s.name as productSize, pm.percent as percent\n" +
+            "   p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
             ,
             countQuery = " SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
@@ -54,20 +54,20 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
-            "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE pm.percent > 0 ",
             countQuery = " SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
                     "p.gender as gender,\n" +
-                    "p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+                    "p.price as price, c.name as categoryName, pm.percent as percent\n" +
                     "FROM products p\n" +
                     "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
                     "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
                     "WHERE pm.percent > 0"
     )
@@ -82,11 +82,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
-            "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE p.gender = 0 ",
             countQuery = "SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
@@ -94,8 +94,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
                     "p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
                     "FROM products p\n" +
                     "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
                     "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
                     "WHERE p.gender = 0"
            )
@@ -110,11 +110,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
-            "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE p.gender = 1 ",
             countQuery =   "SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
@@ -122,8 +122,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE p.gender = 1 "
       )
@@ -139,11 +139,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
-            "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE c.name like %:categoryName% ",
             countQuery = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
@@ -151,8 +151,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
                     "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
                     "FROM products p\n" +
                     "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
                     "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
                     "WHERE c.name like %:categoryName% "
            )
@@ -168,11 +168,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
-            "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE p.name like %:productName% ",
             countQuery = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
@@ -180,8 +180,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
                     "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
                     "FROM products p\n" +
                     "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+//                    "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+//                    "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
                     "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
                     "WHERE p.name like %:productName% "
            )
@@ -200,8 +200,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
     @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName,p.product_image as productImage, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
             "from products p \n" +
             "join product_categories pc on p.category_id = pc.id\n" +
-            "join size_details sd on p.id = sd.product_id\n" +
-            "join sizes s on sd.size_id = s.id\n" +
+//            "join size_details sd on p.id = sd.product_id\n" +
+//            "join sizes s on sd.size_id = s.id\n" +
             "where p.name like %:productName% \n" +
             "and p.price between :minPrice and :maxPrice \n" +
             "and s.name like %:sizeName% ")
