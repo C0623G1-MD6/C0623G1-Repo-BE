@@ -11,22 +11,6 @@ import java.time.LocalDateTime;
 
 public interface IInvoiceRepository extends JpaRepository<Invoice, Integer> {
 
-//    /**
-//     * The method help to save invoices to database.
-//     * @author NhatNk
-//     * @since 2023-12-12
-//     * @param invoiceCode is an object containing invoice.invoiceCode information
-//     * @param invoicePrintingDate is an object containing invoice.invoicePrintingDate information
-//     * @param customerId is an object containing invoice.customerId information
-//     * @param employeeId is an object containing invoice information
-//     */
-//    @Transactional
-//    @Modifying
-//    @Query(value = "insert into invoices (invoice_code, invoice_printing_date, customer_id, employee_id) " +
-//            "values ( :#{#invoiceDto.invoiceCode}, :#{#invoiceDto.invoicePrintingDate}, :#{#invoiceDto.customerId}, :#{#invoiceDto.employeeId})",
-//            nativeQuery = true)
-//    void saveInvoice(@Param("invoice") InvoiceDto invoiceDto);
-
     /**
      * The method help to save invoices to database.
      * @author NhatNk
