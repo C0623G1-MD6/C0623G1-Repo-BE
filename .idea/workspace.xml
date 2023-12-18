@@ -4,78 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b69f9b0-72c5-40cc-95eb-4d3823d72341" name="Changes" comment="update case">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/news/NewsCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/news/NewsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/newsdto/INewsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/newsdto/NewsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ISizeDetailDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ISizeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/news/News.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/news/NewsCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/news/INewsCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/news/INewsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IPromotionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/INewsCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/INewsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/NewsCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/NewsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IPromotionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/PromotionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/utils/JavaMailUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/utils/PasswordGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/resources/mail-template/recover-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/resources/mail-template/template-mail-recover.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/HungHLP_controller/NewsRestController_create.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/HungHLP_controller/NewsRestController_findAll.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/LoanTTV_controller/ProductRestController_createProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/LoanTTV_controller/ProductRestController_getProductList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/lydth_home_controller/homePageController_getListProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3b69f9b0-72c5-40cc-95eb-4d3823d72341" name="Changes" comment="merge source dev">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/HomePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/customer/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/invoice/InvoiceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/invoice/InvoiceDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/IProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/IProductDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/IProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/IProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ProductDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/ProductCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Promotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Size.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/SizeDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/SizeDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/auth/IAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/auth/IAccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/customerRepository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/customerRepository/ICustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductCategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductCategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/auth/IAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/auth/IAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/ICustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/impl/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/impl/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IProductCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IProductCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductCategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeDetailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/home_controller/homePageController_getListProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/nhatnk_controller/InvoiceController_getAllCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/nhatnk_controller/InvoiceController_getAllCustomer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,13 +73,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0f6bdddd-dc75-429d-b898-41b4aa5f338e" name="Changes" comment="merge source dev" />
+      <changelist id="3b69f9b0-72c5-40cc-95eb-4d3823d72341" name="Changes" comment="update case" />
       <created>1702355420528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702355420528</updated>
       <workItem from="1702355421938" duration="14000" />
       <workItem from="1702862691081" duration="1652000" />
+      <workItem from="1702868593425" duration="483000" />
     </task>
     <task id="LOCAL-00001" summary="merge source dev">
       <created>1702631868485</created>
@@ -157,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702631868485</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="merge source dev">
+      <created>1702868649718</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702868649718</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,8 +114,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="merge source dev" />
     <MESSAGE value="update case" />
-    <option name="LAST_COMMIT_MESSAGE" value="update case" />
+    <MESSAGE value="merge source dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge source dev" />
   </component>
 </project>
