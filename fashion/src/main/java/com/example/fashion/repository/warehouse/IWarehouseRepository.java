@@ -19,6 +19,12 @@ public interface IWarehouseRepository extends JpaRepository<Warehouse, Integer> 
     @Query(value = "INSERT INTO warehouse_receipts (receipt_code, receipt_date) " +
             "VALUES ( :receiptCode, CURRENT_DATE())", nativeQuery = true)
     void importWarehouse(@Param("receiptCode") String receiptCode);
-
+    /**
+     * The method help to get recieiptId from database.
+     * @author LamTV
+     * @since 2023-12-17
+     */
+    @Query(value = "select warehouse_receipts.id from warehouse_receipts where warehouse_receipts.receipt_code = :receiptCode",nativeQuery = true)
+    Integer getWarehouseIdByReceiptCode(@Param("receiptCode") String receiptCode);
 
 }

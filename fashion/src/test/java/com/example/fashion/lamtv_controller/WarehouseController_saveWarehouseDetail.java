@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class WarehouseController_saveWarehouse {
+public class WarehouseController_saveWarehouseDetail {
     @Autowired
     private MockMvc mockMvc;
     @Autowired

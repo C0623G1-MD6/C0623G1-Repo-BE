@@ -3,16 +3,12 @@ package com.example.fashion.controller.warehouse;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.warehouse.WarehouseReceiptDetailDto;
 import com.example.fashion.dto.warehouse.WarehouseReceiptDto;
-import com.example.fashion.model.product.SizeDetail;
 import com.example.fashion.model.warehouse.Warehouse;
-import com.example.fashion.model.warehouse.WarehouseDetail;
 import com.example.fashion.service.product.IProductService;
 import com.example.fashion.service.product.ISizeDetailService;
 import com.example.fashion.service.warehouse.IWarehouseDetailService;
 import com.example.fashion.service.warehouse.IWarehouseService;
 import com.example.fashion.utils.CodeGenerator;
-import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +50,7 @@ public class WarehouseController {
     }
 
     @PostMapping("/inputWarehouseDetail")
-    public ResponseEntity<?> saveWarehouseDetail(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
+    public ResponseEntity<?> saveWarehouse(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
                                                  BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
         new WarehouseReceiptDetailDto().validate(warehouseReceiptDetailDto, bindingResult);
@@ -69,14 +65,37 @@ public class WarehouseController {
         warehouse.setReceiptCode(CodeGenerator.generateCode());
         warehouse.setReceiptDate(String.valueOf(LocalDate.now()));
         warehouseService.saveWarehouse(warehouse);
-        warehouseDetailService.saveWarehouseDetail(warehouseReceiptDetailDto.getSizeDetailId(),
+        warehouseDetailService.saveWarehouseDetails(warehouseReceiptDetailDto.getSizeDetailId(),
                 warehouseReceiptDetailDto.getInputQuantity(),
                 warehouseReceiptDetailDto.getInputPrice(),
                 warehouse.getId());
-        sizeDetailService.updateQuantity(warehouseReceiptDetailDto.getInputQuantity(),
+        sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),
                 warehouseReceiptDetailDto.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+//    @PostMapping("/inputWarehouseDetail")
+//    public ResponseEntity<Void> saveWarehouseDetail(@RequestBody WarehouseReceiptDto warehouseReceiptDto) {
+//        warehouseReceiptDto.setReceiptCode(CodeGenerator.generateCode());
+//        Boolean statusWarehouse = warehouseService.createWarehouse(warehouseReceiptDto);
+//        if (!statusWarehouse) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        } else {
+//            Integer warehouseId = warehouseService.getWarehouseIdByReceiptCode(warehouseReceiptDto.getReceiptCode());
+//
+//            for (WarehouseReceiptDetailDto warehouseReceiptDetailDto : warehouseReceiptDto.getWarehouseDetailSet()) {
+//                warehouseReceiptDetailDto.setWarehouseId(warehouseId);
+//                Boolean statusWarehouseDetail = warehouseDetailService.saveWarehouseDetail(warehouseReceiptDetailDto);
+//                {
+//                    if (!statusWarehouseDetail){
+//                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//                    } else {
+//                        sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),warehouseReceiptDetailDto.getSizeDetailId());
+//                    }
+//                }
+//            }
+//        }
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     /**
      * created at 14/12/2023

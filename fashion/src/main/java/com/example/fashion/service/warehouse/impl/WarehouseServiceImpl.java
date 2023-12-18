@@ -1,5 +1,6 @@
 package com.example.fashion.service.warehouse.impl;
 
+import com.example.fashion.dto.warehouse.WarehouseReceiptDto;
 import com.example.fashion.model.warehouse.Warehouse;
 import com.example.fashion.repository.warehouse.IWarehouseRepository;
 import com.example.fashion.service.warehouse.IWarehouseService;
@@ -15,7 +16,6 @@ public class WarehouseServiceImpl implements IWarehouseService {
      * @method : Import warehouse
      * @author: LamTV
      * @date: 12/12/2023
-     * @param receiptCode code random unique
      */
 
     @Override
@@ -23,5 +23,24 @@ public class WarehouseServiceImpl implements IWarehouseService {
 
             warehouseRepository.save(warehouse);
 
+    }
+
+    @Override
+    public Boolean createWarehouse(WarehouseReceiptDto warehouseReceiptDto) {
+        try {
+            warehouseRepository.importWarehouse(warehouseReceiptDto.getReceiptCode());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
+    public Integer getWarehouseIdByReceiptCode(String receiptCode) {
+        try {
+            return warehouseRepository.getWarehouseIdByReceiptCode(receiptCode);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

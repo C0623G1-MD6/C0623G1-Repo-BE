@@ -37,7 +37,7 @@ public interface ISizeDetailRepository extends JpaRepository<WarehouseDetail, In
     @Query( value = "update size_details " +
             "set  quantity =:totalQuantity + quantity " +
             "where id =:id",nativeQuery = true)
-    void updateQuantity(@Param("totalQuantity") Integer totalQuantity,
+    void updateQuantityWarehouse(@Param("totalQuantity") Integer totalQuantity,
                 @Param("id") Integer id);
 
     /**

@@ -4,8 +4,9 @@ import com.example.fashion.dto.warehouse.WarehouseReceiptDetailDto;
 import org.springframework.data.repository.query.Param;
 
 public interface IWarehouseDetailService {
-    void saveWarehouseDetail(Integer sizeDetailId,
-                             Integer inputQuantity,
-                             Double inputPrice,
-                             Integer warehouseId);
+    Boolean saveWarehouseDetail(WarehouseReceiptDetailDto warehouseReceiptDetailDto);
+    void saveWarehouseDetails(Integer sizeDetailId,
+                              Integer inputQuantity,
+                               Double inputPrice,
+                              Integer warehouseId);
 }

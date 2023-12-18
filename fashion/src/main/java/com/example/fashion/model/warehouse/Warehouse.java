@@ -2,6 +2,8 @@ package com.example.fashion.model.warehouse;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 /**
  * @author: LamTV
  * @date: 12/12/2023
@@ -16,6 +18,8 @@ public class Warehouse {
     private String receiptCode;
     @Column(columnDefinition = "datetime",nullable = false,name = "receipt_date")
     private String receiptDate;
+    @OneToMany
+    private Set<WarehouseDetail> warehouseDetailSet;
     public Warehouse() {
     }
 
@@ -43,4 +47,11 @@ public class Warehouse {
         this.receiptDate = receiptDate;
     }
 
+    public Set<WarehouseDetail> getWarehouseDetailSet() {
+        return warehouseDetailSet;
+    }
+
+    public void setWarehouseDetailSet(Set<WarehouseDetail> warehouseDetailSet) {
+        this.warehouseDetailSet = warehouseDetailSet;
+    }
 }

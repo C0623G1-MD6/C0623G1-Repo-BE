@@ -17,8 +17,8 @@ public class SizeDetailServiceImpl implements ISizeDetailService {
     }
 
     @Override
-    public void updateQuantity(Integer totalQuantity, Integer id) {
-        sizeDetailRepository.updateQuantity(totalQuantity,id);
+    public void updateQuantityWarehouse(Integer totalQuantity, Integer id) {
+        sizeDetailRepository.updateQuantityWarehouse(totalQuantity,id);
     }
 
     @Override
