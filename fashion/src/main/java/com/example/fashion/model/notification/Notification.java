@@ -65,6 +65,10 @@ public class Notification {
     }
 
     public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
+        if (deleted == null) {
+            this.deleted = true; // Set default value to true if deleted is null
+        } else {
+            this.deleted = deleted;
+        }
     }
 }
