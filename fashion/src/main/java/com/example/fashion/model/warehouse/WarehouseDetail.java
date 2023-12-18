@@ -10,10 +10,10 @@ public class WarehouseDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "size_detail_id",referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "size_detail_id",referencedColumnName = "id")
     private SizeDetail sizeDetail;
     @ManyToOne
-    @JoinColumn(name = "warehouse_id",referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "warehouse_id",referencedColumnName = "id")
     private Warehouse warehouse;
     @Column(name="input_quantity",nullable = false)
     private Integer inputQuantity;

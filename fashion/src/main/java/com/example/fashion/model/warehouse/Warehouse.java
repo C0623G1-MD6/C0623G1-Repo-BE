@@ -18,7 +18,7 @@ public class Warehouse {
     private String receiptCode;
     @Column(columnDefinition = "datetime",nullable = false,name = "receipt_date")
     private String receiptDate;
-    @OneToMany
+    @OneToMany(mappedBy = "warehouse")
     private Set<WarehouseDetail> warehouseDetailSet;
     public Warehouse() {
     }
