@@ -1,12 +1,5 @@
 package com.example.fashion.dto.product;
 
-import com.example.fashion.model.product.ProductCategory;
-import com.example.fashion.model.product.Promotion;
-import com.example.fashion.model.product.SizeDetail;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.*;
 
 import java.util.List;

@@ -93,13 +93,13 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
                                 .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
-                                .requestMatchers("/api/invoices/**").permitAll()
+                                .requestMatchers("/api/invoices/**","/api/warehouses/**","/api/sales-report/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
 //                        Trang cần có quyền hợp lệ
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
                                 .requestMatchers("/api/notification/list/**").hasAnyRole("WAREHOUSE","SALES","MANAGER")
                                 .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
-                                .requestMatchers("/api/warehouse/**").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
                                 .requestMatchers("/api/sale/**","/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/invoices/**","/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**","/api/product/list").authenticated()
