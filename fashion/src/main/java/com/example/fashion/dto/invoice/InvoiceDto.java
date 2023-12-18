@@ -1,37 +1,32 @@
 package com.example.fashion.dto.invoice;
 
-import com.example.fashion.model.auth.Employee;
-import com.example.fashion.model.customer.Customer;
-import com.example.fashion.model.invoice.InvoiceDetail;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class InvoiceDto implements Validator {
+public class InvoiceDto implements Validator{
     private Integer id;
 
     private String invoiceCode;
 
     private LocalDateTime invoicePrintingDate;
 
-    private Customer customer;
+    private Integer customerId;
+    private Integer employeeId;
 
-    private Employee employee;
-
-    private Set<InvoiceDetail> invoiceDetailSet;
+    private Set<InvoiceDetailDto> invoiceDetailDtoSet;
 
     public InvoiceDto() {
     }
 
-    public InvoiceDto(String invoiceCode, LocalDateTime invoicePrintingDate, Customer customer,
-                      Employee employee, Set<InvoiceDetail> invoiceDetailSet) {
+    public InvoiceDto(String invoiceCode, LocalDateTime invoicePrintingDate, Integer customerId, Integer employeeId, Set<InvoiceDetailDto> invoiceDetailDtoSet) {
         this.invoiceCode = invoiceCode;
         this.invoicePrintingDate = invoicePrintingDate;
-        this.customer = customer;
-        this.employee = employee;
-        this.invoiceDetailSet = invoiceDetailSet;
+        this.customerId = customerId;
+        this.employeeId = employeeId;
+        this.invoiceDetailDtoSet = invoiceDetailDtoSet;
     }
 
     public Integer getId() {
@@ -58,28 +53,28 @@ public class InvoiceDto implements Validator {
         this.invoicePrintingDate = invoicePrintingDate;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Integer getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployeeId(Integer employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public Set<InvoiceDetail> getInvoiceDetailSet() {
-        return invoiceDetailSet;
+    public Set<InvoiceDetailDto> getInvoiceDetailDtoSet() {
+        return invoiceDetailDtoSet;
     }
 
-    public void setInvoiceDetailSet(Set<InvoiceDetail> invoiceDetailSet) {
-        this.invoiceDetailSet = invoiceDetailSet;
+    public void setInvoiceDetailDtoSet(Set<InvoiceDetailDto> invoiceDetailDtoSet) {
+        this.invoiceDetailDtoSet = invoiceDetailDtoSet;
     }
 
     @Override
@@ -89,7 +84,22 @@ public class InvoiceDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        InvoiceDto invoiceDto = (InvoiceDto) target;
+        InvoiceDto  invoiceDto = (InvoiceDto) target;
+        if ("".equals(invoiceDto.getInvoiceCode())) {
+            errors.rejectValue("invoiceCode", null, "Vui lòng nhập mã hóa đơn");
+        }
 
+        if ("".equals(invoiceDto.getInvoicePrintingDate())) {
+            errors.rejectValue("invoicePrintingDate", null, "Vui lòng chọn ngày giờ in hóa đơn");
+        }
+
+        if ("".equals(invoiceDto.getCustomerId())) {
+            errors.rejectValue("customerId", null, "Vui lòng chọn khách hàng");
+        }
+
+        if ("".equals(invoiceDto.getEmployeeId())) {
+            errors.rejectValue("employeeId", null, "Vui lòng chọn nhân viên");
+        }
     }
+
 }

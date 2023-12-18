@@ -1,6 +1,7 @@
 package com.example.fashion.service.product;
 
 import com.example.fashion.dto.product.IProductDTO;
+import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.model.product.Product;
@@ -83,4 +84,8 @@ public interface IProductService {
      * LamTV
      */
     List<IProductResponse> getAllProducts();
+
+
+    List<IProductInvoiceDto> getListProduct(String keyword);
+    IProductInvoiceDto getProductByProductCode(String productCode);
 }

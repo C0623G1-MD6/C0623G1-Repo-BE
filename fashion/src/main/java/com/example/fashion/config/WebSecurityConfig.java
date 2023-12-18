@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 /**
  * This class configures web security for the application.
+ *
  * @author: ThanhPV
  * @date: 12/12/2023
  */
@@ -31,11 +32,12 @@ public class WebSecurityConfig {
 
     /**
      * Creates an authentication manager.
-     * @author: ThanhPV
-     * @date: 12/12/2023
+     *
      * @param authConfig The authentication configuration.
      * @return The authentication manager.
      * @throws Exception If an error occurs while creating the authentication manager.
+     * @author: ThanhPV
+     * @date: 12/12/2023
      */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -44,9 +46,10 @@ public class WebSecurityConfig {
 
     /**
      * Creates a password encoder using BCrypt.
+     *
+     * @return The BCrypt password encoder.
      * @author: ThanhPV
      * @date: 12/12/2023
-     * @return The BCrypt password encoder.
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -55,9 +58,10 @@ public class WebSecurityConfig {
 
     /**
      * Creates a JWT authentication filter bean.
+     *
+     * @return The JWT authentication filter.
      * @author: ThanhPV
      * @date: 12/12/2023
-     * @return The JWT authentication filter.
      */
     @Bean
     public JwtAuthenticationFilter authenticationJwtTokenFilter() {
@@ -66,9 +70,10 @@ public class WebSecurityConfig {
 
     /**
      * Creates an authentication provider for DAO.
+     *
+     * @return The DAO authentication provider.
      * @author: ThanhPV
      * @date: 12/12/2023
-     * @return The DAO authentication provider.
      */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -80,11 +85,12 @@ public class WebSecurityConfig {
 
     /**
      * Configures security filters for HTTP requests.
-     * @author: ThanhPV
-     * @date: 12/12/2023
+     *
      * @param http The HTTP security configuration.
      * @return The built security filter chain.
      * @throws Exception If an error occurs while configuring the security filters.
+     * @author: ThanhPV
+     * @date: 12/12/2023
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -92,17 +98,23 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
+                                .requestMatchers("/api/login","/api/news/**","/api/category").permitAll()
                                 .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
-                                .requestMatchers("/api/invoices/**","/api/warehouses/**","/api/sales-report/**").permitAll()
+                                .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/login", "/api/customer/**", "/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
+                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
+                                .requestMatchers("/api/recoverPassword").permitAll()
+                                .requestMatchers("/api/sendMail").permitAll()
 //                        Trang cần có quyền hợp lệ
+
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
-                                .requestMatchers("/api/notification/list/**").hasAnyRole("WAREHOUSE","SALES","MANAGER")
+                                .requestMatchers("/api/notification/list/**").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
                                 .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
-                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
-                                .requestMatchers("/api/sale/**","/api/sales/**").hasRole("SALE")
-                                .requestMatchers("/api/invoices/**","/api/sales/**").hasRole("SALE")
-                                .requestMatchers("/api/employee/**","/api/product/list").authenticated()
+                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
+                                .requestMatchers("/api/product/**").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
+                                .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
                                 .requestMatchers("/api/employee/**").authenticated()
                                 .requestMatchers("/api/changePassword").authenticated()
                                 .anyRequest().authenticated()

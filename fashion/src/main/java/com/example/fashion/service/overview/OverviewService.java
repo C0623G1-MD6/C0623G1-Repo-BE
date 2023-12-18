@@ -5,6 +5,7 @@ import com.example.fashion.repository.overview.IOverviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class OverviewService implements IOverviewService{
@@ -31,6 +32,8 @@ public class OverviewService implements IOverviewService{
             case "year":
                 result=repository.getTotalCustomerYear().size();
                 break;
+            default:
+                result=0;
         }
         return result;
     }
@@ -54,6 +57,8 @@ public class OverviewService implements IOverviewService{
             case "year":
                 result=repository.getTotalOrderYear();
                 break;
+            default:
+                result=0;
         }
         return result;
     }
@@ -78,8 +83,29 @@ public class OverviewService implements IOverviewService{
             case "year":
                 result=repository.getTotalRevenueYear();
                 break;
+            default:
+                result=0.0d;
         }
         return result;
+    }
+
+    @Override
+    public List<ITopFiveSeller> getTopFiveSeller(String time) {
+        List<ITopFiveSeller> list;
+        switch (time) {
+            case "week":
+                list=repository.getTopFiveSellerWeek();
+                break;
+            case "month":
+                list=repository.getTopFiveSellerMonth();
+                break;
+            case "year":
+                list=repository.getTopFiveSellerYear();
+                break;
+            default:
+                list=new ArrayList<>();
+        }
+        return list;
     }
 
     /**
@@ -89,16 +115,7 @@ public class OverviewService implements IOverviewService{
      * return list iTopFiveSeller
      */
 
-    @Override
-    public List<ITopFiveSeller> getTopFiveSeller() {
-        return repository.getTopFiveSeller();
-    }
-    /**
-     * method getTopFiveNewOrder
-     * Create TruongNQ
-     * Date 12-12-2023
-     * return list iTopNewOrder
-     */
+
     @Override
     public List<ITopNewOrder> getTopFiveNewOrder() {
         return repository.getTopFiveNewOrder();

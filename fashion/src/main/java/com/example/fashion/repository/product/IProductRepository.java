@@ -1,5 +1,7 @@
 package com.example.fashion.repository.product;
 
+import com.example.fashion.dto.customerDto.ICustomerDto;
+import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.ProductDTO;
@@ -23,13 +25,18 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = " SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = " SELECT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "   p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+            "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
+            ,
+            countQuery = " SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+            "   p.gender as gender,\n" +
+            "   p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "FROM products p\n" +
+            "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
     )
     Page<IProductResponse> findAllProducts(Pageable pageable);
@@ -41,15 +48,20 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
-            "WHERE pm.percent > 0 "
+            "WHERE pm.percent > 0 ",
+            countQuery = " SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+                    "p.gender as gender,\n" +
+                    "p.price as price, c.name as categoryName, pm.percent as percent\n" +
+                    "FROM products p\n" +
+                    "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
+                    "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
+                    "WHERE pm.percent > 0"
     )
     Page<IProductResponse> findAllProductsHasPromotion(Pageable pageable);
 
@@ -60,15 +72,20 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
-            "WHERE p.gender = 0 "
+            "WHERE p.gender = 0 ",
+            countQuery = "SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+                    "p.gender as gender,\n" +
+                    "p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+                    "FROM products p\n" +
+                    "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
+                    "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
+                    "WHERE p.gender = 0"
            )
     Page<IProductResponse> findAllProductsForMen(Pageable pageable);
 
@@ -79,13 +96,18 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+            "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
+            "WHERE p.gender = 1 ",
+            countQuery =   "SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+            "   p.gender as gender,\n" +
+            "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+            "FROM products p\n" +
+            "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
             "WHERE p.gender = 1 "
       )
@@ -99,15 +121,20 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
-            "WHERE c.name like %:categoryName% "
+            "WHERE c.name like %:categoryName% ",
+            countQuery = "  SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+                    "   p.gender as gender,\n" +
+                    "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+                    "FROM products p\n" +
+                    "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
+                    "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
+                    "WHERE c.name like %:categoryName% "
            )
     Page<IProductResponse> findAllProductsByCategory(String categoryName, Pageable pageable);
 
@@ -119,15 +146,20 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param pageable
      * @return
      */
-    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+    @Query(nativeQuery = true, value = "  SELECT p.id as productId, p.name as productName,p.product_image as productImage, p.product_code as productCode, p.qr_code as qrCode,\n" +
             "   p.gender as gender,\n" +
             "    p.price as price, c.name as categoryName, pm.percent as percent\n" +
             "FROM products p\n" +
             "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
-            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
-            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
-            "WHERE p.name like %:productName% "
+            "WHERE p.name like %:productName% ",
+            countQuery = "  SELECT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+                    "   p.gender as gender,\n" +
+                    "    p.price as price, c.name as categoryName,s.name as productSize, pm.percent as percent\n" +
+                    "FROM products p\n" +
+                    "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
+                    "LEFT JOIN promotions pm ON p.promotion_id = pm.id\n" +
+                    "WHERE p.name like %:productName% "
            )
     Page<IProductResponse> findAllProductsByName(String productName, Pageable pageable);
 
@@ -141,7 +173,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @param sizeName
      * @return Page<IProductDTO>
      */
-    @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
+
+    @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName,p.product_image as productImage, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
             "from products p \n" +
             "join product_categories pc on p.category_id = pc.id\n" +
             "join size_details sd on p.id = sd.product_id\n" +
@@ -188,4 +221,36 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
     )
     List<IProductResponse> getAllProducts();
+
+    /**
+     * The method help to get list product from database.
+     * @author NhatNk
+     * @since 2023-12-14
+     * @param keyword is String entered from input box on the screen
+     * @return List IProductInvoiceDto If the query is correct
+     * @return Exception or null If the query is incorrect
+     * @see List<IProductInvoiceDto>
+     */
+    @Query(value = "select p.product_code, p.name, p.price, pr.percent\n" +
+            "from products p \n" +
+            "join promotions pr on p.promotion_id = pr.id\n" +
+            "join size_details sd on p.id = sd.product_id\n" +
+            "where p.product_code like :keyword or p.name like  :keyword\n" +
+            "group by p.product_code, p.name, p.price, pr.percent\n" +
+            "having sum(sd.quantity) > 0",nativeQuery = true)
+    List<IProductInvoiceDto> getListProduct(@Param("keyword") String keyword);
+
+    /**
+     * The method help to get info product from database with productCode.
+     * @author NhatNk
+     * @since 2023-12-14
+     * @param productCode is parameter select from List Product
+     * @return IProductInvoiceDto If the query is correct
+     * @return Exception or null If the query is incorrect
+     * @see IProductInvoiceDto
+     */
+    @Query(value = "select p.product_code, p.name, p.price, pr.percent from products p \n" +
+            "join promotions pr on p.promotion_id = pr.id\n" +
+            "where p.product_code = :productCode",nativeQuery = true)
+    IProductInvoiceDto getProductByProductCode(@Param("productCode") String productCode);
 }

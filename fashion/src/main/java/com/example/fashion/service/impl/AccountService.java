@@ -48,4 +48,9 @@ public class AccountService implements IAccountService {
     public void updatePassword(Account account) {
         accountRepository.updatePasswordAccount(account.getUsername(), account.getPassword());
     }
+
+    @Override
+    public Account getAccountByEmail(String email) {
+        return accountRepository.getAccountByEmail(email);
+    }
 }

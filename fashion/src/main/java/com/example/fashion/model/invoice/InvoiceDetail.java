@@ -1,6 +1,5 @@
 package com.example.fashion.model.invoice;
 
-import com.example.fashion.model.product.Product;
 import com.example.fashion.model.product.SizeDetail;
 import jakarta.persistence.*;
 
@@ -14,6 +13,9 @@ public class InvoiceDetail {
     @Column(name = "selling_quantity", nullable = false)
     private Integer sellingQuantity;
 
+    @Column(name = "selling_price", nullable = false)
+    private Double sellingPrice;
+
     @ManyToOne
     @JoinColumn(name = "invoice_id", referencedColumnName = "id")
     private Invoice invoice;
@@ -25,8 +27,9 @@ public class InvoiceDetail {
     public InvoiceDetail() {
     }
 
-    public InvoiceDetail(Integer sellingQuantity, Invoice invoice, SizeDetail sizeDetail) {
+    public InvoiceDetail(Integer sellingQuantity, Double sellingPrice, Invoice invoice, SizeDetail sizeDetail) {
         this.sellingQuantity = sellingQuantity;
+        this.sellingPrice = sellingPrice;
         this.invoice = invoice;
         this.sizeDetail = sizeDetail;
     }
@@ -61,5 +64,13 @@ public class InvoiceDetail {
 
     public void setSizeDetail(SizeDetail sizeDetail) {
         this.sizeDetail = sizeDetail;
+    }
+
+    public Double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 }

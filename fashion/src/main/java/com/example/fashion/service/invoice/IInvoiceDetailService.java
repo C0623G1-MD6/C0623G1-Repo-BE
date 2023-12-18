@@ -1,10 +1,7 @@
 package com.example.fashion.service.invoice;
 
-import com.example.fashion.model.customer.Customer;
-import com.example.fashion.model.invoice.InvoiceDetail;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.example.fashion.dto.invoice.InvoiceDetailDto;
 
 public interface IInvoiceDetailService {
-    Boolean saveInvoiceDetail(InvoiceDetail invoiceDetail);
+    Boolean saveInvoiceDetail(InvoiceDetailDto invoiceDetailDto);
 }

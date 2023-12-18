@@ -7,8 +7,9 @@ import com.example.fashion.model.warehouse.Warehouse;
 import com.example.fashion.service.product.IProductService;
 import com.example.fashion.service.product.ISizeDetailService;
 import com.example.fashion.service.warehouse.IWarehouseDetailService;
+import com.example.fashion.dto.warehouse.WarehouseDetailDTO;
 import com.example.fashion.service.warehouse.IWarehouseService;
-import com.example.fashion.utils.CodeGenerator;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +17,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/warehouses")
+@RequestMapping("/api/warehouse/")
 public class WarehouseController {
     @Autowired
     private IWarehouseService warehouseService;

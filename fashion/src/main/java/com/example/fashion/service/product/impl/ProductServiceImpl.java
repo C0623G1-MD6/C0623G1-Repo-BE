@@ -1,9 +1,9 @@
 package com.example.fashion.service.product.impl;
 
 import com.example.fashion.dto.product.IProductDTO;
+import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
-import com.example.fashion.model.product.Product;
 import com.example.fashion.repository.product.IProductRepository;
 import com.example.fashion.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +37,22 @@ public class ProductServiceImpl implements IProductService {
         return productRepository.findAll(pageable, productName, minPrice, maxPrice, sizeName);
     }
 
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * @param productDTO
+     */
     @Override
     public void createProduct(ProductDTO productDTO) {
         productRepository.save(productDTO);
     }
 
+    /**
+     * created at 12/12/2023
+     * LoanTTV
+     * @param productCode
+     * @return
+     */
     @Override
     public IProductDTO findByProductCode(String productCode) {
         return productRepository.findByProductCode(productCode);
@@ -126,7 +137,44 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Page<IProductResponse> findAllProductsByName(String name, Pageable pageable) {
 
-        return iProductRepository.findAllProductsByName(name, pageable);
+        return iProductRepository.findAllProductsByName(name,pageable);
+    }
+
+
+    /**
+     * The method help to get list product.
+     * @author NhatNk
+     * @since 2023-12-14
+     * @param keyword is String entered from input box on the screen
+     * @return Null If the query at IProductRepository is incorrect and an exception occurs
+     * @return list IProductInvoiceDto and 200 Ok If the query at IProductRepository is correct and no exception occurs
+     * @see List<IProductInvoiceDto>
+     */
+    @Override
+    public List<IProductInvoiceDto> getListProduct(String keyword) {
+        try {
+            return productRepository.getListProduct("%" + keyword + "%");
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * The method help to get info IProductInvoiceDto.
+     * @author NhatNk
+     * @since 2023-12-14
+     * @param productCode s parameter select from List Product
+     * @return Null If the query at IProductRepository is incorrect and an exception occurs
+     * @return IProductInvoiceDto and 200 Ok If the query at IProductRepository is correct and no exception occurs
+     * @see IProductInvoiceDto
+     */
+    @Override
+    public IProductInvoiceDto getProductByProductCode(String productCode) {
+        try {
+            return productRepository.getProductByProductCode(productCode);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 

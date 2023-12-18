@@ -1,10 +1,16 @@
 package com.example.fashion.model.warehouse;
+
+import com.example.fashion.model.product.Product;
 import com.example.fashion.model.product.SizeDetail;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-
+/**
+ * @author: LamTV
+ * @date: 12/12/2023
+ */
 @Entity
-@Table (name = "warehouse_receipt_details")
+@Table(name = "warehouse_receipt_details")
 public class WarehouseDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
