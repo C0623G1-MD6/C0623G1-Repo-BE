@@ -44,7 +44,7 @@ public class WarehouseController {
      */
 
     @GetMapping("/products")
-    public ResponseEntity<?> getAllProducts() {
+    public ResponseEntity<List<IProductResponse>> getAllProducts() {
         List<IProductResponse> products = productService.getAllProducts();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -53,7 +53,7 @@ public class WarehouseController {
     }
 
     @PostMapping("/inputWarehouseDetail")
-    public ResponseEntity<?> saveWarehouse(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
+    public ResponseEntity<Object> saveWarehouse(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
                                                  BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
         new WarehouseReceiptDetailDto().validate(warehouseReceiptDetailDto, bindingResult);
@@ -106,7 +106,7 @@ public class WarehouseController {
      * get code
      */
     @GetMapping("/code")
-    public ResponseEntity<?> getCode() {
+    public ResponseEntity<String> getCode() {
         String code = CodeGenerator.generateCode();
         return new ResponseEntity<>(code, HttpStatus.OK);
     }
