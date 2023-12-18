@@ -27,11 +27,12 @@ public interface SalesReportRepository extends JpaRepository<Product, Integer> {
             " LEFT JOIN size_details s ON s.id = iv.size_detail_id\n" +
             " LEFT JOIN products p ON p.id = s.product_id\n" +
             " LEFT JOIN warehouse_receipt_details wrd ON wrd.size_detail_id = s.id\n" +
-            " LEFT JOIN warehouse_receipts wr ON wr.id = wrd.warehouse_id\n" +
+            " LEFT JOIN warehouse_receipts wr ON wr.id = wrd.warehouse_receipt_id\n" +
             " GROUP BY dr.`date` \n" +
             " UNION SELECT dr.`date` AS `date`, \n" +
             "\t0 AS `revenue`, \n" +
             "\t0 AS `spend`\n" +
             " FROM DateRange dr ORDER BY `date`", nativeQuery = true)
     List<SalesReport> getDataSpend(String startDate, String endDate);
+
 }

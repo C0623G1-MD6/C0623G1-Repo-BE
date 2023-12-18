@@ -22,7 +22,7 @@ import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/warehouse/")
+@RequestMapping("/api/warehouses/")
 public class WarehouseController {
     @Autowired
     private IWarehouseService warehouseService;
