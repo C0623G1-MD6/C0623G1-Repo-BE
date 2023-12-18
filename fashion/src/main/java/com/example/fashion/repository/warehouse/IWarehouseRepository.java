@@ -1,7 +1,6 @@
 package com.example.fashion.repository.warehouse;
 
 import com.example.fashion.model.warehouse.Warehouse;
-import com.example.fashion.model.warehouse.WarehouseDetail;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

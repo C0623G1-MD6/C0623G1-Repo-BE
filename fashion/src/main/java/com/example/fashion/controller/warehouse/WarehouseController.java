@@ -1,10 +1,12 @@
 package com.example.fashion.controller.warehouse;
 
 import com.example.fashion.dto.product.IProductResponse;
+import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.dto.warehouse.WarehouseReceiptDetailDto;
 import com.example.fashion.model.warehouse.Warehouse;
 import com.example.fashion.service.product.IProductService;
 import com.example.fashion.service.product.ISizeDetailService;
+import com.example.fashion.service.product.ISizeService;
 import com.example.fashion.service.warehouse.IWarehouseDetailService;
 import com.example.fashion.service.warehouse.IWarehouseService;
 import com.example.fashion.utils.CodeGenerator;
@@ -32,6 +34,8 @@ public class WarehouseController {
     private IProductService productService;
     @Autowired
     private IWarehouseDetailService warehouseDetailService;
+    @Autowired
+    private ISizeService sizeService;
 
     /**
      * created at 14/12/2023
@@ -105,5 +109,14 @@ public class WarehouseController {
     public ResponseEntity<?> getCode() {
         String code = CodeGenerator.generateCode();
         return new ResponseEntity<>(code, HttpStatus.OK);
+    }
+
+    @GetMapping("/sizes/{productId}")
+    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable Integer productId){
+        List<ISizeDto> iSizeDtoList = sizeService.getAllSizes(productId);
+        if (iSizeDtoList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(iSizeDtoList,HttpStatus.OK);
     }
 }
