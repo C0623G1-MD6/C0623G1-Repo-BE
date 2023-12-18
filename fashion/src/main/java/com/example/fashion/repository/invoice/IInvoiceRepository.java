@@ -1,10 +1,6 @@
 package com.example.fashion.repository.invoice;
 
-import com.example.fashion.dto.invoice.InvoiceDto;
-import com.example.fashion.model.customer.Customer;
 import com.example.fashion.model.invoice.Invoice;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -49,4 +45,25 @@ public interface IInvoiceRepository extends JpaRepository<Invoice, Integer> {
                      @Param("invoicePrintingDate")LocalDateTime invoicePrintingDate,
                      @Param("customerId") Integer customerId,
                      @Param("employeeId") Integer employeeId);
+
+    /**
+     * The method help to get invoiceId from database.
+     * @author NhatNk
+     * @since 2023-12-17
+     * @param invoiceCode
+     * @return invoiceId
+     * @see Integer
+     */
+    @Query(value = "select invoices.id from invoices where invoices.invoice_code = :invoiceCode",nativeQuery = true)
+    Integer getInvoiceIdByInvoiceCode(@Param("invoiceCode") String invoiceCode);
+
+    /**
+     * The method help to get invoiceCode from database.
+     * @author NhatNk
+     * @since 2023-12-17
+     * @return invoiceCode
+     * @see String
+     */
+    @Query(value = "select id from invoices order by id desc limit 1",nativeQuery = true)
+    Integer getLastInvoiceId();
 }
