@@ -50,6 +50,7 @@ public class WebSecurityConfig {
      * @return The BCrypt password encoder.
      * @author: ThanhPV
      * @date: 12/12/2023
+     * @return The BCrypt password encoder.
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -74,6 +75,7 @@ public class WebSecurityConfig {
      * @return The DAO authentication provider.
      * @author: ThanhPV
      * @date: 12/12/2023
+     * @return The DAO authentication provider.
      */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
