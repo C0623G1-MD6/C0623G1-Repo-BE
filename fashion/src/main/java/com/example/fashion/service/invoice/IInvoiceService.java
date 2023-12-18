@@ -5,4 +5,6 @@ import com.example.fashion.model.invoice.Invoice;
 
 public interface IInvoiceService {
     Boolean saveInvoice(InvoiceDto invoiceDto);
+    Integer getInvoiceIdByInvoiceCode(String invoiceCode);
+    String createInvoiceCode();
 }

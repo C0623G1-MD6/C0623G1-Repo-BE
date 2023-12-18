@@ -151,7 +151,7 @@ public class CustomerController {
     ) {
         Pageable pageable = PageRequest.of(page, 5);
         Page<Customer> customerDtos = customerService.findAllCustomer(pageable, name, typeCustomer);
-        if (name == null) {
+        if (customerDtos == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         if (customerDtos.isEmpty()) {
@@ -169,9 +169,14 @@ public class CustomerController {
      * param : id
      * return ResponseEntity or null
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
-        customerService.remove(id);
-        return ResponseEntity.ok("Xóa Thành Công");
+        Customer customer = customerService.findById(id);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            customerService.remove(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 }

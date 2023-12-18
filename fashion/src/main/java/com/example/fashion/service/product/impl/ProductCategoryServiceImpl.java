@@ -14,6 +14,7 @@ public class ProductCategoryServiceImpl implements IProductCategoryService {
     @Autowired
     private IProductCategoryRepository iProductCategoryRepository;
 
+
     /**
      * @author LyDTH
      * @date 16/12/2023
@@ -23,5 +24,14 @@ public class ProductCategoryServiceImpl implements IProductCategoryService {
     @Override
     public List<ProductCategory> getAllProductsCategory() {
         return iProductCategoryRepository.getAllProductsCategory();
+    }
+
+    /**
+     * LoanTTV
+     * @return
+     */
+    @Override
+    public List<ProductCategory> getAllCategories() {
+        return iProductCategoryRepository.findAll();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.fashion.model.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class Promotion {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private Double percent;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "promotion", cascade = CascadeType.ALL)
     private List<Product> productList;
 

@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15b39dd-d1d9-466e-874d-6bc02a2c7d9b" name="Changes" comment="" />
+    <list default="true" id="3b69f9b0-72c5-40cc-95eb-4d3823d72341" name="Changes" comment="merge source dev">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -20,41 +38,84 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Javafullstack_Codegym/C0623G1-Repo-BE/fashion&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;2f22a830e67022b27a6964048f4e57c9&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="fashion" />
+    <configuration name="FashionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="fashion.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.fashion.FashionApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.fashion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="fashion" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.FashionApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e15b39dd-d1d9-466e-874d-6bc02a2c7d9b" name="Changes" comment="" />
+      <changelist id="3b69f9b0-72c5-40cc-95eb-4d3823d72341" name="Changes" comment="update case" />
       <created>1702355420528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702355420528</updated>
       <workItem from="1702355421938" duration="14000" />
+      <workItem from="1702862691081" duration="1652000" />
+      <workItem from="1702868593425" duration="483000" />
     </task>
+    <task id="LOCAL-00001" summary="merge source dev">
+      <created>1702631868485</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702631868485</updated>
+    </task>
+    <task id="LOCAL-00002" summary="merge source dev">
+      <created>1702868649718</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702868649718</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update case" />
+    <MESSAGE value="merge source dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge source dev" />
   </component>
 </project>

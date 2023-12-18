@@ -123,4 +123,13 @@ public class CustomerService implements ICustomerService {
         }
     }
 
+    @Override
+    public Boolean updatePoint(Integer point, Integer customerId) {
+        try {
+            customerRepository.updatePoint(point,customerId);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
 }

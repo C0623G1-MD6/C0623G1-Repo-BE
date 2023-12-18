@@ -162,4 +162,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             , nativeQuery = true)
     Page<ICustomerDto> getAllCustomer(Pageable pageable, @Param("keyword") String keyword);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update customers c set c.point = c.point + :point where c.id = :customerId", nativeQuery = true)
+    void updatePoint(@Param("point") Integer point, @Param("customerId") Integer customerId);
+
 }
