@@ -124,7 +124,7 @@ public class CustomerController {
      * param :
      * return ResponseEntity and customer or null
      */
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<?> getAll(
             @RequestParam(name = "nameCustomer", defaultValue = "") String name,
             @RequestParam(name = "typeCustomer", defaultValue = "") String typeCustomer,
