@@ -73,12 +73,10 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Double
      */
-    @Query(value = "select sum(id.selling_quantity * p.price) as revenue\n" +
-            "from invoices as i \n" +
+    @Query(value = "select sum(id.selling_price*id.selling_quantity) as revenue\n" +
+            "from invoices as i\n" +
             "join invoice_details as id\n" +
             "on i.id=id.invoice_id\n" +
-            "join products as p\n" +
-            "on id.invoice_id=p.id\n" +
             "where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
     Double getTotalRevenueWeek();
 
@@ -88,12 +86,10 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Double
      */
-    @Query(value = "select sum(id.selling_quantity * p.price) as revenue\n" +
-            "from invoices as i \n" +
+    @Query(value = "select sum(id.selling_price*id.selling_quantity) as revenue\n" +
+            "from invoices as i\n" +
             "join invoice_details as id\n" +
             "on i.id=id.invoice_id\n" +
-            "join products as p\n" +
-            "on id.invoice_id=p.id\n" +
             "where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
     Double getTotalRevenueMonth();
 
@@ -103,12 +99,10 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * Date 12-12-2023
      * return Double
      */
-    @Query(value = "select sum(id.selling_quantity * p.price) as revenue\n" +
-            "from invoices as i \n" +
+    @Query(value = "select sum(id.selling_price*id.selling_quantity) as revenue\n" +
+            "from invoices as i\n" +
             "join invoice_details as id\n" +
             "on i.id=id.invoice_id\n" +
-            "join products as p\n" +
-            "on id.invoice_id=p.id\n" +
             "where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
     Double getTotalRevenueYear();
     /**
@@ -118,18 +112,20 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * return list getTopFiveSellerWeek
      */
     @Query(value =
-            "select e.id,e.name, sum(id.selling_quantity * p.price) as revenue, sum(id.selling_quantity) as quantity\n" +
-                    "from invoices as i\n" +
-                    "join invoice_details as id\n" +
-                    "on i.id=id.invoice_id\n" +
-                    "join products as p\n" +
-                    "on id.invoice_id=p.id\n" +
+            "select r.employee_id, e.name, sum(r.revenue) as revenue, sum(r.quantity) as quantity\n" +
+                    "from (\n" +
+                    "\tselect i.id,i.employee_id,  sum(id.selling_quantity * id.selling_price) as revenue, sum(id.selling_quantity) as quantity\n" +
+                    "\tfrom invoices as i\n" +
+                    "\tjoin invoice_details as id\n" +
+                    "\ton i.id=id.invoice_id\n" +
+                    "\twhere week(i.invoice_printing_date)=week(curdate())\n" +
+                    "\tgroup by i.id\n" +
+                    ") as r\n" +
                     "join employees as e\n" +
-                    "on i.employee_id = e.id\n" +
-                    "where week(i.invoice_printing_date)=week(curdate())\n" +
-                    "group by e.id\n" +
-                    "order by sum(id.selling_quantity * p.price) desc\n" +
-                    "limit 5;", nativeQuery = true)
+                    "on r.employee_id=e.id\n" +
+                    "group by r.employee_id\n" +
+                    "order by revenue desc\n" +
+                    "limit 5", nativeQuery = true)
     List<ITopFiveSeller> getTopFiveSellerWeek();
     /**
      * method getTopFiveSeller
@@ -138,18 +134,20 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * return list getTopFiveSellerMonth
      */
     @Query(value =
-            "select e.id,e.name, sum(id.selling_quantity * p.price) as revenue, sum(id.selling_quantity) as quantity\n" +
-                    "from invoices as i\n" +
-                    "join invoice_details as id\n" +
-                    "on i.id=id.invoice_id\n" +
-                    "join products as p\n" +
-                    "on id.invoice_id=p.id\n" +
+            "select r.employee_id, e.name, sum(r.revenue) as revenue, sum(r.quantity) as quantity\n" +
+                    "from (\n" +
+                    "\tselect i.id,i.employee_id,  sum(id.selling_quantity * id.selling_price) as revenue, sum(id.selling_quantity) as quantity\n" +
+                    "\tfrom invoices as i\n" +
+                    "\tjoin invoice_details as id\n" +
+                    "\ton i.id=id.invoice_id\n" +
+                    "\twhere month(i.invoice_printing_date)=month(curdate())\n" +
+                    "\tgroup by i.id\n" +
+                    ") as r\n" +
                     "join employees as e\n" +
-                    "on i.employee_id = e.id\n" +
-                    "where month(i.invoice_printing_date)=month(curdate())\n" +
-                    "group by e.id\n" +
-                    "order by sum(id.selling_quantity * p.price) desc\n" +
-                    "limit 5;", nativeQuery = true)
+                    "on r.employee_id=e.id\n" +
+                    "group by r.employee_id\n" +
+                    "order by revenue desc\n" +
+                    "limit 5", nativeQuery = true)
     List<ITopFiveSeller> getTopFiveSellerMonth();
 
     /**
@@ -159,18 +157,20 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * return list getTopFiveSellerYear
      */
     @Query(value =
-            "select e.id,e.name, sum(id.selling_quantity * p.price) as revenue, sum(id.selling_quantity) as quantity\n" +
-                    "from invoices as i\n" +
-                    "join invoice_details as id\n" +
-                    "on i.id=id.invoice_id\n" +
-                    "join products as p\n" +
-                    "on id.invoice_id=p.id\n" +
+            "select r.employee_id, e.name, sum(r.revenue) as revenue, sum(r.quantity) as quantity\n" +
+                    "from (\n" +
+                    "\tselect i.id,i.employee_id,  sum(id.selling_quantity * id.selling_price) as revenue, sum(id.selling_quantity) as quantity\n" +
+                    "\tfrom invoices as i\n" +
+                    "\tjoin invoice_details as id\n" +
+                    "\ton i.id=id.invoice_id\n" +
+                    "\twhere year(i.invoice_printing_date)=year(curdate())\n" +
+                    "\tgroup by i.id\n" +
+                    ") as r\n" +
                     "join employees as e\n" +
-                    "on i.employee_id = e.id\n" +
-                    "where year(i.invoice_printing_date)=year(curdate())\n" +
-                    "group by e.id\n" +
-                    "order by sum(id.selling_quantity * p.price) desc\n" +
-                    "limit 5;", nativeQuery = true)
+                    "on r.employee_id=e.id\n" +
+                    "group by r.employee_id\n" +
+                    "order by revenue desc\n" +
+                    "limit 5", nativeQuery = true)
     List<ITopFiveSeller> getTopFiveSellerYear();
 
     /**
@@ -180,16 +180,13 @@ public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
      * return list ITopNewOrder
      */
     @Query(value =
-            "select i.id, e.name,  id.selling_quantity as total, i.invoice_printing_date as date\n" +
-                    "from invoices as i \n" +
+            "select c.id,c.name, sum(id.selling_quantity* id.selling_price) as total, i.invoice_printing_date as date\n" +
+                    "from invoices as i\n" +
                     "join invoice_details as id\n" +
                     "on i.id=id.invoice_id\n" +
-                    "join products as p\n" +
-                    "on id.invoice_id=p.id\n" +
-                    "join employees as e\n" +
-                    "on i.employee_id = e.id\n" +
                     "join customers as c\n" +
                     "on i.customer_id=c.id\n" +
+                    "group by i.id\n" +
                     "order by i.invoice_printing_date desc\n" +
                     "limit 5;", nativeQuery = true)
     List<ITopNewOrder> getTopFiveNewOrder();
