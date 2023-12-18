@@ -77,7 +77,7 @@ public class NotificationController {
      */
     @PostMapping("add")
     public ResponseEntity<?> saveWarehouse(@Valid @RequestBody NotificationDTO notificationDTO,
-                                                BindingResult bindingResult) {
+                                           BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
         new NotificationDTO().validate(notificationDTO, bindingResult);
         if (bindingResult.hasErrors()) {
