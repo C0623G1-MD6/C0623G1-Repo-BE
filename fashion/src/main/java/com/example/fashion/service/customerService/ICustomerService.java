@@ -45,4 +45,5 @@ public interface ICustomerService {
 
 
     Page<ICustomerDto> getAllCustomer(Pageable pageable, String keyword);
+    Boolean updatePoint(Integer point, Integer customerId);
 }

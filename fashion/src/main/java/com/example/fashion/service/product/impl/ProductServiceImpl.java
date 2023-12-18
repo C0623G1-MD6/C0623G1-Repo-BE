@@ -1,17 +1,14 @@
 package com.example.fashion.service.product.impl;
 
-import com.example.fashion.dto.customerDto.ICustomerDto;
 import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
-import com.example.fashion.model.product.Product;
 import com.example.fashion.repository.product.IProductRepository;
 import com.example.fashion.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

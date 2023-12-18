@@ -39,7 +39,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findById(Integer id) {
-        return customerRepository.findById(id).get();
+        return customerRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -119,4 +119,13 @@ public class CustomerService implements ICustomerService {
         }
     }
 
+    @Override
+    public Boolean updatePoint(Integer point, Integer customerId) {
+        try {
+            customerRepository.updatePoint(point,customerId);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
 }

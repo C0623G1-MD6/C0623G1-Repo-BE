@@ -1,10 +1,12 @@
 package com.example.fashion.repository.product;
 
+import com.example.fashion.dto.product.ISizeDetailDto;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.model.product.SizeDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,4 +24,14 @@ public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer
     @Modifying
     @Query (nativeQuery = true, value = "insert into size_details (product_id, size_id) values (:productId, :sizeId)")
     void save(Integer productId, Integer sizeId);
+
+    @Query(value = "select sd.id, sd.quantity from products p join size_details sd on p.id = sd.product_id join sizes s on s.id = sd.size_id\n" +
+            "where p.product_code = :productCode and s.name = :sizeName", nativeQuery = true)
+    ISizeDetailDto getQuantityByProductCodeAndSizeName(@Param("productCode") String productCode,
+                                                       @Param("sizeName") String sizeName);
+
+    @Transactional
+    @Modifying
+    @Query (value = "update size_details sd set sd.quantity = sd.quantity - :sellingQuantity where sd.id = :sizeDetailId", nativeQuery = true)
+    void updateQuantity(@Param("sellingQuantity") Integer newQuantity,@Param("sizeDetailId") Integer sizeDetailId);
 }

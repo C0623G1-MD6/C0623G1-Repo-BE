@@ -22,7 +22,7 @@ public class InvoiceDetailService implements IInvoiceDetailService {
     @Override
     public Boolean saveInvoiceDetail(InvoiceDetailDto invoiceDetailDto) {
         try {
-            invoiceDetailRepository.saveInvoiceDetail(invoiceDetailDto.getSellingQuantity(), invoiceDetailDto.getInvoiceId(),
+            invoiceDetailRepository.saveInvoiceDetail(invoiceDetailDto.getSellingPrice(), invoiceDetailDto.getSellingQuantity(), invoiceDetailDto.getInvoiceId(),
                     invoiceDetailDto.getSizeDetailId());
             return true;
         } catch (Exception e){
