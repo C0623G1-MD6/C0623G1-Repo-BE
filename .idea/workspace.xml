@@ -46,6 +46,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Javafullstack_Codegym/C0623G1-Repo-BE/fashion&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;2f22a830e67022b27a6964048f4e57c9&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -80,7 +81,9 @@
       <updated>1702355420528</updated>
       <workItem from="1702355421938" duration="14000" />
       <workItem from="1702862691081" duration="1652000" />
-      <workItem from="1702868593425" duration="483000" />
+      <workItem from="1702868593425" duration="953000" />
+      <workItem from="1702869597270" duration="857000" />
+      <workItem from="1702870633008" duration="1422000" />
     </task>
     <task id="LOCAL-00001" summary="merge source dev">
       <created>1702631868485</created>
@@ -96,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702868649718</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="merge source dev">
+      <created>1702869197661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702869197661</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
