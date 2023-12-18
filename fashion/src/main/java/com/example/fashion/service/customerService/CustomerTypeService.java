@@ -22,7 +22,7 @@ public class CustomerTypeService implements ICustomerTypeService {
 
     @Override
     public CustomerType findById(Integer id) {
-        return customerTypeRepository.findById(id).get();
+        return customerTypeRepository.findById(id).orElse(null);
     }
 
     @Override
