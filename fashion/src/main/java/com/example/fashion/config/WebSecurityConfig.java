@@ -101,18 +101,17 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
                                 .requestMatchers("/api/login","/api/news/**","/api/category").permitAll()
-                                .requestMatchers("/api/login","/api/customer/**","/api/product/create").permitAll()
+                                .requestMatchers("/api/login","/api/product/create").permitAll()
                                 .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
-                                .requestMatchers("/api/login", "/api/customer/**", "/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
+                                .requestMatchers("/api/login", "/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
                                 .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
                                 .requestMatchers("/api/recoverPassword").permitAll()
-                                .requestMatchers("/api/sendMail").permitAll()
-                                .requestMatchers("/api/customerType").permitAll()
+                                .requestMatchers("/api/sendMail", "/api/customerType").permitAll()
 //                        Trang cần có quyền hợp lệ
 
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
-                                .requestMatchers("/api/notification/list/**").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
+                                .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
                                 .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/product/**").hasRole("WAREHOUSE")
@@ -120,6 +119,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
                                 .requestMatchers("/api/employee/**").authenticated()
                                 .requestMatchers("/api/changePassword").authenticated()
+                                .requestMatchers("/api/customer/**").authenticated()
                                 .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

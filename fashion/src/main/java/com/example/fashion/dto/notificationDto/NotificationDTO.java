@@ -17,6 +17,7 @@ public class NotificationDTO implements Validator {
     private String content;
     private Boolean deleted;
 
+
     public NotificationDTO() {
     }
 
@@ -74,7 +75,7 @@ public class NotificationDTO implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return true;
     }
 
     @Override
