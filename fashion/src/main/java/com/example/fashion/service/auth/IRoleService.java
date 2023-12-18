@@ -2,6 +2,7 @@ package com.example.fashion.service.auth;
 
 import com.example.fashion.model.auth.Role;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IRoleService {
@@ -13,4 +14,5 @@ public interface IRoleService {
      * @return An optional containing the role if found, or an empty optional if not found.
      */
     Optional<Role> findByName(String name);
+    List<Role> findRole();
 }

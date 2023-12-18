@@ -50,6 +50,7 @@ public class WebSecurityConfig {
      * @return The BCrypt password encoder.
      * @author: ThanhPV
      * @date: 12/12/2023
+     * @return The BCrypt password encoder.
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -74,6 +75,7 @@ public class WebSecurityConfig {
      * @return The DAO authentication provider.
      * @author: ThanhPV
      * @date: 12/12/2023
+     * @return The DAO authentication provider.
      */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -112,9 +114,10 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
                                 .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
-                                .requestMatchers("/api/product/**").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
                                 .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
+                                .requestMatchers("/api/product/**").authenticated()
                                 .requestMatchers("/api/employee/**").authenticated()
                                 .requestMatchers("/api/changePassword").authenticated()
                                 .requestMatchers("/api/customer/**").authenticated()
