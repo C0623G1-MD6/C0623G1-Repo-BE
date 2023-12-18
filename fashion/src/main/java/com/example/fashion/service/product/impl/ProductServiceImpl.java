@@ -11,16 +11,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductRepository iProductRepository;
     @Autowired
     private IProductRepository productRepository;
+
     /**
      * created at 12/12/2023
      * LoanTTV
      * This method is used to get all products with these input parameters
+     *
      * @param pageable
      * @param productName
      * @param minPrice
@@ -46,19 +50,21 @@ public class ProductServiceImpl implements IProductService {
     /**
      * Author: LyDTH
      * Date: 13/12/2023
+     *
      * @param pageable
      * @return: the page of products
      */
     @Override
-    public Page<IProductResponse> findAllProducts( Pageable pageable) {
+    public Page<IProductResponse> findAllProducts(Pageable pageable) {
 
-        return iProductRepository.findAllProducts( pageable);
+        return iProductRepository.findAllProducts(pageable);
 
     }
 
     /**
      * Author: LyDTH
      * Date: 13/12/2023
+     *
      * @param pageable
      * @return: the page of products having promotion greater than 0
      */
@@ -71,6 +77,7 @@ public class ProductServiceImpl implements IProductService {
     /**
      * Author: LyDTH
      * Date: 13/12/2023
+     *
      * @param pageable
      * @return: the page of products for men
      */
@@ -83,6 +90,7 @@ public class ProductServiceImpl implements IProductService {
     /**
      * Author: LyDTH
      * Date: 13/12/2023
+     *
      * @param pageable
      * @return: the page of products for women
      */
@@ -95,6 +103,7 @@ public class ProductServiceImpl implements IProductService {
     /**
      * Author: LyDTH
      * Date: 13/12/2023
+     *
      * @param categoryName
      * @param pageable
      * @return the page of products by category name
@@ -103,11 +112,12 @@ public class ProductServiceImpl implements IProductService {
     public Page<IProductResponse> findAllProductsByCategory(String categoryName, Pageable pageable) {
 
         return iProductRepository.findAllProductsByCategory(categoryName, pageable);
-        }
+    }
 
     /**
      * Author: LyDTH
      * Date: 13/12/2023
+     *
      * @param name
      * @param pageable
      * @return: the page of products by product name
@@ -116,6 +126,12 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Page<IProductResponse> findAllProductsByName(String name, Pageable pageable) {
 
-        return iProductRepository.findAllProductsByName(name,pageable);
+        return iProductRepository.findAllProductsByName(name, pageable);
+    }
+
+
+    @Override
+    public List<IProductResponse> getAllProducts() {
+        return productRepository.getAllProducts();
     }
 }

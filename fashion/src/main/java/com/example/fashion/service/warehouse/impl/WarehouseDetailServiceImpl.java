@@ -13,12 +13,14 @@ public class WarehouseDetailServiceImpl implements IWarehouseDetailService {
      * @method : Import warehouse detail
      * @author: LamTV
      * @date: 12/12/2023
-     * @param productId product code
-     * @param quantity quantity entered
-     * @param warehouseId id of warehouse entry
+     *
      */
     @Override
-    public void saveWarehouseDetail(Integer productId,Integer quantity,Integer warehouseId) {
-        warehouseDetailRepository.importWarehouseDetail(productId, quantity, warehouseId);
+    public void saveWarehouseDetail(Integer sizeDetailId,
+                                    Integer inputQuantity,
+                                    Double inputPrice,
+                                    Integer warehouseId) {
+
+        warehouseDetailRepository.importWarehouseDetail(sizeDetailId, inputQuantity, inputPrice, warehouseId);
     }
 }

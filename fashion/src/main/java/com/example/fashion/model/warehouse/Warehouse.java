@@ -12,11 +12,10 @@ public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(columnDefinition = "varchar(45)",nullable = false,unique = true,name = "receipt_code")
+    @Column(columnDefinition = "varchar(45)",nullable = false,name = "receipt_code")
     private String receiptCode;
     @Column(columnDefinition = "datetime",nullable = false,name = "receipt_date")
     private String receiptDate;
-
     public Warehouse() {
     }
 

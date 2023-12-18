@@ -1,5 +1,6 @@
 package com.example.fashion.model.product;
 
+import com.example.fashion.model.warehouse.WarehouseDetail;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,16 +12,13 @@ public class Size {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany(mappedBy = "size")
-    private List<SizeDetail> sizeDetails;
 
     public Size() {
     }
 
-    public Size(Integer id, String name, List<SizeDetail> sizeDetails) {
+    public Size(Integer id, String name) {
         this.id = id;
         this.name = name;
-        this.sizeDetails = sizeDetails;
     }
 
     public Integer getId() {
@@ -37,13 +35,5 @@ public class Size {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<SizeDetail> getSizeDetails() {
-        return sizeDetails;
-    }
-
-    public void setSizeDetails(List<SizeDetail> sizeDetails) {
-        this.sizeDetails = sizeDetails;
     }
 }
