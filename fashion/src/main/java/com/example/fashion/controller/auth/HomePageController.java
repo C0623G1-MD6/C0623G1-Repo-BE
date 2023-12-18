@@ -56,7 +56,6 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProducts(pageable);
-//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -77,9 +76,6 @@ public class HomePageController {
             @RequestParam(name = "sort", defaultValue = "ASC") String sort,
             @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
-//        if (option == null || option.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
         Sort sortable = null;
         if (sort.equals("ASC")) {
             sortable = Sort.by(option).ascending();
@@ -91,7 +87,6 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsHasPromotion(pageable);
-//                List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -126,7 +121,6 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsForMen(pageable);
-//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -161,7 +155,6 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsForWomen(pageable);
-//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -197,7 +190,6 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsByCategory(categoryName, pageable);
-//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -219,9 +211,6 @@ public class HomePageController {
                                                    @RequestParam(name = "productName") String productName,
                                                    @RequestParam(name = "page", defaultValue = "0", required = false) Integer page) {
 
-//        if (option == null || option.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
         Sort sortable = null;
         if (sort.equals("ASC")) {
             sortable = Sort.by(option).ascending();
@@ -233,7 +222,6 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsByName(productName, pageable);
-//        List<IProductResponse> products = new ArrayList<>();
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
