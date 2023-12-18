@@ -106,6 +106,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/home/**").permitAll()
                                 .requestMatchers("/api/recoverPassword").permitAll()
                                 .requestMatchers("/api/sendMail").permitAll()
+                                .requestMatchers("/api/customerType").permitAll()
 //                        Trang cần có quyền hợp lệ
 
                                 .requestMatchers("/api/test2").hasRole("MANAGER")
