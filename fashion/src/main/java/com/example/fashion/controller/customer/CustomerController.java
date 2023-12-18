@@ -58,14 +58,18 @@ public class CustomerController {
      * param
      * return ResponseEntity or null
      */
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createNewCustomer(@RequestBody CustomerDto customerDto, BindingResult bindingResult) {
         Customer customer = new Customer();
         Map<String, String> customerDtoMap = new HashMap<>();
         new CustomerDto().validate(customerDto, bindingResult);
         Customer customerCheckEmail = customerService.findCustomerByEmail(customerDto.getEmail());
         if (customerCheckEmail != null) {
-            customerDtoMap.put("email", "Email đã được đăng kí ");
+            customerDtoMap.put("email", "email đã được sử dụng ");
+        }
+        Customer customerCheckCode = customerService.findCustomerByCode(customerDto.getCustomerCode());
+        if (customerCheckCode != null) {
+            customerDtoMap.put("customerCode", "code đã được đăng kí ");
         }
         Customer customerCheckPhone = customerService.findCustomerByPhone(customerDto.getPhone());
         if (customerCheckPhone != null) {
@@ -77,7 +81,7 @@ public class CustomerController {
             }
         }
         if (customerDtoMap.size() != 0) {
-            return new ResponseEntity<>(customerDtoMap, HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(customerDtoMap, HttpStatus.CREATED);
         }
         CustomerType customerType = customerTypeService.findById(1);
         BeanUtils.copyProperties(customerDto, customer);
@@ -94,20 +98,34 @@ public class CustomerController {
      * param : id
      * return ResponseEntity or null
      */
-    @PutMapping("/edit/{id}")
+    @PatchMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<?> editCustomer(@PathVariable Integer id, @Valid @RequestBody CustomerDto customerDto, BindingResult bindingResult) {
+    public ResponseEntity<?> editCustomer(@Valid @RequestBody CustomerDto customerDto, @PathVariable Integer id, BindingResult bindingResult) {
         Customer customer = customerService.findById(id);
         if (customer == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Map<String, String> customerDtoMap = new HashMap<>();
         new CustomerDto().validate(customerDto, bindingResult);
+        if (!customer.getEmail().equals(customerDto.getEmail())) {
+            Customer customerCheckEmail = customerService.findCustomerByEmail(customerDto.getEmail());
+            if (customerCheckEmail != null) {
+                customerDtoMap.put("email", "email đã được đăng ki");
+            }
+        }
+        if (!customer.getPhone().equals(customerDto.getPhone())) {
+            Customer customerCheckPhone = customerService.findCustomerByPhone(customerDto.getPhone());
+            if (customerCheckPhone != null) {
+                customerDtoMap.put("phone", "Số điện thoại đã được đăng ki");
+            }
+        }
         if (bindingResult.hasErrors()) {
             for (FieldError err : bindingResult.getFieldErrors()) {
                 customerDtoMap.put(err.getField(), err.getDefaultMessage());
             }
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (customerDtoMap.size() != 0) {
+            return new ResponseEntity<>(customerDtoMap, HttpStatus.CREATED);
         }
         CustomerType customerType = customerTypeService.findById(customerDto.getCustomerTypeId());
         BeanUtils.copyProperties(customerDto, customer);
