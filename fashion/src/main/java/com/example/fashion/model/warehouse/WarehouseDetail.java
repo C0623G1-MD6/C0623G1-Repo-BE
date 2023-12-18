@@ -19,7 +19,7 @@ public class WarehouseDetail {
     @JoinColumn(name = "size_detail_id",referencedColumnName = "id")
     private SizeDetail sizeDetail;
     @ManyToOne
-    @JoinColumn(name = "warehouse_id",referencedColumnName = "id")
+    @JoinColumn(name = "warehouse_receipt_id",referencedColumnName = "id")
     private Warehouse warehouse;
     @Column(name="input_quantity",nullable = false)
     private Integer inputQuantity;
