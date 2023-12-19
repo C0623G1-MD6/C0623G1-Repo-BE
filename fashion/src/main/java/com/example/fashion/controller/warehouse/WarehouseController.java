@@ -3,6 +3,7 @@ package com.example.fashion.controller.warehouse;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.dto.warehouse.WarehouseReceiptDetailDto;
+import com.example.fashion.model.product.SizeDetail;
 import com.example.fashion.model.warehouse.Warehouse;
 import com.example.fashion.service.product.IProductService;
 import com.example.fashion.service.product.ISizeDetailService;
@@ -18,6 +19,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +53,11 @@ public class WarehouseController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-
+    /**
+     * created at 16/12/2023
+     * LamTV
+     * add warehouse
+     */
     @PostMapping("/inputWarehouseDetail")
     public ResponseEntity<Object> saveWarehouse(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
                                                  BindingResult bindingResult) {
@@ -64,16 +70,17 @@ public class WarehouseController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Warehouse warehouse = new Warehouse();
-//        BeanUtils.copyProperties(warehouseReceiptDetailDto, warehouse);
         warehouse.setReceiptCode(CodeGenerator.generateCode());
-        warehouse.setReceiptDate(String.valueOf(LocalDate.now()));
+        warehouse.setReceiptDate(String.valueOf(LocalDateTime.now()));
+        SizeDetail sizeDetail = sizeDetailService.findByProductIdAndSizeId(warehouseReceiptDetailDto.getProductId(), warehouseReceiptDetailDto.getSizeId());
+        warehouseReceiptDetailDto.setSizeDetailId(sizeDetail.getId());
         warehouseService.saveWarehouse(warehouse);
         warehouseDetailService.saveWarehouseDetails(warehouseReceiptDetailDto.getSizeDetailId(),
                 warehouseReceiptDetailDto.getInputQuantity(),
                 warehouseReceiptDetailDto.getInputPrice(),
                 warehouse.getId());
         sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),
-                warehouseReceiptDetailDto.getId());
+                warehouseReceiptDetailDto.getSizeDetailId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 //    @PostMapping("/inputWarehouseDetail")
@@ -111,9 +118,9 @@ public class WarehouseController {
         return new ResponseEntity<>(code, HttpStatus.OK);
     }
 
-    @GetMapping("/sizes/{productId}")
-    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable Integer productId){
-        List<ISizeDto> iSizeDtoList = sizeService.getAllSizes(productId);
+    @GetMapping("/sizes/{productCode}")
+    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable String productCode){
+        List<ISizeDto> iSizeDtoList = sizeService.getListSizeByProductCode(productCode);
         if (iSizeDtoList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

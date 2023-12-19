@@ -15,7 +15,7 @@ public interface IWarehouseDetailRepository extends JpaRepository<WarehouseDetai
      */
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO warehouse_receipt_details (size_detail_id, input_quantity, input_price, warehouse_id ) " +
+    @Query(value = "INSERT INTO warehouse_receipt_details (size_detail_id, input_quantity, input_price, warehouse_receipt_id ) " +
             "VALUES (:sizeDetailId, :inputQuantity, :inputPrice , :warehouseId)", nativeQuery = true)
     void importWarehouseDetail(@Param("sizeDetailId") Integer sizeDetailId,
                                @Param("inputQuantity") Integer inputQuantity,
