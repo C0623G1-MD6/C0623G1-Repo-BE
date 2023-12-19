@@ -1,15 +1,14 @@
 package com.example.fashion.repository.notificationRepository;
 
 import com.example.fashion.model.auth.Role;
-import com.example.fashion.model.notification.NoticationDetails;
 import com.example.fashion.model.notification.Notification;
+import com.example.fashion.model.notification.ViewNotification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,4 +81,7 @@ public interface INotificationRepository extends JpaRepository<Notification, Int
 
     @Query(value = " select * from roles ", nativeQuery = true)
     List<Role> findRole();
+
+    @Query(value = "SELECT n.* FROM notification n JOIN user_roles ur ON ur.role_id = n.role_id JOIN accounts a ON a.id = ur.user_id WHERE a.id = :accountId",nativeQuery = true)
+    List<Notification> getNotificationByAccountId(@Param("accountId") Long accountId);
 }
