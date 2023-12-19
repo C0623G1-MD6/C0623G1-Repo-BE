@@ -3,6 +3,7 @@ package com.example.fashion.controller.warehouse;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.dto.warehouse.WarehouseReceiptDetailDto;
+import com.example.fashion.model.product.Product;
 import com.example.fashion.model.product.SizeDetail;
 import com.example.fashion.model.warehouse.Warehouse;
 import com.example.fashion.service.product.IProductService;
@@ -26,7 +27,7 @@ import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/warehouses/")
+@RequestMapping("/api/warehouses")
 public class WarehouseController {
     @Autowired
     private IWarehouseService warehouseService;
@@ -118,12 +119,22 @@ public class WarehouseController {
         return new ResponseEntity<>(code, HttpStatus.OK);
     }
 
-    @GetMapping("/sizes/{productCode}")
-    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable String productCode){
-        List<ISizeDto> iSizeDtoList = sizeService.getListSizeByProductCode(productCode);
+    @GetMapping("/sizes/{productName}")
+    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable String productName){
+        Product product = productService.findByProductName(productName);
+        List<ISizeDto> iSizeDtoList = sizeService.getAllSizes(product.getId());
         if (iSizeDtoList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(iSizeDtoList,HttpStatus.OK);
+    }
+
+    @GetMapping("/product/{productName}")
+    public ResponseEntity<Product> getProduct(@PathVariable String productName){
+        Product product = productService.findByProductName(productName);
+        if (product== null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(product,HttpStatus.OK);
     }
 }
