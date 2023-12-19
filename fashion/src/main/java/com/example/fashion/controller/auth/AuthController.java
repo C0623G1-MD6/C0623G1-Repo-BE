@@ -148,7 +148,7 @@ public class AuthController {
      * @date: 12/12/2023
      */
     @PostMapping("/recoverPassword")
-    public ResponseEntity<?> recoverPassword(@RequestParam String emailRecover ) {
+    public ResponseEntity<String> recoverPassword(@RequestParam String emailRecover ) {
         Account account = accountService.getAccountByEmail(emailRecover);
         if (account == null) {
             return new ResponseEntity<>("Email này không liên kết với tài khoản nào !",HttpStatus.BAD_REQUEST);

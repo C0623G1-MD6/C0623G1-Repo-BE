@@ -75,6 +75,7 @@ public class WebSecurityConfig {
      * @return The DAO authentication provider.
      * @author: ThanhPV
      * @date: 12/12/2023
+     * @return The DAO authentication provider.
      */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -99,32 +100,27 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
-//                                .requestMatchers("/api/login","/api/news/**","/api/category").permitAll()
-//                                .requestMatchers("/api/login","/api/product/create").permitAll()
-//                                .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
-//                                .requestMatchers("/api/login", "/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
-//                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
-//                                .requestMatchers("/api/home/**").permitAll()
-//                                .requestMatchers("/api/recoverPassword").permitAll()
-//                                .requestMatchers("/api/sendMail", "/api/customerType").permitAll()
-                                                        .requestMatchers("/**").permitAll()
-
+                                .requestMatchers("/api/news/**","/api/category").permitAll()
+                                .requestMatchers("/api/login","/api/product/create").permitAll()
+                                .requestMatchers("/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
+                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/home/**").permitAll()
+                                .requestMatchers("/api/recoverPassword").permitAll()
+                                .requestMatchers("/api/sendMail", "/api/customerType").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-//                                .requestMatchers("/api/test2").hasRole("MANAGER")
-//                                .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
-//                                .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
-//                                .requestMatchers("/api/sales-report/**").hasRole("MANAGER")
-//                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
-//                                .requestMatchers("/api/product/**").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
-//                                .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
-//                                .requestMatchers("/api/product/**").authenticated()
-//                                .requestMatchers("/api/changePassword").authenticated()
-//                                .requestMatchers("/api/customer/**").authenticated()
-//                                .anyRequest().authenticated()
+                                .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
+                                .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
+                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
+                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
+                                .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
+                                .requestMatchers("/api/product/**").authenticated()
+                                .requestMatchers("/api/employee/**").authenticated()
+                                .requestMatchers("/api/changePassword").authenticated()
+                                .requestMatchers("/api/customer/**").authenticated()
+                                .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
