@@ -1,7 +1,5 @@
 package com.example.fashion.model.product;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
 
 @Entity
 @Table (name = "size_details")

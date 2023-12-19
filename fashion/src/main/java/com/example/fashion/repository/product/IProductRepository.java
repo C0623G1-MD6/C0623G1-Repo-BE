@@ -1,6 +1,4 @@
 package com.example.fashion.repository.product;
-
-import com.example.fashion.dto.customerDto.ICustomerDto;
 import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.product.IProductDTO;
@@ -12,7 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

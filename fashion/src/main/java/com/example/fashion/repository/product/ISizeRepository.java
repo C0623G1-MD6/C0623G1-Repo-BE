@@ -1,6 +1,4 @@
 package com.example.fashion.repository.product;
-
-
 import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.model.product.Size;
 import org.springframework.data.jpa.repository.JpaRepository;
