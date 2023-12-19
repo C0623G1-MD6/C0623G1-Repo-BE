@@ -5,70 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e15b39dd-d1d9-466e-874d-6bc02a2c7d9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/news/NewsCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/news/NewsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/newsdto/INewsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/newsdto/NewsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ISizeDetailDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ISizeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/news/News.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/news/NewsCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/news/INewsCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/news/INewsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IPromotionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/INewsCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/INewsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/NewsCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/news/NewsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IPromotionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/PromotionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/utils/JavaMailUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/utils/PasswordGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/resources/mail-template/recover-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/main/resources/mail-template/template-mail-recover.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/HungHLP_controller/NewsRestController_create.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/HungHLP_controller/NewsRestController_findAll.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/LoanTTV_controller/ProductRestController_createProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/LoanTTV_controller/ProductRestController_getProductList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/fashion.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/fashion.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e1e14c15cd5714f6cf657a224a802828bc45e07" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e9039b0611df3f3555c4931b06093c08f0874a1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/36665f380051ec40527977540e28a79a4a3fe297" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39b4525e4885977279965c9ad032a0543d1865d4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46e5d63a5d694ba6fe38ac94a2f701f12fa5606e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b243b98ce16799c10be49ccc5fdd73ecaabd771" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/5623a7a2b2222cc455cedec12910a140571dda4b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/e/5ee9b90dcfbce3fd2b28a516a2ade898f2e67903" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/842f5fc939003cd8570591982a78336fd97c1ddf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/1/91477da33fea5f28a5a92682d5b3d82f60e4f219" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cb59ab28769b62e32c034803869b22615a4f606d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8d10bd45986abb5ad54d9d949d3315c818e1a14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/e/0e1e14c15cd5714f6cf657a224a802828bc45e07" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/e/0e9039b0611df3f3555c4931b06093c08f0874a1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/6/36665f380051ec40527977540e28a79a4a3fe297" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/9/39b4525e4885977279965c9ad032a0543d1865d4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/6/46e5d63a5d694ba6fe38ac94a2f701f12fa5606e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/b/4b243b98ce16799c10be49ccc5fdd73ecaabd771" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/6/5623a7a2b2222cc455cedec12910a140571dda4b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/e/5ee9b90dcfbce3fd2b28a516a2ade898f2e67903" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/4/842f5fc939003cd8570591982a78336fd97c1ddf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/1/91477da33fea5f28a5a92682d5b3d82f60e4f219" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/b/cb59ab28769b62e32c034803869b22615a4f606d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/8/e8d10bd45986abb5ad54d9d949d3315c818e1a14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/C0623G1-Repo-BE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/C0623G1-Repo-BE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/fashion.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/fashion.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/invoice/InvoiceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/invoice/InvoiceDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/IProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/IProductDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ProductDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/ProductCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Promotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/Size.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/SizeDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/product/SizeDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/auth/IAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/auth/IAccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/customerRepository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/customerRepository/ICustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductCategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductCategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/auth/IAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/auth/IAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/ICustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/impl/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/impl/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/IInvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IProductCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IProductCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductCategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeDetailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/nhatnk_controller/InvoiceController_getAllCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/nhatnk_controller/InvoiceController_getAllCustomer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,12 +76,14 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Javafullstack_Codegym/C0623G1-Repo-BE/fashion&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;2f22a830e67022b27a6964048f4e57c9&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -162,7 +131,9 @@
       <updated>1702355420528</updated>
       <workItem from="1702355421938" duration="14000" />
       <workItem from="1702689310772" duration="5465000" />
-      <workItem from="1702863123466" duration="1434000" />
+      <workItem from="1702863123466" duration="3172000" />
+      <workItem from="1702872866376" duration="1844000" />
+      <workItem from="1702950436310" duration="2515000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/modules.xml">
       <created>1702635320390</created>
@@ -171,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702635320390</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="LyDTH_up_dev_ly">
+      <created>1702866337416</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702866337416</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +168,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/modules.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/modules.xml" />
+    <MESSAGE value="LyDTH_up_dev_ly" />
+    <option name="LAST_COMMIT_MESSAGE" value="LyDTH_up_dev_ly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
