@@ -80,14 +80,9 @@ public class NotificationDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        NotificationDTO notificationDTO = (NotificationDTO) target;
 
     }
-
-//    @Override
-//    public void validate(Object target, Errors errors) {
-//        NotificationDTO notificationDTO = (NotificationDTO) target;
-//
-//    }
 
 
 }
