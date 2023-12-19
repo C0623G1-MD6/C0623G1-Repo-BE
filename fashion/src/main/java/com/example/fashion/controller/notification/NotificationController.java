@@ -84,7 +84,7 @@ public class NotificationController {
     @PostMapping("add")
     public ResponseEntity<?> saveNotification(@Valid @RequestBody NotificationDTO notificationDTO,
                                               BindingResult bindingResult
-                                              ,@RequestParam("roleId") Long roleId
+//                                              ,@RequestParam("roleId") Long roleId
     ) {
         Map<String, String> errors = new HashMap<>();
         new NotificationDTO().validate(notificationDTO, bindingResult);
@@ -95,12 +95,12 @@ public class NotificationController {
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
         Notification notification = new Notification();
-//        notification.setNoticePostingDate(notificationDTO.getNoticePostingDate());
+        notification.setNoticePostingDate(notificationDTO.getNoticePostingDate());
         notification.setContent(notificationDTO.getContent());
         notification.setTitle(notificationDTO.getTitle());
-        notification.setDeleted(false);
+        notification.setDeleted(notificationDTO.getDeleted());
         iNotificationService.createNotification(notification);
-        iNotificationService.addDeatailNotification(roleId);
+//        iNotificationService.addDeatailNotification(roleId);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
