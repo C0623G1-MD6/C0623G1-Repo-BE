@@ -229,7 +229,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @return Exception or null If the query is incorrect
      * @see IProductInvoiceDto
      */
-    @Query(value = "select p.product_code, p.name, p.price, pr.percent from products p \n" +
+    @Query(value = "select p.id, p.product_code, p.name, p.price, pr.percent from products p \n" +
             "join promotions pr on p.promotion_id = pr.id\n" +
             "where p.product_code = :productCode",nativeQuery = true)
     IProductInvoiceDto getProductByProductCode(@Param("productCode") String productCode);

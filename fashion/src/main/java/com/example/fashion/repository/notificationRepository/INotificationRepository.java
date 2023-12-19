@@ -77,8 +77,8 @@ public interface INotificationRepository extends JpaRepository<Notification, Int
 
     @Transactional
     @Modifying
-    @Query(value = " INSERT INTO notication_details (notification_id,roles_id) VALUES ((SELECT MAX(id) FROM notification),:roleId) ", nativeQuery = true)
-    void createNotificationDetail(Long roleId);
+    @Query(value = " INSERT INTO notication_details (notification_id, roles_id) VALUES ((SELECT MAX(id) FROM notification), :#{#roleId}) ", nativeQuery = true)
+    void createNotificationDetail(@Param("roleId") Long roleId);
 
     @Query(value = " select * from roles ", nativeQuery = true)
     List<Role> findRole();

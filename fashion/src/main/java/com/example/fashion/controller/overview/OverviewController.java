@@ -29,7 +29,7 @@ public class OverviewController {
      * @param time
      * return Integer
      */
-    @GetMapping("/total_customer/{time}")
+    @GetMapping("/total_product_sold/{time}")
     public ResponseEntity<Integer> getTotalCustomer(@PathVariable String time) {
         Integer totalCustomer = service.getTotalCustomer(time);
         return new ResponseEntity<>(totalCustomer, HttpStatus.OK);
