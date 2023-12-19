@@ -4,6 +4,7 @@ import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
+import com.example.fashion.model.product.Product;
 import com.example.fashion.repository.product.IProductRepository;
 import com.example.fashion.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -175,6 +176,11 @@ public class ProductServiceImpl implements IProductService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public Product findByProductName(String productName) {
+        return productRepository.findByProductName(productName);
     }
 
 

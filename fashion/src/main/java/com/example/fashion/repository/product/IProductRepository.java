@@ -253,4 +253,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             "join promotions pr on p.promotion_id = pr.id\n" +
             "where p.product_code = :productCode",nativeQuery = true)
     IProductInvoiceDto getProductByProductCode(@Param("productCode") String productCode);
+
+    @Query(value = "select * from products p\n" +
+            "            where p.name= :productName",nativeQuery = true)
+    Product findByProductName(@Param("productName") String productName);
 }

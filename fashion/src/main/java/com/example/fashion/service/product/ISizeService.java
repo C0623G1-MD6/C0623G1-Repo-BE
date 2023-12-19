@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ISizeService {
     List<ISizeDto> getListSizeByProductCode(String productCode);
     List<Size> getAllSize();
-    List<ISizeDto> getAllSizes(Integer id);
+    List<ISizeDto> getAllSizes(Integer productId);
 
 //    Optional<Size> findById(Integer id);
 }

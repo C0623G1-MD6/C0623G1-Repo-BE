@@ -88,4 +88,5 @@ public interface IProductService {
 
     List<IProductInvoiceDto> getListProduct(String keyword);
     IProductInvoiceDto getProductByProductCode(String productCode);
+    Product findByProductName(String productName);
 }
