@@ -12,31 +12,48 @@ import java.util.List;
 public interface IOverviewRepository extends JpaRepository<Invoice, Integer> {
 
     /**
-     * method getTotalCustomerWeek
+     * method getTotalProductsSoldWeek
      * Create TruongNQ
      * Date 12-12-2023
      * return list Integer
      */
-    @Query(value = "select distinct i.customer_id from invoices as i where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
-    List<Integer> getTotalCustomerWeek();
-
+    @Query(value = "select sum(id.selling_quantity)\n" +
+            "from invoices as i\n" +
+            "join invoice_details as id\n" +
+            "on i.id=id.invoice_id\n" +
+            "where week(i.invoice_printing_date)=week(curdate());", nativeQuery = true)
+    Integer getTotalProductsSoldWeek();
     /**
-     * method getTotalCustomerMonth
-     * Create TruongNQ
-     * Date 12-12-2023
-     * return list Interger
-     */
-    @Query(value = "select distinct i.customer_id from invoices as i where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
-    List<Integer> getTotalCustomerMonth();
-
-    /**
-     * method getTotalCustomerYear
+     * method getTotalProductsSoldWeek
      * Create TruongNQ
      * Date 12-12-2023
      * return list Integer
      */
-    @Query(value = "select distinct i.customer_id from invoices as i where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
-    List<Integer> getTotalCustomerYear();
+    /**
+     * method getTotalProductsSoldMonth
+     * Create TruongNQ
+     * Date 12-12-2023
+     * return list Integer
+     */
+    @Query(value = "select sum(id.selling_quantity)\n" +
+            "from invoices as i\n" +
+            "join invoice_details as id\n" +
+            "on i.id=id.invoice_id\n" +
+            "where month(i.invoice_printing_date)=month(curdate());", nativeQuery = true)
+    Integer getTotalProductsSoldMonth();
+
+    /**
+     * method getTotalProductsSoldYear
+     * Create TruongNQ
+     * Date 12-12-2023
+     * return list Integer
+     */
+    @Query(value = "select sum(id.selling_quantity)\n" +
+            "from invoices as i\n" +
+            "join invoice_details as id\n" +
+            "on i.id=id.invoice_id\n" +
+            "where year(i.invoice_printing_date)=year(curdate());", nativeQuery = true)
+    Integer getTotalProductsSoldYear();
 
     /**
      * method getTotalOrderWeek
