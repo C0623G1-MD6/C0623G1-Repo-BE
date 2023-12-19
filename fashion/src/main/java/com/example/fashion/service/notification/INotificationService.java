@@ -1,5 +1,6 @@
 package com.example.fashion.service.notification;
 
+import com.example.fashion.dto.notificationDto.NotificationDTO;
 import com.example.fashion.model.notification.Notification;
 import com.example.fashion.model.notification.ViewNotification;
 import org.springframework.data.domain.Page;
@@ -22,4 +23,6 @@ public interface INotificationService {
 
     void addDeatailNotification( Long roleId);
     List<Notification> getNotificationByAccountId(Long accountId);
+    void createNotification(NotificationDTO notificationDTO);
+    List<Notification> getNotificationNotViewByAccountId(Long accountId);
 }

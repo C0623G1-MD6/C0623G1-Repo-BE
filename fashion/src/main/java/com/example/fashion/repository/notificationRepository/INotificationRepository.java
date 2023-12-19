@@ -84,4 +84,12 @@ public interface INotificationRepository extends JpaRepository<Notification, Int
 
     @Query(value = "SELECT n.* FROM notification n JOIN user_roles ur ON ur.role_id = n.role_id JOIN accounts a ON a.id = ur.user_id WHERE a.id = :accountId",nativeQuery = true)
     List<Notification> getNotificationByAccountId(@Param("accountId") Long accountId);
+
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO `notification` (`content`, `role_id`, `notice_posting_date`, `title`) VALUES (:content,:roleId,:noticePostingDate,:title)",nativeQuery = true)
+    void createNotification(@Param("content") String content,@Param("roleId") Long roleId,@Param("noticePostingDate") String noticePostingDate,@Param("title") String title);
+
+    @Query(value = "SELECT n.* FROM notification n JOIN user_roles ur ON ur.role_id = n.role_id JOIN accounts a ON a.id = ur.user_id LEFT JOIN view_notification vn ON vn.notification_id = n.id AND vn.account_id = a.id WHERE a.id = :accountId AND vn.view_notification_id IS NULL;", nativeQuery = true)
+    List<Notification> getNotificationNotViewByAccountId(Long accountId);
 }

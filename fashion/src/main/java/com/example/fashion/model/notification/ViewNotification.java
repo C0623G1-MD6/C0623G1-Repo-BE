@@ -17,7 +17,7 @@ public class ViewNotification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer viewNotificationId;
-    @OneToOne
+    @ManyToOne
     private Notification notification;
     @JsonIgnore
     @ManyToOne

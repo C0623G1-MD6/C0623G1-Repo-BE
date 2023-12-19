@@ -15,4 +15,9 @@ public class ViewNotificationService implements IViewNotificationService{
     public List<ViewNotification> getNotificationIsView(Long accountId) {
         return viewNotificationRepository.getNotificationIsView(accountId);
     }
+
+    @Override
+    public void saveViewNotification(Long accountId, Integer id) {
+        viewNotificationRepository.saveViewNotification(accountId,id);
+    }
 }

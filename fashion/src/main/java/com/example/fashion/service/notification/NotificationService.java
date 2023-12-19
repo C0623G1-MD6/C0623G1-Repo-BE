@@ -1,5 +1,6 @@
 package com.example.fashion.service.notification;
 
+import com.example.fashion.dto.notificationDto.NotificationDTO;
 import com.example.fashion.model.notification.Notification;
 import com.example.fashion.model.notification.ViewNotification;
 import com.example.fashion.repository.notificationRepository.INotificationRepository;
@@ -55,5 +56,17 @@ public class NotificationService implements INotificationService{
     @Override
     public List<Notification> getNotificationByAccountId(Long accountId) {
         return iNotificationRepository.getNotificationByAccountId(accountId);
+    }
+
+    @Override
+    public void createNotification(NotificationDTO notificationDTO) {
+        for (Long roleId: notificationDTO.getRole()) {
+            iNotificationRepository.createNotification(notificationDTO.getContent(),roleId,notificationDTO.getNoticePostingDate().toString(),notificationDTO.getTitle());
+        }
+    }
+
+    @Override
+    public List<Notification> getNotificationNotViewByAccountId(Long accountId) {
+        return iNotificationRepository.getNotificationNotViewByAccountId(accountId);
     }
 }

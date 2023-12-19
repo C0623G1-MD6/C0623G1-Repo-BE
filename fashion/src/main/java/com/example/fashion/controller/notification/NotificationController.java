@@ -1,16 +1,30 @@
 package com.example.fashion.controller.notification;
 
 
+import com.example.fashion.dto.notificationDto.NotificationDTO;
+import com.example.fashion.model.auth.MyUserDetail;
+import com.example.fashion.model.auth.Role;
 import com.example.fashion.model.notification.Notification;
 import com.example.fashion.model.notification.ViewNotification;
+import com.example.fashion.repository.auth.IRoleRepository;
+import com.example.fashion.service.auth.IRoleService;
+import com.example.fashion.service.impl.MyUserDetailService;
 import com.example.fashion.service.notification.INotificationService;
 import com.example.fashion.service.notification.IViewNotificationService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -20,19 +34,24 @@ public class NotificationController {
     private INotificationService iNotificationService;
     @Autowired
     private IViewNotificationService viewNotificationService;
+    @Autowired
+    private MyUserDetailService myUserDetailService;
+    @Autowired
+    private IRoleService roleService;
 
     @GetMapping("list")
     public ResponseEntity<?> getListNotificationById(@RequestParam Long id) {
         List<Notification> notificationList = iNotificationService.getNotificationByAccountId(id);
-        return new ResponseEntity<>(notificationList,HttpStatus.OK);
+        return new ResponseEntity<>(notificationList, HttpStatus.OK);
     }
 
     @GetMapping("view")
     public ResponseEntity<?> getListNotificationIsView(@RequestParam Long id) {
         List<ViewNotification> notificationList = viewNotificationService.getNotificationIsView(id);
-        return new ResponseEntity<>(notificationList,HttpStatus.OK);
+        return new ResponseEntity<>(notificationList, HttpStatus.OK);
     }
-//    @Autowired
+
+    //    @Autowired
 //    private IRoleService iRoleService;
 //
 //    /**
@@ -85,29 +104,22 @@ public class NotificationController {
 //     * @param notificationDTO
 //     * @return http status
 //     */
-//    @PostMapping("add")
-//    public ResponseEntity<?> saveNotification(@Valid @RequestBody NotificationDTO notificationDTO,
-//                                              BindingResult bindingResult
-////                                              ,@RequestParam("roleId") Long roleId
-//    ) {
-//        Map<String, String> errors = new HashMap<>();
-//        new NotificationDTO().validate(notificationDTO, bindingResult);
-//        if (bindingResult.hasErrors()) {
-//            for (FieldError err : bindingResult.getFieldErrors()) {
-//                errors.put(err.getField(), err.getDefaultMessage());
-//            }
-//            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-//        }
-//        Notification notification = new Notification();
-//        notification.setNoticePostingDate(notificationDTO.getNoticePostingDate());
-//        notification.setContent(notificationDTO.getContent());
-//        notification.setTitle(notificationDTO.getTitle());
-//        notification.setDeleted(notificationDTO.getDeleted());
-//        iNotificationService.createNotification(notification);
-////        iNotificationService.addDeatailNotification(roleId);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
-//
+    @PostMapping("add")
+    public ResponseEntity<?> saveNotification(@Valid @RequestBody NotificationDTO notificationDTO,
+                                              BindingResult bindingResult) {
+        Map<String, String> errors = new HashMap<>();
+        new NotificationDTO().validate(notificationDTO, bindingResult);
+        if (bindingResult.hasErrors()) {
+            for (FieldError err : bindingResult.getFieldErrors()) {
+                errors.put(err.getField(), err.getDefaultMessage());
+            }
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+        iNotificationService.createNotification(notificationDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    //
 //    /**
 //     * TriVN
 //     * thay doi trang thai notification
@@ -115,39 +127,42 @@ public class NotificationController {
 //     * @param id
 //     * @return
 //     */
-//    @PatchMapping("list/read/{id}")
-//    public ResponseEntity<?> readNotification(@PathVariable Integer id) {
-//        Notification notification = iNotificationService.findById(id);
-//        if (notification == null) {
-//            return new ResponseEntity<>("Khong tim thay id", HttpStatus.NOT_FOUND);
-//        }
-//        iNotificationService.readNotifi(id);
-//        return new ResponseEntity<>("Da doc thanh cong", HttpStatus.OK);
-//    }
-//
-//    /**
-//     * TriVN
-//     * đếm số lượng chưa đọc
-//     *
-//     * @return
-//     */
-//    @GetMapping("list/count")
-//    public ResponseEntity<Integer> getCountOfDeletedNotifications() {
-//        int count = iNotificationService.countNotification();
-//        return ResponseEntity.ok(count);
-//    }
-//
-//    /**
-//     * TriVN
-//     * hien thi danh sach role
-//     * @return
-//     */
-//    @GetMapping("add/roles")
-//    public ResponseEntity<?> getRole() {
-//        List<Role> roleList = iRoleService.findRole();
-//        if (roleList.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
-//        return new ResponseEntity<>(roleList, HttpStatus.OK);
-//    }
+    @PatchMapping("/read/{id}")
+    public ResponseEntity<?> readNotification(Principal principal, @PathVariable Integer id) {
+        try {
+            MyUserDetail myUserDetail = (MyUserDetail) myUserDetailService.loadUserByUsername(principal.getName());
+            viewNotificationService.saveViewNotification(myUserDetail.getAccount().getId(), id);
+            return new ResponseEntity<>(myUserDetail, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    /**
+     * TriVN
+     * đếm số lượng chưa đọc
+     *
+     * @return
+     */
+    @GetMapping("list/count")
+    public ResponseEntity<?> getCountOfDeletedNotifications(Principal principal) {
+        MyUserDetail myUserDetail = (MyUserDetail) myUserDetailService.loadUserByUsername(principal.getName());
+        List<Notification> listNotificationNotView = iNotificationService.getNotificationNotViewByAccountId(myUserDetail.getAccount().getId());
+        return ResponseEntity.ok(listNotificationNotView);
+    }
+
+    /**
+     * TriVN
+     * hien thi danh sach role
+     * @return
+     */
+    @GetMapping("add/roles")
+    public ResponseEntity<?> getRole() {
+        List<Role> roleList = roleService.findRole();
+        if (roleList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(roleList, HttpStatus.OK);
+    }
 }
