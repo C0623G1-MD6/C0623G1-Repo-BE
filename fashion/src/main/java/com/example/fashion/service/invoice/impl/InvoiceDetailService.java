@@ -29,5 +29,4 @@ public class InvoiceDetailService implements IInvoiceDetailService {
             return false;
         }
     }
-
 }
