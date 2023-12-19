@@ -1,4 +1,5 @@
 package com.example.fashion.controller.news;
+
 import com.example.fashion.dto.newsdto.INewsDto;
 import com.example.fashion.dto.newsdto.NewsDto;
 import com.example.fashion.model.news.News;
@@ -7,6 +8,9 @@ import com.example.fashion.service.news.INewsCategoryService;
 import com.example.fashion.service.news.INewsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +33,15 @@ public class NewsController {
      * Goal show News List
      * return News List
      */
-    @GetMapping("/{newsCategoryId}/{roleId}")
-    public ResponseEntity<List<INewsDto>> findAll(@PathVariable() Integer newsCategoryId,
-                                                  @PathVariable() Integer roleId) {
+    @GetMapping("/{newsCategoryId}/{roleId}/{page}")
+    public ResponseEntity<Page<INewsDto>> findAll(@PathVariable(name = "newsCategoryId") Integer newsCategoryId,
+                                                  @PathVariable(name = "roleId" ) Integer roleId,
+                                                  @PathVariable(name = "page", required = false) Integer page) {
         if (newsCategoryService.findById(newsCategoryId).isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        List<INewsDto> newsList = newsService.findAllNews(newsCategoryId, roleId);
+        Pageable pageable = PageRequest.of(page, 8);
+        Page<INewsDto> newsList = newsService.findAllNews(pageable, newsCategoryId, roleId);
         if (newsList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

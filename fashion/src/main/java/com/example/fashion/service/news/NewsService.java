@@ -7,6 +7,8 @@ import com.example.fashion.model.news.NewsCategory;
 import com.example.fashion.repository.news.INewsRepository;
 import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +19,17 @@ public class NewsService implements INewsService {
     private INewsRepository newsRepository;
 
     @Override
-    public List<INewsDto> findAllNews(Integer newsCategoryId, Integer roleId) {
+    public Page<INewsDto> findAllNews(Pageable pageable, Integer newsCategoryId, Integer roleId) {
         if (roleId == 1) {
-            return newsRepository.sortByManCategory(newsCategoryId);
+            return newsRepository.sortByManCategory(pageable,newsCategoryId);
         } else if (roleId == 2) {
-            return newsRepository.sortByWomanCategory(newsCategoryId);
+            return newsRepository.sortByWomanCategory(pageable,newsCategoryId);
         } else if (roleId == 3) {
-            return newsRepository.sortByTipsCategory(newsCategoryId);
+            return newsRepository.sortByTipsCategory(pageable,newsCategoryId);
         } else if (roleId == 4) {
-            return newsRepository.sortByPromotionCategory(newsCategoryId);
+            return newsRepository.sortByPromotionCategory(pageable,newsCategoryId);
         } else {
-            return newsRepository.findAllNews(newsCategoryId);
+            return newsRepository.findAllNews(pageable,newsCategoryId);
         }
     }
 
@@ -48,8 +50,9 @@ public class NewsService implements INewsService {
 
     @Override
     public void saveNews(News news) {
+        String content = news.getContent().trim().replaceAll("\\s+", " ");
+        news.setContent(content);
         newsRepository.saveNews(news);
-
     }
 
 
@@ -62,4 +65,5 @@ public class NewsService implements INewsService {
     public News findById(Integer id) {
         return newsRepository.findById(id).get();
     }
+
 }
