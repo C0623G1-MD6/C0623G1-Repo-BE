@@ -33,4 +33,35 @@ public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer
     @Modifying
     @Query (value = "update size_details sd set sd.quantity = sd.quantity - :sellingQuantity where sd.id = :sizeDetailId", nativeQuery = true)
     void updateQuantity(@Param("sellingQuantity") Integer newQuantity,@Param("sizeDetailId") Integer sizeDetailId);
+
+
+
+    /**
+     *
+     * LamTV
+     * this method is updates quantity
+     *
+     */
+    @Transactional
+    @Modifying
+    @Query( value = "update size_details " +
+            "set  quantity =:totalQuantity + quantity " +
+            "where id =:id",nativeQuery = true)
+    void updateQuantityWarehouse(@Param("totalQuantity") Integer totalQuantity,
+                @Param("id") Integer id);
+
+    /**
+     *
+     * LamTV
+     * find by id Size detail
+     *
+     */
+
+    @Query( value = "select sd.id,sd.product_id,sd.size_id,sd.quantity from size_details sd\n" +
+            "\tjoin products p on p.id = sd.product_id \n" +
+            "    join sizes s on s.id = sd.size_id\n" +
+            "    where p.name =:productName   and s.name = :sizeName",nativeQuery = true)
+    SizeDetail findByProductIdAndSizeId(@Param("productName") String productId,
+                                        @Param("sizeName") String sizeName);
+
 }

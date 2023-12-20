@@ -19,7 +19,6 @@ public class Login implements Validator  {
 
     @NotBlank(message = "Trường password không được để trống.")
     @NotNull(message = "Trường password không được null")
-    @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
     @Size(min = 8,message = "Mật khẩu phải trên 8 kí tự")
     @Size(max = 100,message = "Mật khẩu phải ít hơn 100 ký tự")
     private String password;

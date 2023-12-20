@@ -34,4 +34,14 @@ public class SizeServiceImpl implements ISizeService {
     public List<Size> getAllSize() {
         return sizeRepository.findAll();
     }
+
+    @Override
+    public List<ISizeDto> getAllSizes(Integer productId) {
+        return sizeRepository.getListSizeByProductId(productId);
+    }
+
+//    @Override
+//    public Optional<Size> findById(Integer id) {
+//        return iSizeRepository.findSizeBySizeId(id);
+//    }
 }

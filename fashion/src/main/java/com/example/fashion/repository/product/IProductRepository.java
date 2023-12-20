@@ -206,6 +206,23 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
     @Query(nativeQuery = true, value = "select id as productId from products where product_code = :productCode")
     IProductDTO findByProductCode(String productCode);
 
+
+
+    /**
+     * author: LamTV
+     * goal: get all product
+     */
+    @Query(nativeQuery = true, value = " SELECT DISTINCT p.id as productId, p.name as productName, p.product_code as productCode, p.qr_code as qrCode,\n" +
+            "   p.gender as gender,\n" +
+            "   p.price as price, c.name as categoryName, pm.percent as percent\n" +
+            "FROM products p\n" +
+            "LEFT JOIN product_categories c ON p.category_id = c.id\n" +
+            "LEFT JOIN size_details sd ON p.id = sd.product_id\n" +
+            "LEFT JOIN sizes s ON s.id = sd.size_id\n" +
+            "LEFT JOIN promotions pm ON p.promotion_id = pm.id "
+    )
+    List<IProductResponse> getAllProducts();
+
     /**
      * The method help to get list product from database.
      * @author NhatNk
@@ -237,4 +254,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             "join promotions pr on p.promotion_id = pr.id\n" +
             "where p.product_code = :productCode",nativeQuery = true)
     IProductInvoiceDto getProductByProductCode(@Param("productCode") String productCode);
+
+    @Query(value = "select * from products p\n" +
+            "            where p.name= :productName",nativeQuery = true)
+    Product findByProductName(@Param("productName") String productName);
 }
