@@ -1,21 +1,20 @@
 package com.example.fashion.controller.auth;
 
 import com.example.fashion.dto.product.IProductResponse;
-import com.example.fashion.model.product.Product;
-import com.example.fashion.model.product.ProductCategory;
+import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.service.product.IProductCategoryService;
 import com.example.fashion.service.product.IProductService;
+import com.example.fashion.service.product.ISizeDetailService;
+import com.example.fashion.service.product.ISizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,6 +25,11 @@ public class HomePageController {
     private IProductService productService;
     @Autowired
     private IProductCategoryService productCategoryService;
+    @Autowired
+    private ISizeService sizeService;
+
+    @Autowired
+    private ISizeDetailService sizeDetailService;
 
     /**
      * Author: LyDTH
@@ -36,9 +40,9 @@ public class HomePageController {
      * @return : the page of all products
      */
     @GetMapping
-    public ResponseEntity<?> findAllProducts(
-            @RequestParam(name = "option", defaultValue = "id",required = false) String option,
-            @RequestParam(name = "sort", defaultValue = "DESC", required = false) String sort,
+    public ResponseEntity<?> findNewestProducts(
+            @RequestParam(name = "option", defaultValue = "price",required = false) String option,
+            @RequestParam(name = "sort", defaultValue = "ASC", required = false) String sort,
             @RequestParam(name = "page", defaultValue = "0", required = false) Integer page)
     {
         if (option == null || option.isEmpty()) {
@@ -55,7 +59,8 @@ public class HomePageController {
         }
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
-        Page<IProductResponse> products = productService.findAllProducts(pageable);
+        Page<IProductResponse> products = productService.findNewestProducts(pageable);
+//        List<IProductResponse> products = null;
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -87,6 +92,7 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsHasPromotion(pageable);
+//        List<IProductResponse> products = null;
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -153,7 +159,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 20, sortable);
+        Pageable pageable = PageRequest.of(page, 8, sortable);
         Page<IProductResponse> products = productService.findAllProductsForWomen(pageable);
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -220,23 +226,21 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 20, sortable);
+        Pageable pageable = PageRequest.of(page, 8, sortable);
         Page<IProductResponse> products = productService.findAllProductsByName(productName, pageable);
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-//@GetMapping("/productCategory")
-//    public ResponseEntity<List<ProductCategory>> findAllProductCategories() {
-//        List<ProductCategory> productCategories = productCategoryService.getAllProductsCategory();
-//        if(productCategories.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
-//        return new ResponseEntity<>(productCategories, HttpStatus.OK);
-//}
-
-
+    @GetMapping("/sizes/{productCode}")
+    public ResponseEntity<List<ISizeDto>> getListSizeByProductCode(@PathVariable String productCode){
+        List<ISizeDto> iSizeDtoList = sizeService.getListSizeByProductCode(productCode);
+        if (iSizeDtoList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(iSizeDtoList,HttpStatus.OK);
+    }
 }
 
 

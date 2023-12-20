@@ -11,9 +11,11 @@ public class WarehouseReceiptDetailDto implements Validator {
     private Integer inputQuantity;
 
     private Double inputPrice;
-    private Integer productId;
-    private Integer sizeId;
+    private String productName;
+    private String sizeName;
     private Integer sizeDetailId;
+    private String receiptCode;
+
 
 
     public WarehouseReceiptDetailDto() {
@@ -52,20 +54,20 @@ public class WarehouseReceiptDetailDto implements Validator {
         this.inputPrice = inputPrice;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public Integer getSizeId() {
-        return sizeId;
+    public String getSizeName() {
+        return sizeName;
     }
 
-    public void setSizeId(Integer sizeId) {
-        this.sizeId = sizeId;
+    public void setSizeName(String sizeName) {
+        this.sizeName = sizeName;
     }
 
     public Integer getSizeDetailId() {
@@ -74,6 +76,14 @@ public class WarehouseReceiptDetailDto implements Validator {
 
     public void setSizeDetailId(Integer sizeDetailId) {
         this.sizeDetailId = sizeDetailId;
+    }
+
+    public String getReceiptCode() {
+        return receiptCode;
+    }
+
+    public void setReceiptCode(String receiptCode) {
+        this.receiptCode = receiptCode;
     }
 
     @Override
@@ -98,15 +108,12 @@ public class WarehouseReceiptDetailDto implements Validator {
         } else if (warehouseReceiptDetailDto.getInputPrice() <=0) {
             errors.rejectValue("inputPrice", "null", "Vui lòng không để trống");
         }
-        if (warehouseReceiptDetailDto.getWarehouseId() == null) {
-            errors.rejectValue("warehouseId", "null", "Vui lòng chọn đơn hàng ");
-        }
-        if (warehouseReceiptDetailDto.getSizeId() == null){
-            errors.rejectValue("sizeId", "null", "Vui lòng chọn size ");
+        if (warehouseReceiptDetailDto.getSizeName() == null){
+            errors.rejectValue("sizeName", "null", "Vui lòng chọn size ");
 
         }
-        if (warehouseReceiptDetailDto.getProductId() == null){
-            errors.rejectValue("productId", "null", "Vui lòng chọn size ");
+        if (warehouseReceiptDetailDto.getProductName() == null){
+            errors.rejectValue("productName", "null", "Vui lòng chọn size ");
 
         }
 

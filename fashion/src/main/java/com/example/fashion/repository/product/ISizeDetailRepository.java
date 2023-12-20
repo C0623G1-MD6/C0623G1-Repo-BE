@@ -1,7 +1,6 @@
 package com.example.fashion.repository.product;
 
 import com.example.fashion.dto.product.ISizeDetailDto;
-import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.model.product.SizeDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -9,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer> {
@@ -58,9 +59,13 @@ public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer
      *
      */
 
-    @Query( value = "select id,product_id,size_id,quantity from size_details\n" +
-            "            where product_id = :productId and size_id = :sizeId",nativeQuery = true)
-    SizeDetail findByProductIdAndSizeId(@Param("productId") Integer productId,
-                                        @Param("sizeId") Integer sizeId);
+    @Query( value = "select sd.id,sd.product_id,sd.size_id,sd.quantity from size_details sd\n" +
+            "\tjoin products p on p.id = sd.product_id \n" +
+            "    join sizes s on s.id = sd.size_id\n" +
+            "    where p.name =:productName   and s.name = :sizeName",nativeQuery = true)
+    SizeDetail findByProductIdAndSizeId(@Param("productName") String productId,
+                                        @Param("sizeName") String sizeName);
 
+    @Query(value = "SELECT * FROM size_details",nativeQuery = true)
+    List<SizeDetail> getAllSizeDetail();
 }

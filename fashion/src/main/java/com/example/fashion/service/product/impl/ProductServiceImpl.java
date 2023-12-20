@@ -1,5 +1,4 @@
 package com.example.fashion.service.product.impl;
-
 import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ProductDTO;
@@ -67,9 +66,9 @@ public class ProductServiceImpl implements IProductService {
      * @return: the page of products
      */
     @Override
-    public Page<IProductResponse> findAllProducts(Pageable pageable) {
+    public Page<IProductResponse> findNewestProducts(Pageable pageable) {
 
-        return iProductRepository.findAllProducts(pageable);
+        return iProductRepository.findNewestProducts(pageable);
 
     }
 

@@ -74,36 +74,6 @@ public class CustomerService implements ICustomerService {
         return customerRepository.findCustomerByCode("%" + code + "%");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * The method help to get page customer.
      * @author NhatNk
@@ -127,6 +97,27 @@ public class CustomerService implements ICustomerService {
     public Boolean updatePoint(Integer point, Integer customerId) {
         try {
             customerRepository.updatePoint(point,customerId);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean updateCustomerType(Integer point, Integer customerId) {
+        Integer customerTypeId;
+        if (point<=10000){
+            customerTypeId = 1;
+        }else if (point<=20000){
+            customerTypeId = 2;
+        } else if(point<=40000){
+            customerTypeId = 3;
+        } else {
+            customerTypeId = 4;
+        }
+
+        try {
+            customerRepository.updateCustomerType(customerTypeId, customerId);
             return true;
         } catch (Exception e){
             return false;

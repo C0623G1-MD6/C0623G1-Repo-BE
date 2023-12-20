@@ -57,12 +57,6 @@ public class WarehouseReceiptDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         WarehouseReceiptDto warehouseReceiptDto = (WarehouseReceiptDto) target;
-        if ("".equals(warehouseReceiptDto.getReceiptCode())) {
-            errors.rejectValue("receiptCode", null, "Vui lòng nhập mã đơn hàng");
-        }
 
-        if ("".equals(warehouseReceiptDto.getReceiptDate())) {
-            errors.rejectValue("receiptDate", null, "Vui lòng chọn ngày giờ");
-        }
     }
 }

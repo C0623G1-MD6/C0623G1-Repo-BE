@@ -4,6 +4,8 @@ import com.example.fashion.model.product.SizeDetail;
 
 import com.example.fashion.dto.product.ISizeDetailDto;
 
+import java.util.List;
+
 public interface ISizeDetailService {
     /**
      * created at 12/12/2023
@@ -14,8 +16,10 @@ public interface ISizeDetailService {
     void save(Integer productId, Integer sizeId);
 
     void updateQuantityWarehouse(Integer totalQuantity,Integer id);
-    SizeDetail findByProductIdAndSizeId(Integer productId,Integer sizeId);
+    SizeDetail findByProductIdAndSizeId(String productId, String sizeId);
     ISizeDetailDto getQuantityByProductCodeAndSizeName(String productCode, String sizeName);
 
     Boolean updateQuantity(Integer sellingQuantity, Integer sizeDetailId);
+    List<SizeDetail> getAllSizeDetail();
+    void increaseQuantity(Integer id, Integer incrementBy);
 }
