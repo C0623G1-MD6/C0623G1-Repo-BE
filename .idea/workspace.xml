@@ -1,61 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15b39dd-d1d9-466e-874d-6bc02a2c7d9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules/fashion.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/fashion.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e1e14c15cd5714f6cf657a224a802828bc45e07" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e9039b0611df3f3555c4931b06093c08f0874a1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/36665f380051ec40527977540e28a79a4a3fe297" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39b4525e4885977279965c9ad032a0543d1865d4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46e5d63a5d694ba6fe38ac94a2f701f12fa5606e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b243b98ce16799c10be49ccc5fdd73ecaabd771" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/5623a7a2b2222cc455cedec12910a140571dda4b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/e/5ee9b90dcfbce3fd2b28a516a2ade898f2e67903" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/842f5fc939003cd8570591982a78336fd97c1ddf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/1/91477da33fea5f28a5a92682d5b3d82f60e4f219" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cb59ab28769b62e32c034803869b22615a4f606d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8d10bd45986abb5ad54d9d949d3315c818e1a14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/e/0e1e14c15cd5714f6cf657a224a802828bc45e07" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/e/0e9039b0611df3f3555c4931b06093c08f0874a1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/6/36665f380051ec40527977540e28a79a4a3fe297" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/9/39b4525e4885977279965c9ad032a0543d1865d4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/6/46e5d63a5d694ba6fe38ac94a2f701f12fa5606e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/b/4b243b98ce16799c10be49ccc5fdd73ecaabd771" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/6/5623a7a2b2222cc455cedec12910a140571dda4b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/e/5ee9b90dcfbce3fd2b28a516a2ade898f2e67903" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/4/842f5fc939003cd8570591982a78336fd97c1ddf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/1/91477da33fea5f28a5a92682d5b3d82f60e4f219" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/b/cb59ab28769b62e32c034803869b22615a4f606d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/8/e8d10bd45986abb5ad54d9d949d3315c818e1a14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/C0623G1-Repo-BE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/C0623G1-Repo-BE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/fashion.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/fashion.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e15b39dd-d1d9-466e-874d-6bc02a2c7d9b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$/fashion">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$/fashion">
-          <activation />
-        </task>
-        <projects_view />
-      </state>
-    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,21 +20,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Javafullstack_Codegym/C0623G1-Repo-BE/fashion&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;2f22a830e67022b27a6964048f4e57c9&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -102,24 +41,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FashionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="fashion.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.fashion.FashionApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.fashion.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.FashionApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -130,56 +51,10 @@
       <option name="presentableId" value="Default" />
       <updated>1702355420528</updated>
       <workItem from="1702355421938" duration="14000" />
-      <workItem from="1702689310772" duration="5465000" />
-      <workItem from="1702863123466" duration="3172000" />
-      <workItem from="1702872866376" duration="1844000" />
-      <workItem from="1702950436310" duration="2515000" />
     </task>
-    <task id="LOCAL-00001" summary="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/modules.xml">
-      <created>1702635320390</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1702635320390</updated>
-    </task>
-    <task id="LOCAL-00002" summary="LyDTH_up_dev_ly">
-      <created>1702866337416</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1702866337416</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/modules.xml" />
-    <MESSAGE value="LyDTH_up_dev_ly" />
-    <option name="LAST_COMMIT_MESSAGE" value="LyDTH_up_dev_ly" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/HomePageController.java</url>
-          <line>231</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

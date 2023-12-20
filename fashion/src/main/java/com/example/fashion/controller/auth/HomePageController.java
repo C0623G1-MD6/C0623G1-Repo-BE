@@ -56,6 +56,7 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProducts(pageable);
+//        List<IProductResponse> products = null;
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -87,6 +88,7 @@ public class HomePageController {
 
         Pageable pageable = PageRequest.of(page, 20, sortable);
         Page<IProductResponse> products = productService.findAllProductsHasPromotion(pageable);
+//        List<IProductResponse> products = null;
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

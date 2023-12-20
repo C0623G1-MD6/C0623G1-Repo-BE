@@ -36,6 +36,6 @@ public class CustomerTypeController {
         if (customerTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(customerTypeList,HttpStatus.OK);
     }
 }

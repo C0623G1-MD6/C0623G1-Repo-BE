@@ -39,7 +39,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findById(Integer id) {
-        return customerRepository.findById(id).get();
+        return customerRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findCustomerByPhone(String phone) {
-        return customerRepository.findCustomerByPhone("%" + phone + "%");
+        return customerRepository.findCustomerByPhone(phone);
     }
 
     @Override
@@ -69,6 +69,10 @@ public class CustomerService implements ICustomerService {
         return customerRepository.findCustomerByEmail(email);
     }
 
+    @Override
+    public Customer findCustomerByCode(String code) {
+        return customerRepository.findCustomerByCode("%" + code + "%");
+    }
 
 
 
