@@ -1,0 +1,26 @@
+
+C
+java:S5411D"(Use a primitive boolean expression here.(Ÿªä•şÿÿÿÿ
+C
+java:S5411M"(Use a primitive boolean expression here.(ªÿ¼åüÿÿÿÿ
+H
+java:S1199L"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+X
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813#"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813)"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813,"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813/"BRemove this field injection and use constructor injection instead.(êæÄŞ
+P	java:S125<"<This block of commented-out lines of code should be removed.(½±ƒ<
+7
+java:S2153U"Remove the boxing to "Long".(÷ÍËªøÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.springframework.validation.BindingResult'.(‹¶¸ùÿÿÿÿ
+E
+java:S1128"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ
