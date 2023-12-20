@@ -10,10 +10,6 @@ import org.springframework.validation.Validator;
 @Getter
 @Setter
 public class ChangePassword implements Validator {
-
-    @NotBlank(message = "Trường username không được để trống.")
-    private String username;
-
     @NotBlank(message = "Trường password không được để trống.")
     private String password;
 

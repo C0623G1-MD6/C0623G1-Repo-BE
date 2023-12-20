@@ -1,5 +1,4 @@
 package com.example.fashion.config;
-
 import com.example.fashion.security.jwt.JwtAuthenticationFilter;
 import com.example.fashion.service.impl.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,10 +109,10 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/sendMail", "/api/customerType").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-                                .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
+                                .requestMatchers("/api/notification/list/**","/api/notification/view", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
                                 .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
-                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/product/create", "/api/warehouses/**").hasRole("WAREHOUSE")
                                 .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
                                 .requestMatchers("/api/product/**").authenticated()
