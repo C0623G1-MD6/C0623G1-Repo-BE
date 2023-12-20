@@ -159,7 +159,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 5, sortable);
+        Pageable pageable = PageRequest.of(page, 8, sortable);
         Page<IProductResponse> products = productService.findAllProductsForWomen(pageable);
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -226,7 +226,7 @@ public class HomePageController {
             return ResponseEntity.badRequest().body("Sai tham số");
         }
 
-        Pageable pageable = PageRequest.of(page, 5, sortable);
+        Pageable pageable = PageRequest.of(page, 8, sortable);
         Page<IProductResponse> products = productService.findAllProductsByName(productName, pageable);
         if (products.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
