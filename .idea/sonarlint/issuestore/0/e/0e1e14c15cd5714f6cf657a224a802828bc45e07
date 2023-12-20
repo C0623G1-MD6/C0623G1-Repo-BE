@@ -1,0 +1,19 @@
+
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
+X
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ
+P
+java:S6837f"3Remove this superfluous "@ResponseBody" annotation.(Ü¥¼8¾ª£È1
+A
+java:S1452+"&Remove usage of generic wildcard type.(”î±Óúÿÿÿÿ
+C
+java:S1452>"&Remove usage of generic wildcard type.(¡ÿŒğ8Ûª£È1
+H
+java:S1452g"&Remove usage of generic wildcard type.(›¤¦¿ùÿÿÿÿ8¡¬£È1
+I
+java:S1452’"&Remove usage of generic wildcard type.(È£×ıÿÿÿÿ8í¬£È1
+c
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Sort'.(ëÿ€ëøÿÿÿÿ8‰¸à¦È1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8‰¸à¦È1
