@@ -3,6 +3,7 @@ package com.example.fashion.controller.warehouse;
 import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.dto.product.ISizeDto;
 import com.example.fashion.dto.warehouse.WarehouseReceiptDetailDto;
+import com.example.fashion.dto.warehouse.WarehouseReceiptDto;
 import com.example.fashion.model.product.Product;
 import com.example.fashion.model.product.SizeDetail;
 import com.example.fashion.model.warehouse.Warehouse;
@@ -19,7 +20,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -59,54 +59,58 @@ public class WarehouseController {
      * LamTV
      * add warehouse
      */
-    @PostMapping("/inputWarehouseDetail")
-    public ResponseEntity<Object> saveWarehouse(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
-                                                 BindingResult bindingResult) {
-        Map<String, String> errors = new HashMap<>();
-        new WarehouseReceiptDetailDto().validate(warehouseReceiptDetailDto, bindingResult);
-        if (bindingResult.hasErrors()) {
-            for (FieldError err : bindingResult.getFieldErrors()) {
-                errors.put(err.getField(), err.getDefaultMessage());
-            }
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        Warehouse warehouse = new Warehouse();
-        warehouse.setReceiptCode(CodeGenerator.generateCode());
-        warehouse.setReceiptDate(String.valueOf(LocalDateTime.now()));
-        SizeDetail sizeDetail = sizeDetailService.findByProductIdAndSizeId(warehouseReceiptDetailDto.getProductId(), warehouseReceiptDetailDto.getSizeId());
-        warehouseReceiptDetailDto.setSizeDetailId(sizeDetail.getId());
-        warehouseService.saveWarehouse(warehouse);
-        warehouseDetailService.saveWarehouseDetails(warehouseReceiptDetailDto.getSizeDetailId(),
-                warehouseReceiptDetailDto.getInputQuantity(),
-                warehouseReceiptDetailDto.getInputPrice(),
-                warehouse.getId());
-        sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),
-                warehouseReceiptDetailDto.getSizeDetailId());
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 //    @PostMapping("/inputWarehouseDetail")
-//    public ResponseEntity<Void> saveWarehouseDetail(@RequestBody WarehouseReceiptDto warehouseReceiptDto) {
-//        warehouseReceiptDto.setReceiptCode(CodeGenerator.generateCode());
-//        Boolean statusWarehouse = warehouseService.createWarehouse(warehouseReceiptDto);
-//        if (!statusWarehouse) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        } else {
-//            Integer warehouseId = warehouseService.getWarehouseIdByReceiptCode(warehouseReceiptDto.getReceiptCode());
-//
-//            for (WarehouseReceiptDetailDto warehouseReceiptDetailDto : warehouseReceiptDto.getWarehouseDetailSet()) {
-//                warehouseReceiptDetailDto.setWarehouseId(warehouseId);
-//                Boolean statusWarehouseDetail = warehouseDetailService.saveWarehouseDetail(warehouseReceiptDetailDto);
-//                {
-//                    if (!statusWarehouseDetail){
-//                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//                    } else {
-//                        sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),warehouseReceiptDetailDto.getSizeDetailId());
-//                    }
-//                }
+//    public ResponseEntity<Void> saveWarehouse(@RequestBody WarehouseReceiptDetailDto warehouseReceiptDetailDto,
+//                                                 BindingResult bindingResult) {
+//        Map<String, String> errors = new HashMap<>();
+//        Warehouse warehouse = new Warehouse();
+//        warehouse.setReceiptCode(warehouseReceiptDetailDto.getReceiptCode());
+//        warehouse.setReceiptDate(String.valueOf(LocalDateTime.now()));
+//        warehouseService.saveWarehouse(warehouse);
+//        new WarehouseReceiptDetailDto().validate(warehouseReceiptDetailDto, bindingResult);
+//        if (bindingResult.hasErrors()) {
+//            for (FieldError err : bindingResult.getFieldErrors()) {
+//                errors.put(err.getField(), err.getDefaultMessage());
 //            }
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
+//        SizeDetail sizeDetail = sizeDetailService.findByProductIdAndSizeId(warehouseReceiptDetailDto.getProductName(), warehouseReceiptDetailDto.getSizeName());
+//        warehouseReceiptDetailDto.setSizeDetailId(sizeDetail.getId());
+//        warehouseDetailService.saveWarehouseDetails(warehouseReceiptDetailDto.getSizeDetailId(),
+//                warehouseReceiptDetailDto.getInputQuantity(),
+//                warehouseReceiptDetailDto.getInputPrice(),
+//                warehouse.getId());
+//        sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),
+//                warehouseReceiptDetailDto.getSizeDetailId());
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
+
+
+    @PostMapping("/inputWarehouseDetail")
+    public ResponseEntity<Void> saveWarehouseDetail(@RequestBody WarehouseReceiptDto warehouseReceiptDto) {
+        warehouseReceiptDto.setReceiptCode(warehouseReceiptDto.getReceiptCode());
+        Boolean statusWarehouse = warehouseService.createWarehouse(warehouseReceiptDto);
+        if (!statusWarehouse) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            Integer warehouseId = warehouseService.getWarehouseIdByReceiptCode(warehouseReceiptDto.getReceiptCode());
+
+            for (WarehouseReceiptDetailDto warehouseReceiptDetailDto : warehouseReceiptDto.getWarehouseDetailSet()) {
+                warehouseReceiptDetailDto.setWarehouseId(warehouseId);
+                SizeDetail sizeDetail = sizeDetailService.findByProductIdAndSizeId(warehouseReceiptDetailDto.getProductName(), warehouseReceiptDetailDto.getSizeName());
+                warehouseReceiptDetailDto.setSizeDetailId(sizeDetail.getId());
+                Boolean statusWarehouseDetail = warehouseDetailService.saveWarehouseDetail(warehouseReceiptDetailDto);
+                {
+                    if (!statusWarehouseDetail){
+                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                    } else {
+                        sizeDetailService.updateQuantityWarehouse(warehouseReceiptDetailDto.getInputQuantity(),sizeDetail.getId());
+                    }
+                }
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     /**
      * created at 14/12/2023

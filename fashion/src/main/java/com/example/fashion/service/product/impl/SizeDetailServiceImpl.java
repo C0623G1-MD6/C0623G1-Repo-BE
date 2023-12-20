@@ -52,7 +52,7 @@ public class SizeDetailServiceImpl implements ISizeDetailService {
     }
 
     @Override
-    public SizeDetail findByProductIdAndSizeId(Integer productId,Integer sizeId) {
+    public SizeDetail findByProductIdAndSizeId(String productId, String sizeId) {
         return sizeDetailRepository.findByProductIdAndSizeId(productId, sizeId);
     }
 }

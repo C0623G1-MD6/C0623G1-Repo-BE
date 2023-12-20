@@ -14,7 +14,7 @@ public interface ISizeDetailService {
     void save(Integer productId, Integer sizeId);
 
     void updateQuantityWarehouse(Integer totalQuantity,Integer id);
-    SizeDetail findByProductIdAndSizeId(Integer productId,Integer sizeId);
+    SizeDetail findByProductIdAndSizeId(String productId, String sizeId);
     ISizeDetailDto getQuantityByProductCodeAndSizeName(String productCode, String sizeName);
 
     Boolean updateQuantity(Integer sellingQuantity, Integer sizeDetailId);

@@ -29,8 +29,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_productId_13() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(null);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName(null);
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(50000.0);
         warehouseReceiptDetailDto.setInputQuantity(5);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -50,8 +50,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_sizeId_13() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(null);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName(null);
         warehouseReceiptDetailDto.setInputPrice(50000.0);
         warehouseReceiptDetailDto.setInputQuantity(5);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -72,8 +72,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_inputPrice_13() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(null);
         warehouseReceiptDetailDto.setInputQuantity(5);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -94,8 +94,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_inputQuantity_13() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(500000.0);
         warehouseReceiptDetailDto.setInputQuantity(null);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -116,8 +116,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_warehouseId_13() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(500000.0);
         warehouseReceiptDetailDto.setInputQuantity(200);
         warehouseReceiptDetailDto.setWarehouseId(null);
@@ -138,8 +138,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_inputQuantity_16() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(500000.0);
         warehouseReceiptDetailDto.setInputQuantity(2001);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -160,8 +160,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_inputQuantity_17() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(500000.0);
         warehouseReceiptDetailDto.setInputQuantity(-1);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -182,8 +182,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_inputPrice_16() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(1000000000000000.0);
         warehouseReceiptDetailDto.setInputQuantity(5);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -204,8 +204,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_inputPrice_17() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(1);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("");
+        warehouseReceiptDetailDto.setSizeName("");
         warehouseReceiptDetailDto.setInputPrice(-1.0);
         warehouseReceiptDetailDto.setInputQuantity(5);
         warehouseReceiptDetailDto.setWarehouseId(21);
@@ -228,8 +228,8 @@ public class WarehouseController_saveWarehouseDetail {
     @Test
     public void saveWarehouse_18() throws Exception {
         WarehouseReceiptDetailDto warehouseReceiptDetailDto = new WarehouseReceiptDetailDto();
-        warehouseReceiptDetailDto.setProductId(7);
-        warehouseReceiptDetailDto.setSizeId(3);
+        warehouseReceiptDetailDto.setProductName("Quần Cargo Có Túi Cài Khóa Kéo");
+        warehouseReceiptDetailDto.setSizeName("M");
         warehouseReceiptDetailDto.setInputPrice(500000.0);
         warehouseReceiptDetailDto.setInputQuantity(10);
         warehouseReceiptDetailDto.setWarehouseId(25);

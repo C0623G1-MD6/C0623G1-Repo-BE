@@ -58,9 +58,11 @@ public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer
      *
      */
 
-    @Query( value = "select id,product_id,size_id,quantity from size_details\n" +
-            "            where product_id = :productId and size_id = :sizeId",nativeQuery = true)
-    SizeDetail findByProductIdAndSizeId(@Param("productId") Integer productId,
-                                        @Param("sizeId") Integer sizeId);
+    @Query( value = "select sd.id,sd.product_id,sd.size_id,sd.quantity from size_details sd\n" +
+            "\tjoin products p on p.id = sd.product_id \n" +
+            "    join sizes s on s.id = sd.size_id\n" +
+            "    where p.name =:productName   and s.name = :sizeName",nativeQuery = true)
+    SizeDetail findByProductIdAndSizeId(@Param("productName") String productId,
+                                        @Param("sizeName") String sizeName);
 
 }
