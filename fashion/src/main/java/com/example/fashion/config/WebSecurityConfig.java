@@ -112,7 +112,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
                                 .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
-                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/product/create", "/api/warehouses/**").hasRole("WAREHOUSE")
                                 .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
                                 .requestMatchers("/api/product/**").authenticated()
