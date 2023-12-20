@@ -63,3 +63,19 @@ I
 Q.idea/sonarlint/securityhotspotstore/5/e/5ee9b90dcfbce3fd2b28a516a2ade898f2e67903,1/1/11c7c405ac7ffc0afdb5fbf5d1a30b26571d5f29
 N
 .idea/modules/fashion.test.iml,f/a/fa33aa128ecbb5edd2685fb2ccf57dd3ef388d2e
+q
+Afashion/src/main/java/com/example/fashion/FashionApplication.java,f/a/fa93012f331131fb946ff0bfed740fbc85421b94
+t
+Dfashion/src/main/java/com/example/fashion/model/product/Product.java,b/6/b699fdf19366be6a2b0962f908385821dcaa0c58
+É
+Sfashion/src/main/java/com/example/fashion/controller/product/ProductController.java,7/0/706a94f511b07e5c0f9e14fd2696437a087295ce
+É
+Sfashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java,4/b/4b9ed29f68193f0bdd7a6f111aeb4f51ebc361eb
+s
+Cfashion/src/main/java/com/example/fashion/dto/product/ISizeDto.java,a/a/aa9549e5a327a4a68d02aa9d637c9d2848ca692e
+Ñ
+Tfashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceRepository.java,9/0/90538d8e7f0120f2c817099e152b2e68f4a0e34c
+ä
+Zfashion/src/main/java/com/example/fashion/repository/invoice/IInvoiceDetailRepository.java,8/4/8451c5410c0cf0299ecc270a1e987e2ee612b2ea
+Å
+Qfashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java,2/f/2fff34e4dcc54f591a41f2db63e192301490dd60

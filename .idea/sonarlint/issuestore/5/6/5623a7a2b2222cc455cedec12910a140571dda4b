@@ -1,30 +1,25 @@
 
-c
-java:S11926"NDefine a constant instead of duplicating this literal "Sai tham sá»‘" 6 times.(ª€Úr
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
-A
-java:S1452'"&Remove usage of generic wildcard type.(—æòðúÿÿÿÿ
-A
-java:S1452J"&Remove usage of generic wildcard type.(Ù“ó‹ùÿÿÿÿ
-;
-java:S1452i"&Remove usage of generic wildcard type.(×ÊÀ
-=
-java:S1452Œ"&Remove usage of generic wildcard type.(…·°®
+j
+java:S1192:"NDefine a constant instead of duplicating this literal "Sai tham sá»‘" 6 times.(ª€Úr8‡†©‘È1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ü‡©‘È1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Ü‡©‘È1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8ˆÚ‹¬È1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8‰Ú‹¬È1
+H
+java:S1452+"&Remove usage of generic wildcard type.(¾©úâÿÿÿÿÿ8Èˆ©‘È1
+X	java:S125?"<This block of commented-out lines of code should be removed.(ÿøÿ¿8Âç‘È1
+H
+java:S1452O"&Remove usage of generic wildcard type.(Ù“ó‹ùÿÿÿÿ8îˆ©‘È1
+X	java:S125_"<This block of commented-out lines of code should be removed.(ÿøÿ¿8»†ö¦È1
 B
-java:S1452®"&Remove usage of generic wildcard type.(ÔÇ°ìÿÿÿÿÿ
-=
-java:S1452Ñ"&Remove usage of generic wildcard type.(…±Õ
-W	java:S125ç"<This block of commented-out lines of code should be removed.(•¢Ð¢ûÿÿÿÿ
-\
-java:S1128"FRemove this unused import 'com.example.fashion.model.product.Product'.(Šë‘–
-i
-java:S1128"NRemove this unused import 'com.example.fashion.model.product.ProductCategory'.(ßÅßÙùÿÿÿÿ
-^
-java:S1128"IRemove this unused import 'org.springframework.data.web.PageableDefault'.(¯’Î<
-F
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
-F
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+java:S1452o"&Remove usage of generic wildcard type.(×ÊÀ8œŠ©‘È1
+D
+java:S1452’"&Remove usage of generic wildcard type.(…·°®8²Š©‘È1
+I
+java:S1452´"&Remove usage of generic wildcard type.(ÔÇ°ìÿÿÿÿÿ8ÄŠ©‘È1
+D
+java:S1452×"&Remove usage of generic wildcard type.(…±Õ8ÜŠ©‘È1

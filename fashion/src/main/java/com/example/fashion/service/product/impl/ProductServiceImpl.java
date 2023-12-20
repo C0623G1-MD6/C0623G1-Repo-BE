@@ -65,9 +65,9 @@ public class ProductServiceImpl implements IProductService {
      * @return: the page of products
      */
     @Override
-    public Page<IProductResponse> findAllProducts(Pageable pageable) {
+    public Page<IProductResponse> findNewestProducts(Pageable pageable) {
 
-        return iProductRepository.findAllProducts(pageable);
+        return iProductRepository.findNewestProducts(pageable);
 
     }
 
