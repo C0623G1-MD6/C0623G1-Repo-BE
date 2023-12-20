@@ -22,7 +22,7 @@ public interface INotificationService {
     int countNotification();
 
     void addDeatailNotification( Long roleId);
-    List<Notification> getNotificationByAccountId(Long accountId);
+    Page<Notification> getNotificationByAccountId(Long accountId,Pageable pageable);
     void createNotification(NotificationDTO notificationDTO);
     List<Notification> getNotificationNotViewByAccountId(Long accountId);
 }
