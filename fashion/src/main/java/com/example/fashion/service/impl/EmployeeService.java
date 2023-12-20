@@ -22,4 +22,13 @@ public class EmployeeService implements IEmployeeService {
     public Employee getEmployeeByAccountId(Long id) {
         return employeeRepository.getEmployeeByAccountId(id);
     }
+
+    @Override
+    public Long getEmployeeIdByUsername(String username) {
+        try {
+            return employeeRepository.getEmployeeIdByUsername(username);
+        } catch (Exception e){
+            return null;
+        }
+    }
 }
