@@ -1,4 +1,4 @@
-package com.example.fashion.controller;
+package com.example.fashion.lamtv_controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,8 @@ public class SalesReportController_getSalesReport {
     public void getSalesReport_11() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/sales-report/statistical")
-                        .param("startDate", "2023-12-01")
-                        .param("endDate", "2023-12-15"))
+                        .param("startDate", "2023-01-26")
+                        .param("endDate", "2023-02-28"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }

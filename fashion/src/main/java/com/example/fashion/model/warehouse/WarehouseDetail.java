@@ -15,27 +15,26 @@ public class WarehouseDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(columnDefinition = "double",nullable = false,name = "input_price")
-    private Double inputPrice;
-    @Column(columnDefinition = "int",nullable = false,name = "input_quantity")
-    private Integer inputQuantity;
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "size_detail_id",referencedColumnName = "id")
     private SizeDetail sizeDetail;
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "warehouse_receipt_id",referencedColumnName = "id")
     private Warehouse warehouse;
+    @Column(name="input_quantity",nullable = false)
+    private Integer inputQuantity;
+
+    @Column(name="input_price",nullable = false)
+    private Double inputPrice;
 
     public WarehouseDetail() {
     }
 
-    public WarehouseDetail(Double inputPrice, Integer inputQuantity, SizeDetail sizeDetail, Warehouse warehouse) {
-        this.inputPrice = inputPrice;
-        this.inputQuantity = inputQuantity;
+    public WarehouseDetail(SizeDetail sizeDetail, Warehouse warehouse, Integer inputQuantity, Double inputPrice) {
         this.sizeDetail = sizeDetail;
         this.warehouse = warehouse;
+        this.inputQuantity = inputQuantity;
+        this.inputPrice = inputPrice;
     }
 
     public Integer getId() {
@@ -44,22 +43,6 @@ public class WarehouseDetail {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Double getInputPrice() {
-        return inputPrice;
-    }
-
-    public void setInputPrice(Double inputPrice) {
-        this.inputPrice = inputPrice;
-    }
-
-    public Integer getInputQuantity() {
-        return inputQuantity;
-    }
-
-    public void setInputQuantity(Integer inputQuantity) {
-        this.inputQuantity = inputQuantity;
     }
 
     public SizeDetail getSizeDetail() {
@@ -76,5 +59,21 @@ public class WarehouseDetail {
 
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
+    }
+
+    public Integer getInputQuantity() {
+        return inputQuantity;
+    }
+
+    public void setInputQuantity(Integer quantity) {
+        this.inputQuantity = quantity;
+    }
+
+    public Double getInputPrice() {
+        return inputPrice;
+    }
+
+    public void setInputPrice(Double price) {
+        this.inputPrice = price;
     }
 }
