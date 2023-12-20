@@ -54,8 +54,8 @@ public class NotificationService implements INotificationService{
     }
 
     @Override
-    public List<Notification> getNotificationByAccountId(Long accountId) {
-        return iNotificationRepository.getNotificationByAccountId(accountId);
+    public Page<Notification> getNotificationByAccountId(Long accountId, Pageable pageable) {
+        return iNotificationRepository.getNotificationByAccountId(accountId, pageable);
     }
 
     @Override

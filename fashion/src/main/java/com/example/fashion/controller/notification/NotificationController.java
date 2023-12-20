@@ -13,6 +13,10 @@ import com.example.fashion.service.notification.INotificationService;
 import com.example.fashion.service.notification.IViewNotificationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -40,8 +44,9 @@ public class NotificationController {
     private IRoleService roleService;
 
     @GetMapping("list")
-    public ResponseEntity<?> getListNotificationById(@RequestParam Long id) {
-        List<Notification> notificationList = iNotificationService.getNotificationByAccountId(id);
+    public ResponseEntity<?> getListNotificationById(@RequestParam Long id,
+                                                     @PageableDefault(size = 5,sort = "notice_posting_date", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Notification> notificationList = iNotificationService.getNotificationByAccountId(id,pageable);
         return new ResponseEntity<>(notificationList, HttpStatus.OK);
     }
 
