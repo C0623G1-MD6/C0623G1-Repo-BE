@@ -1,5 +1,4 @@
 package com.example.fashion.config;
-
 import com.example.fashion.security.jwt.JwtAuthenticationFilter;
 import com.example.fashion.service.impl.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;

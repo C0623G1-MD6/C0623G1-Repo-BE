@@ -1,7 +1,6 @@
 package com.example.fashion.repository.product;
 
 import com.example.fashion.model.product.Promotion;
-import com.example.fashion.model.product.Size;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
