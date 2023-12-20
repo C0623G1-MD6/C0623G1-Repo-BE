@@ -8,4 +8,5 @@ public interface IWarehouseService {
     void saveWarehouse(Warehouse warehouse);
     Boolean createWarehouse(WarehouseReceiptDto warehouseReceiptDto);
     Integer getWarehouseIdByReceiptCode(String receiptCode);
+    Warehouse createAndReturnReceipt(String receiptCode);
 }

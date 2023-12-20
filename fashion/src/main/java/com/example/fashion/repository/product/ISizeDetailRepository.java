@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer> {
 
@@ -64,4 +66,6 @@ public interface ISizeDetailRepository extends JpaRepository<SizeDetail, Integer
     SizeDetail findByProductIdAndSizeId(@Param("productName") String productId,
                                         @Param("sizeName") String sizeName);
 
+    @Query(value = "SELECT * FROM size_details",nativeQuery = true)
+    List<SizeDetail> getAllSizeDetail();
 }

@@ -7,6 +7,8 @@ import com.example.fashion.service.product.ISizeDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SizeDetailServiceImpl implements ISizeDetailService {
     /**
@@ -44,6 +46,20 @@ public class SizeDetailServiceImpl implements ISizeDetailService {
         } catch (Exception e){
             return false;
         }
+    }
+
+    @Override
+    public List<SizeDetail> getAllSizeDetail() {
+        return sizeDetailRepository.getAllSizeDetail();
+    }
+
+    @Override
+    public void increaseQuantity(Integer id, Integer incrementBy) {
+        SizeDetail sizeDetail = sizeDetailRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("SizeDetail not found with id: " + id));
+
+        sizeDetail.setQuantity(sizeDetail.getQuantity() + incrementBy);
+        sizeDetailRepository.save(sizeDetail);
     }
 
     @Override
