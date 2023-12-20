@@ -171,14 +171,17 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      * @return Page<IProductDTO>
      */
 
-    @Query(nativeQuery = true, value = "select p.id as productId, p.product_code as productCode, p.name as productName,p.product_image as productImage, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity \n" +
-            "from products p \n" +
-            "join product_categories pc on p.category_id = pc.id\n" +
-            "join size_details sd on p.id = sd.product_id\n" +
-            "join sizes s on sd.size_id = s.id\n" +
-            "where p.name like %:productName% \n" +
-            "and p.price between :minPrice and :maxPrice \n" +
-            "and s.name like %:sizeName% ")
+    @Query(nativeQuery = true, value = ("""
+            select p.id as productId, p.product_code as productCode, p.name as productName, p.created_date as createdDate,
+            p.product_image as productImage, p.price as productPrice, s.name as sizeName, sd.quantity as productQuantity
+            from products p
+            join product_categories pc on p.category_id = pc.id
+            join size_details sd on p.id = sd.product_id
+            join sizes s on sd.size_id = s.id
+            where p.name like %:productName%
+            and p.price between :minPrice and :maxPrice
+            and s.name like %:sizeName%
+            """))
     Page<IProductDTO> findAll(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName);
 
     /**
@@ -188,9 +191,10 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
      */
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "INSERT INTO products (gender, name, price, product_code, product_image, qr_code, category_id, promotion_id)\n" +
-            "VALUES (:#{#productDTO.gender}, :#{#productDTO.name}, :#{#productDTO.price}, :#{#productDTO.productCode}, " +
-            ":#{#productDTO.productImage}, :#{#productDTO.qrCode}, :#{#productDTO.categoryId}, :#{#productDTO.promotionId})")
+    @Query(nativeQuery = true, value = "INSERT INTO products (gender, name, description, created_date, price, product_code, product_image, qr_code, category_id, promotion_id)\n" +
+            "VALUES (:#{#productDTO.gender}, :#{#productDTO.name}, :#{#productDTO.description}, :#{#productDTO.createdDate}," +
+            " :#{#productDTO.price}, :#{#productDTO.productCode}, :#{#productDTO.productImage}, :#{#productDTO.qrCode}," +
+            " :#{#productDTO.categoryId}, :#{#productDTO.promotionId})")
     void save(@Param("productDTO") ProductDTO productDTO);
 
     /**
