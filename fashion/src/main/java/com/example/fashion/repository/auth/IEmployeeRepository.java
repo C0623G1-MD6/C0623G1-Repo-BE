@@ -30,4 +30,8 @@ public interface IEmployeeRepository extends JpaRepository<Employee,Long> {
     @Query(value = "UPDATE employees SET name = :name, birthday = :birthday, phone = :phone, email = :email, address = :address WHERE account_id = :accountId", nativeQuery = true)
     void updateEmployee(@Param("accountId") Long accountId, @Param("name") String name, @Param("birthday") String birthday, @Param("phone") String phone, @Param("email") String email, @Param("address") String address);
 
+
+    @Query(value = "SELECT e.id from employees e join accounts a " +
+            "on e.account_id = a.id where username = :username", nativeQuery = true)
+    Long getEmployeeIdByUsername(@Param("username") String username);
 }

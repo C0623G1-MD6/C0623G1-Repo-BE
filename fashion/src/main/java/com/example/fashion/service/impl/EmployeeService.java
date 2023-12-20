@@ -28,4 +28,13 @@ public class EmployeeService implements IEmployeeService {
     public void updateEmployee(Long accountId, EmployeeDto employeeDto) {
         employeeRepository.updateEmployee(accountId,employeeDto.getName(), employeeDto.getBirthday(), employeeDto.getPhone(), employeeDto.getEmail(), employeeDto.getAddress());
     }
+
+    @Override
+    public Long getEmployeeIdByUsername(String username) {
+        try {
+            return employeeRepository.getEmployeeIdByUsername(username);
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

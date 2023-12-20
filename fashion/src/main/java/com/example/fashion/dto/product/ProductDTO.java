@@ -2,9 +2,12 @@ package com.example.fashion.dto.product;
 
 import com.example.fashion.service.product.IProductService;
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class ProductDTO implements Validator {
@@ -18,6 +21,12 @@ public class ProductDTO implements Validator {
     @Size(min = 5, message = "Tên sản phẩm không được ít hơn 5 ký tự")
     @Size(max = 50, message = "Tên sản phẩm không được quá 50 ký tự")
     private String name;
+    
+    @NotBlank(message = "Vui lòng nhập mô tả sản phẩm")
+    private String description;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdDate;
 
     @NotBlank(message = "Vui lòng không để trống ảnh sản phẩm")
     private String productImage;
@@ -46,11 +55,14 @@ public class ProductDTO implements Validator {
     public ProductDTO() {
     }
 
-    public ProductDTO(Integer id, String productCode, String name, String productImage, String qrCode, Boolean gender,
-                      Double price, Integer categoryId, List<Integer> sizeId, Integer promotionId) {
+    public ProductDTO(Integer id, String productCode, String name, String description, LocalDate createdDate,
+                      String productImage, String qrCode, Boolean gender, Double price, Integer categoryId,
+                      List<Integer> sizeId, Integer promotionId, IProductService productService) {
         this.id = id;
         this.productCode = productCode;
         this.name = name;
+        this.description = description;
+        this.createdDate = createdDate;
         this.productImage = productImage;
         this.qrCode = qrCode;
         this.gender = gender;
@@ -58,6 +70,7 @@ public class ProductDTO implements Validator {
         this.categoryId = categoryId;
         this.sizeId = sizeId;
         this.promotionId = promotionId;
+        this.productService = productService;
     }
 
     public Integer getId() {
@@ -82,6 +95,22 @@ public class ProductDTO implements Validator {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getProductImage() {

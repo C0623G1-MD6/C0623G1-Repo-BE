@@ -18,6 +18,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -61,8 +64,9 @@ public class ProductController {
                                                             @RequestParam (defaultValue = "", required = false) String sizeName,
                                                             @RequestParam (required = false) Double minPrice,
                                                             @RequestParam (required = false) Double maxPrice,
-                                                            @RequestParam (required = false, defaultValue = "asc") String sortDirection) {
-        Sort sort = sortDirection.equals("asc") ? Sort.by("productQuantity").ascending() : Sort.by("productQuantity").descending();
+                                                            @RequestParam (required = false, defaultValue = "desc") String sortDirection,
+                                                            @RequestParam (required = false, defaultValue = "createdDate") String sortBy){
+        Sort sort = sortDirection.equals("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
         maxPrice = maxPrice == null ? 1000000000d : maxPrice;
         minPrice = minPrice == null ? 0 : minPrice;
         Pageable pageable = PageRequest.of(page, size, sort);
@@ -89,6 +93,10 @@ public class ProductController {
             bindingResult.getFieldErrors().forEach( e -> errors.put(e.getField(), e.getDefaultMessage()));
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         } else {
+            LocalDate localDate = new Date().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+            productDTO.setCreatedDate(localDate);
             productService.createProduct(productDTO);
             Integer productId = productService.findByProductCode(productDTO.getProductCode()).getProductId();
             List<Integer> sizeDetailIdList = productDTO.getSizeId();

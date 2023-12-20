@@ -1,8 +1,6 @@
 package com.example.fashion.model.product;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity

@@ -13,4 +13,6 @@ public interface IEmployeeService {
      */
     Employee getEmployeeByAccountId (Long id);
     void updateEmployee(Long accountId,EmployeeDto employeeDto);
+
+    Long getEmployeeIdByUsername(String username);
 }

@@ -1,10 +1,9 @@
 package com.example.fashion.model.product;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,6 +14,10 @@ public class Product {
     private Integer id;
     private String productCode;
     private String name;
+    @Column(columnDefinition = "LONGTEXT")
+    private String description;
+    @Column(columnDefinition = "DATE")
+    private Date createdDate;
     @Column(columnDefinition = "LONGTEXT")
     private String productImage;
     @Column(columnDefinition = "LONGTEXT")
@@ -36,11 +39,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, String productCode, String name, String productImage, String qrCode, Boolean gender,
+    public Product(Integer id, String productCode, String name, String description,
+                   Date createdDate, String productImage, String qrCode, Boolean gender,
                    Double price, ProductCategory category, List<SizeDetail> sizeDetails, Promotion promotion) {
         this.id = id;
         this.productCode = productCode;
         this.name = name;
+        this.description = description;
+        this.createdDate = createdDate;
         this.productImage = productImage;
         this.qrCode = qrCode;
         this.gender = gender;
@@ -72,6 +78,22 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getProductImage() {
