@@ -72,8 +72,8 @@ public class InvoiceController {
         invoiceDto.setInvoicePrintingDate(LocalDateTime.now());
         invoiceDto.setEmployeeId(employeeId);
         Boolean statusInvoice = invoiceService.saveInvoice(invoiceDto);
-        if (!statusInvoice) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (!statusInvoice||invoiceDto.getInvoiceDetailDtoSet().size()==0) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             Integer invoiceId = invoiceService.getInvoiceIdByInvoiceCode(invoiceDto.getInvoiceCode());
             Double total = 0.0;
@@ -82,7 +82,7 @@ public class InvoiceController {
                 Boolean statusInvoiceDetail = invoiceDetailService.saveInvoiceDetail(invoiceDetailDto);
                 {
                     if (!statusInvoiceDetail){
-                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
                     } else {
                         sizeDetailService.updateQuantity(invoiceDetailDto.getSellingQuantity(),invoiceDetailDto.getSizeDetailId());
                         total += invoiceDetailDto.getSellingPrice()*invoiceDetailDto.getSellingQuantity();
@@ -94,7 +94,7 @@ public class InvoiceController {
                 Customer customer = customerService.findById(invoiceDto.getCustomerId());
                 customerService.updateCustomerType(customer.getPoint(), customer.getId());
             } else {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
         }
         return new ResponseEntity<>(HttpStatus.OK);
@@ -135,7 +135,7 @@ public class InvoiceController {
     public ResponseEntity<List<IProductInvoiceDto>> getListProduct(@RequestParam(value = "keyword", defaultValue = "", required = false) String keyword) {
         List<IProductInvoiceDto> iProductInvoiceDtoList = productService.getListProduct(keyword);
         if (iProductInvoiceDtoList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(iProductInvoiceDtoList, HttpStatus.OK);
     }
