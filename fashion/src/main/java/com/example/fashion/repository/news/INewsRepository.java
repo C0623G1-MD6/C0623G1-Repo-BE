@@ -44,8 +44,7 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
      * Date 11-12-2023
      * return News List sort by dateCreate DESC
      */
-    @Query(value = "SELECT n.id as id, n.name as name, n.content as content, n.image as image, n.date_create as dateCreate, n.deleted as deleted, n.news_category_id as newsCategoryId\n" +
-            "FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.deleted = 0 ORDER BY n.date_create ASC",
+    @Query(value = "SELECT n.id as id, n.name as name, n.content as content, n.image as image, n.date_create as dateCreate, n.deleted as deleted, n.news_category_id as newsCategoryId FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.deleted = 0 ORDER BY n.id DESC",
             nativeQuery = true)
     List<INewsDto> findAllByDateCreate();
 
