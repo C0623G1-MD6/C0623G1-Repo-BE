@@ -1,6 +1,8 @@
 package com.example.fashion.repository.news;
 import com.example.fashion.dto.newsdto.INewsDto;
 import com.example.fashion.model.news.News;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +22,7 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
     @Query(value = "SELECT n.id as id, n.name as name, n.content as content, n.image as image, n.date_create as dateCreate, n.deleted as deleted, n.news_category_id as newsCategoryId" +
             "  FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.news_category_id like :newsCategoryId AND  n.deleted = 0",
             nativeQuery = true)
-    List<INewsDto> findAllNews(@Param("newsCategoryId") Integer newsCategoryId);
+    Page<INewsDto> findAllNews(Pageable pageable, @Param("newsCategoryId") Integer newsCategoryId);
 
 
     /**
@@ -96,7 +98,7 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
      */
     @Query(value = "SELECT n.id, n.name, n.content, n.image, n.date_create, n.deleted, n.news_category_id  FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.news_category_id like 1 AND  n.deleted = 0",
             nativeQuery = true)
-    List<INewsDto> sortByManCategory(@Param("newsCategoryId") Integer newsCategoryId);
+    Page<INewsDto> sortByManCategory(Pageable pageable,@Param("newsCategoryId") Integer newsCategoryId);
 
 
     /**
@@ -108,7 +110,7 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
      */
     @Query(value = "SELECT n.id, n.name, n.content, n.image, n.date_create, n.deleted, n.news_category_id  FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.news_category_id like 2 AND  n.deleted = 0",
             nativeQuery = true)
-    List<INewsDto> sortByWomanCategory(@Param("newsCategoryId") Integer newsCategoryId);
+    Page<INewsDto> sortByWomanCategory(Pageable pageable,@Param("newsCategoryId") Integer newsCategoryId);
 
 
     /**
@@ -120,7 +122,7 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
      */
     @Query(value = "SELECT n.id, n.name, n.content, n.image, n.date_create, n.deleted, n.news_category_id  FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.news_category_id like 3 AND  n.deleted = 0",
             nativeQuery = true)
-    List<INewsDto> sortByTipsCategory(@Param("newsCategoryId") Integer newsCategoryId);
+    Page<INewsDto> sortByTipsCategory(Pageable pageable,@Param("newsCategoryId") Integer newsCategoryId);
 
 
     /**
@@ -132,7 +134,6 @@ public interface INewsRepository extends JpaRepository<News, Integer> {
      */
     @Query(value = "SELECT n.id, n.name, n.content, n.image, n.date_create, n.deleted, n.news_category_id  FROM news n JOIN news_category nc ON n.news_category_id = nc.id WHERE n.news_category_id like 4 AND  n.deleted = 0",
             nativeQuery = true)
-    List<INewsDto> sortByPromotionCategory(@Param("newsCategoryId") Integer newsCategoryId);
-
+    Page<INewsDto> sortByPromotionCategory(Pageable pageable,@Param("newsCategoryId") Integer newsCategoryId);
 
 }
