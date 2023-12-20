@@ -1,5 +1,4 @@
 package com.example.fashion.config;
-
 import com.example.fashion.security.jwt.JwtAuthenticationFilter;
 import com.example.fashion.service.impl.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,19 +99,18 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
-                                .requestMatchers("/api/login","/api/news/**","/api/category").permitAll()
+                                .requestMatchers("/api/news/**","/api/category").permitAll()
                                 .requestMatchers("/api/login","/api/product/create").permitAll()
-                                .requestMatchers("/api/invoices/**","/api/invoice-details/**").permitAll()
-                                .requestMatchers("/api/login", "/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
+                                .requestMatchers("/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
                                 .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
                                 .requestMatchers("/api/home/**").permitAll()
                                 .requestMatchers("/api/recoverPassword").permitAll()
                                 .requestMatchers("/api/sendMail", "/api/customerType").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-                                .requestMatchers("/api/test2").hasRole("MANAGER")
                                 .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
-                                .requestMatchers("/api/notification/add/**").hasRole("MANAGER")
+                                .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
                                 .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")

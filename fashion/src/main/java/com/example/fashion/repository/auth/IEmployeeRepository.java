@@ -1,6 +1,7 @@
 package com.example.fashion.repository.auth;
 
 
+import com.example.fashion.dto.auth.IEmployeeDto;
 import com.example.fashion.model.auth.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,8 @@ public interface IEmployeeRepository extends JpaRepository<Employee,Long> {
      */
     @Query(value = "SELECT * FROM employees as e WHERE e.account_id = :id", nativeQuery = true)
     Employee getEmployeeByAccountId(@Param("id") Long id);
+
+    @Query(value = "SELECT e.id from employees e join accounts a " +
+            "on e.account_id = a.id where username = :username", nativeQuery = true)
+    Long getEmployeeIdByUsername(@Param("username") String username);
 }

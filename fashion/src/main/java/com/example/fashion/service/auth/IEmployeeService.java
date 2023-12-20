@@ -11,4 +11,6 @@ public interface IEmployeeService {
      * @return The employee associated with the account ID.
      */
     Employee getEmployeeByAccountId (Long id);
+
+    Long getEmployeeIdByUsername(String username);
 }
