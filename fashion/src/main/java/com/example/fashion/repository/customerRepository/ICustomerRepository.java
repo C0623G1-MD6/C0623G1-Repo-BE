@@ -167,4 +167,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value = "update customers c set c.point = c.point + :point where c.id = :customerId", nativeQuery = true)
     void updatePoint(@Param("point") Integer point, @Param("customerId") Integer customerId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update customers c set c.customer_type_id = :customerTypeId where c.id = :customerId", nativeQuery = true)
+    void updateCustomerType(@Param("customerTypeId") Integer customerTypeId, @Param("customerId") Integer customerId);
+
 }

@@ -5,19 +5,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e15b39dd-d1d9-466e-874d-6bc02a2c7d9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e1e14c15cd5714f6cf657a224a802828bc45e07" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e1e14c15cd5714f6cf657a224a802828bc45e07" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e9039b0611df3f3555c4931b06093c08f0874a1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e9039b0611df3f3555c4931b06093c08f0874a1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/36665f380051ec40527977540e28a79a4a3fe297" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/36665f380051ec40527977540e28a79a4a3fe297" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39b4525e4885977279965c9ad032a0543d1865d4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39b4525e4885977279965c9ad032a0543d1865d4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b243b98ce16799c10be49ccc5fdd73ecaabd771" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b243b98ce16799c10be49ccc5fdd73ecaabd771" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/5623a7a2b2222cc455cedec12910a140571dda4b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/5623a7a2b2222cc455cedec12910a140571dda4b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/842f5fc939003cd8570591982a78336fd97c1ddf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/842f5fc939003cd8570591982a78336fd97c1ddf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8d10bd45986abb5ad54d9d949d3315c818e1a14" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8d10bd45986abb5ad54d9d949d3315c818e1a14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/hs_err_pid4032.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/hs_err_pid852.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/auth/IEmployeeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/WarehouseReceiptDetailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/WarehouseReceiptDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/notification/ViewNotification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/notificationRepository/IViewNotificationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/notification/IViewNotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/notification/ViewNotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/utils/CodeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/lamtv_controller/WarehouseController_getAllProducts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/lamtv_controller/WarehouseController_getListSizeByProductCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/lamtv_controller/WarehouseController_saveWarehouseDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/auth/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/customer/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/invoice/InvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/notification/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/notification/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/salesreport/SalesReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/salesreport/SalesReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/warehouse/WarehouseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/warehouse/WarehouseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/controller/warehouse/WarehouseDetailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/auth/ChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/auth/ChangePassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/auth/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/auth/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/employee/EmployeeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/employee/EmployeeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/notificationDto/NotificationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/notificationDto/NotificationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/product/ProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/salesreport/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/salesreport/SalesReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/IProductsDTOWarehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/IProductsDTOWarehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/IWarehouseDTOWarehouseDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/IWarehouseDTOWarehouseDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/dto/warehouse/WarehouseDetailDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/notification/NoticationDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/notification/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/notification/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/warehouse/Warehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/warehouse/WarehouseDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/model/warehouse/WarehouseDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/auth/IEmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/auth/IEmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/customerRepository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/customerRepository/ICustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/news/INewsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/news/INewsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/notificationRepository/INotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/notificationRepository/INotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/IProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/product/ISizeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/reportsales/SalesReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/reportsales/SalesReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/warehouse/IWarehouseDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/warehouse/IWarehouseDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/warehouse/IWarehouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/repository/warehouse/IWarehouseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/auth/IEmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/auth/IEmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/customerService/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/impl/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/impl/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/invoice/impl/InvoiceDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/notification/INotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/notification/INotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/notification/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/notification/NotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/ISizeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/product/impl/SizeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/salesreport/ISalesReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/salesreport/ISalesReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/salesreport/impl/SalesReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/salesreport/impl/SalesReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/IWarehouseDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/IWarehouseDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/IWarehouseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/IWarehouseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/impl/WarehouseDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/impl/WarehouseDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/impl/WarehouseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/main/java/com/example/fashion/service/warehouse/impl/WarehouseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/controller/SalesReportController_getSalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/lamtv_controller/SalesReportController_getSalesReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fashion/src/test/java/com/example/fashion/controller/WarehouseController_saveWarehouse.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,24 +90,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Javafullstack_Codegym/C0623G1-Repo-BE/fashion&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;2f22a830e67022b27a6964048f4e57c9&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Javafullstack_Codegym/C0623G1-Repo-BE/fashion",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "2f22a830e67022b27a6964048f4e57c9",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="fashion" />
@@ -95,8 +152,23 @@
       <option name="presentableId" value="Default" />
       <updated>1702355420528</updated>
       <workItem from="1702355421938" duration="14000" />
-      <workItem from="1703035760093" duration="8768000" />
+      <workItem from="1703035760093" duration="8948000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/modules/fashion.main.iml&#10;#&#9;.idea/workspace.xml">
+      <created>1703060699503</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703060699503</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Merge branch 'dev' of https://github.com/C0623G1-MD6/C0623G1-Repo-BE into ly&#10;&#10;# Conflicts:&#10;#&#9;.idea/modules/fashion.main.iml&#10;#&#9;.idea/workspace.xml">
+      <created>1703060726632</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703060726632</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

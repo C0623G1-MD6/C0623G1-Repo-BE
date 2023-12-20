@@ -1,6 +1,7 @@
 package com.example.fashion.service.product.impl;
 
 import com.example.fashion.dto.product.ISizeDetailDto;
+import com.example.fashion.model.product.SizeDetail;
 import com.example.fashion.repository.product.ISizeDetailRepository;
 import com.example.fashion.service.product.ISizeDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,15 @@ public class SizeDetailServiceImpl implements ISizeDetailService {
         } catch (Exception e){
             return false;
         }
+    }
+
+    @Override
+    public void updateQuantityWarehouse(Integer totalQuantity, Integer id) {
+        sizeDetailRepository.updateQuantityWarehouse(totalQuantity,id);
+    }
+
+    @Override
+    public SizeDetail findByProductIdAndSizeId(String productId, String sizeId) {
+        return sizeDetailRepository.findByProductIdAndSizeId(productId, sizeId);
     }
 }
