@@ -20,4 +20,16 @@ public class SalesReportController {
         List<SalesReport> data = salesReportService.getDataDaily(startDate,endDate);
         return ResponseEntity.ok(data);
     }
+    @GetMapping("/spend")
+    public ResponseEntity<?> getSpend(@RequestParam("startDate") String startDate,
+                                            @RequestParam("endDate") String endDate) {
+        List<SalesReport> data = salesReportService.getDataSpend(startDate,endDate);
+        return ResponseEntity.ok(data);
+    }
+    @GetMapping("/revenue")
+    public ResponseEntity<?> getRevenue(@RequestParam("startDate") String startDate,
+                                            @RequestParam("endDate") String endDate) {
+        List<SalesReport> data = salesReportService.getDataRevenue(startDate,endDate);
+        return ResponseEntity.ok(data);
+    }
 }

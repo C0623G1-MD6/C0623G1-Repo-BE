@@ -15,6 +15,16 @@ public class SalesReportServiceImpl implements ISalesReportService {
 
     @Override
     public List<SalesReport> getDataDaily(String dateStart, String dateEnd) {
-        return salesReportRepository.getDataSpend(dateStart,dateEnd);
+        return salesReportRepository.getDataSpendAndRevenue(dateStart,dateEnd);
+    }
+
+    @Override
+    public List<SalesReport> getDataSpend(String dateStart, String dateEnd) {
+        return salesReportRepository.getDataSpend(dateStart, dateEnd);
+    }
+
+    @Override
+    public List<SalesReport> getDataRevenue(String dateStart, String dateEnd) {
+        return salesReportRepository.getDataRevenue(dateStart, dateEnd);
     }
 }
