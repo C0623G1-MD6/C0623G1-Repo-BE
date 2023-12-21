@@ -32,4 +32,15 @@ public class SalesReportController {
         List<SalesReport> data = salesReportService.getDataRevenue(startDate,endDate);
         return ResponseEntity.ok(data);
     }
+    @GetMapping("/revenue/month")
+    public ResponseEntity<?> getRevenueMonth(@RequestParam("month") String month) {
+        SalesReport data = salesReportService.getRevenueOfMonth(month);
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping("/spend/month")
+    public ResponseEntity<?> getSpend(@RequestParam("month") int month) {
+       SalesReport data = salesReportService.getSpendOfMonth(month);
+        return ResponseEntity.ok(data);
+    }
 }

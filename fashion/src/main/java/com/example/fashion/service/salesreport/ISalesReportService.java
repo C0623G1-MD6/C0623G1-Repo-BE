@@ -8,4 +8,6 @@ public interface ISalesReportService {
     List<SalesReport> getDataDaily(String dateStart, String dateEnd);
     List<SalesReport> getDataSpend(String dateStart, String dateEnd);
     List<SalesReport> getDataRevenue(String dateStart, String dateEnd);
+    SalesReport getRevenueOfMonth(String month);
+    SalesReport getSpendOfMonth(int month);
 }

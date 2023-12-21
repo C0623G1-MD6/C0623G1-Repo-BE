@@ -5,6 +5,7 @@ import com.example.fashion.dto.salesreport.SalesReport;
 import com.example.fashion.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -80,4 +81,23 @@ public interface SalesReportRepository extends JpaRepository<Product, Integer> {
             "             FROM DateRange dr ORDER BY `date`;", nativeQuery = true)
     List<SalesReport> getDataSpend(String startDate, String endDate);
 
+
+
+
+    @Query(value = "select month(i.invoice_printing_date ) as `month`, sum(iv.selling_quantity*p.price) as `revenue`\n" +
+            "                    from invoices i \n" +
+            "               LEFT JOIN invoice_details iv ON iv.invoice_id = i.id \n" +
+            "                        LEFT JOIN size_details s ON s.id = iv.size_detail_id\n" +
+            "                        LEFT JOIN products p ON p.id = s.product_id\n" +
+            "                        where month(i.invoice_printing_date) =:month\n" +
+            "                        group by month(i.invoice_printing_date)\n" +
+            "                     ",nativeQuery = true)
+    SalesReport getRevenueOfMonth(@Param("month") String month);
+
+    @Query(value = "elect wr.id,month(wr.receipt_date) as \"month\",sum(wrd.input_price*wrd.input_quantity) as \"spend\"\n" +
+            "                     from warehouse_receipts wr \n" +
+            "                    LEFT JOIN warehouse_receipt_details wrd ON wrd.warehouse_receipt_id = wr.id\n" +
+            "                    where month(wr.receipt_date) = :month\n" +
+            "                    GROUP BY month(wr.receipt_date);",nativeQuery = true)
+    SalesReport getSpendOfMonth(@Param("month") int month);
 }
