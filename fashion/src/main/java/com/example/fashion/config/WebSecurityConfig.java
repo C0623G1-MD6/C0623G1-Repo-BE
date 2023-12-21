@@ -109,10 +109,12 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/sendMail", "/api/customerType").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-                                .requestMatchers("/api/notification/list/**", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
+                                .requestMatchers("/api/notification/list/**","/api/notification/view", "/api/customer/**", "/api/customerType").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
                                 .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
                                 .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
+                                .requestMatchers("/api/sales-report/**").hasRole("MANAGER")
                                 .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
                                 .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
                                 .requestMatchers("/api/product/**").authenticated()

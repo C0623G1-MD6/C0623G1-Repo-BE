@@ -46,5 +46,8 @@ public interface ICustomerService {
     Customer findCustomerByCode(String code);
 
     Page<ICustomerDto> getAllCustomer(Pageable pageable, String keyword);
+
     Boolean updatePoint(Integer point, Integer customerId);
+
+    Boolean updateCustomerType(Integer point, Integer customerId);
 }

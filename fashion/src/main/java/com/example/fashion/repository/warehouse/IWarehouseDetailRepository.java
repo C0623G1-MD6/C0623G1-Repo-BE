@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface IWarehouseDetailRepository extends JpaRepository<WarehouseDetail,Integer> {
+public interface IWarehouseDetailRepository extends JpaRepository<WarehouseDetail, Integer> {
     /**
      * @author: LamTV
      * @date: 12/12/2023
@@ -15,9 +15,10 @@ public interface IWarehouseDetailRepository extends JpaRepository<WarehouseDetai
      */
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO warehouse_receipt_details (product_id, input_quantity, input_price, warehouse_receipt_id) " +
-            "VALUES (:productId, :quantity, :price , :warehouseId)", nativeQuery = true)
-    void importWarehouseDetail(@Param("productId") Integer productId,
-                       @Param("quantity") Integer quantity,
-                       @Param("warehouseId") Integer warehouseId);
+    @Query(value = "INSERT INTO warehouse_receipt_details (size_detail_id, input_quantity, input_price, warehouse_receipt_id ) " +
+            "VALUES (:sizeDetailId, :inputQuantity, :inputPrice , :warehouseId)", nativeQuery = true)
+    void importWarehouseDetail(@Param("sizeDetailId") Integer sizeDetailId,
+                               @Param("inputQuantity") Integer inputQuantity,
+                               @Param("inputPrice") Double inputPrice,
+                               @Param("warehouseId") Integer warehouseId);
 }

@@ -39,7 +39,6 @@ public class ProductDTO implements Validator {
 
     @NotNull(message = "Vui lòng nhập giá sản phẩm")
     @Min(value = 100000, message = "Giá sản phẩm không được thấp hơn 100.000 VND")
-    @Max(value = 100000000, message = "Giá sản phẩm không được cao hơn 100.000.000 VND")
     private Double price;
 
     @NotNull(message = "Vui lòng chọn phân loại")

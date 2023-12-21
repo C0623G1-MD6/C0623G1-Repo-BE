@@ -26,6 +26,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +70,7 @@ public class AuthController {
             for (FieldError error : bindingResult.getFieldErrors()) {
                 errors.put(error.getField(), error.getDefaultMessage());
             }
-            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
         }
         try {
             myUserDetailService.loadUserByUsername(login.getUsername());
@@ -91,11 +92,9 @@ public class AuthController {
             jwtResponse.setRoles(roles);
             return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
-            errors.put("username", e.getMessage());
-            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
         } catch (BadCredentialsException e) {
-            errors.put("password", "Mật khẩu không chính xác");
-            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -109,7 +108,7 @@ public class AuthController {
      * @date: 12/12/2023
      */
     @PatchMapping("/changePassword")
-    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword, BindingResult bindingResult) {
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePassword changePassword, BindingResult bindingResult,Principal principal) {
         Map<String, String> errors = new HashMap<>();
         if (changePassword.getPasswordNew() == null || changePassword.getPasswordNew().equals("")) {
             errors.put("passwordNew", "Mật khẩu mới không được trống hoặc null");
@@ -123,18 +122,13 @@ public class AuthController {
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
         try {
-
-            myUserDetailService.loadUserByUsername(changePassword.getUsername());
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(changePassword.getUsername(), changePassword.getPassword()));
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(principal.getName(), changePassword.getPassword()));
             Account account = accountService.findByUsername(authentication.getName()).get();
             account.setPassword(passwordEncoder.encode(changePassword.getPasswordNew()));
             accountService.updatePassword(account);
             return new ResponseEntity<>("Đổi mật khẩu thành công !", HttpStatus.OK);
-        } catch (UsernameNotFoundException e) {
-            errors.put("username", "Username không tồn tại");
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         } catch (BadCredentialsException e) {
-            errors.put("password", "Mật khẩu không chính xác");
+            errors.put("password", "Mật khẩu cũ không chính xác.");
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }

@@ -3,6 +3,7 @@ import com.example.fashion.dto.product.IProductDTO;
 import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ProductDTO;
 import com.example.fashion.dto.product.IProductResponse;
+import com.example.fashion.model.product.Product;
 import com.example.fashion.repository.product.IProductRepository;
 import com.example.fashion.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,9 +66,9 @@ public class ProductServiceImpl implements IProductService {
      * @return: the page of products
      */
     @Override
-    public Page<IProductResponse> findAllProducts(Pageable pageable) {
+    public Page<IProductResponse> findNewestProducts(Pageable pageable) {
 
-        return iProductRepository.findAllProducts(pageable);
+        return iProductRepository.findNewestProducts(pageable);
 
     }
 
@@ -136,7 +137,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Page<IProductResponse> findAllProductsByName(String name, Pageable pageable) {
 
-        return iProductRepository.findAllProductsByName(name, pageable);
+        return iProductRepository.findAllProductsByName(name,pageable);
     }
 
 
@@ -174,5 +175,16 @@ public class ProductServiceImpl implements IProductService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public Product findByProductName(String productName) {
+        return productRepository.findByProductName(productName);
+    }
+
+
+    @Override
+    public List<IProductResponse> getAllProducts() {
+        return productRepository.getAllProducts();
     }
 }
