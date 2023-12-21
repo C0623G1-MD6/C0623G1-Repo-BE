@@ -169,7 +169,7 @@ public class CustomerController {
      * param : id
      * return ResponseEntity or null
      */
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
         Customer customer = customerService.findById(id);
         if (customer == null) {
