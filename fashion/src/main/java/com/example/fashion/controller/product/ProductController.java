@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
@@ -93,9 +94,9 @@ public class ProductController {
             bindingResult.getFieldErrors().forEach( e -> errors.put(e.getField(), e.getDefaultMessage()));
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         } else {
-            LocalDate localDate = new Date().toInstant()
+            LocalDateTime localDate = new Date().toInstant()
                     .atZone(ZoneId.systemDefault())
-                    .toLocalDate();
+                    .toLocalDateTime();
             productDTO.setCreatedDate(localDate);
             productService.createProduct(productDTO);
             Integer productId = productService.findByProductCode(productDTO.getProductCode()).getProductId();

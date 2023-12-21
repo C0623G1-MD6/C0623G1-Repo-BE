@@ -16,7 +16,7 @@ public class Product {
     private String name;
     @Column(columnDefinition = "LONGTEXT")
     private String description;
-    @Column(columnDefinition = "DATE")
+    @Column(columnDefinition = "DATETIME")
     private Date createdDate;
     @Column(columnDefinition = "LONGTEXT")
     private String productImage;
