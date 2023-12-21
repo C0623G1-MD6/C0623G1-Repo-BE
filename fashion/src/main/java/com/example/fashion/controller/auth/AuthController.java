@@ -3,10 +3,13 @@ package com.example.fashion.controller.auth;
 import com.example.fashion.dto.auth.ChangePassword;
 import com.example.fashion.dto.auth.Login;
 import com.example.fashion.dto.auth.JwtResponse;
+import com.example.fashion.dto.auth.ResetPassword;
 import com.example.fashion.model.auth.Account;
 import com.example.fashion.model.auth.MyUserDetail;
+import com.example.fashion.model.auth.PasswordResetToken;
 import com.example.fashion.security.jwt.JwtUtils;
 import com.example.fashion.service.auth.IAccountService;
+import com.example.fashion.service.auth.IPasswordResetTokenService;
 import com.example.fashion.service.impl.MyUserDetailService;
 import com.example.fashion.utils.PasswordGenerator;
 import com.example.fashion.utils.JavaMailUtils;
@@ -27,9 +30,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequestMapping("/api")
@@ -52,6 +53,8 @@ public class AuthController {
 
     @Autowired
     private JavaMailUtils javaMailUtils;
+    @Autowired
+    private IPasswordResetTokenService passwordResetTokenService;
 
     /**
      * Handles user login requests.
@@ -148,14 +151,52 @@ public class AuthController {
             return new ResponseEntity<>("Email này không liên kết với tài khoản nào !",HttpStatus.BAD_REQUEST);
         } else {
             try {
-                String passwordNew = PasswordGenerator.generateRandomPassword(10);
-                account.setPassword(passwordEncoder.encode(passwordNew));
-                accountService.updatePassword(account);
-                javaMailUtils.sendPasswordNew(emailRecover,account.getUsername(), passwordNew);
+                String tokenResetPassword = UUID.randomUUID().toString();
+                PasswordResetToken passwordResetToken = passwordResetTokenService.getPasswordResetToken(account);
+                if (passwordResetToken == null) {
+                    passwordResetToken = new PasswordResetToken();
+                }
+                passwordResetToken.setToken(tokenResetPassword);
+                passwordResetToken.setAccount(account);
+                Date newExpiryDate = new Date(new Date().getTime() + 600 * 1000);
+                passwordResetToken.setExpiryDate(newExpiryDate);
+                passwordResetTokenService.createPasswordResetTokenForUser(passwordResetToken);
+//
+//                String passwordNew = PasswordGenerator.generateRandomPassword(10);
+//                account.setPassword(passwordEncoder.encode(passwordNew));
+//                accountService.updatePassword(account);
+                javaMailUtils.sendPasswordNew(emailRecover,account.getUsername(), tokenResetPassword);
                 return new ResponseEntity<>("Đặt lại mật khẩu thành công !, vui lòng kiểm tra lại email",HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>("Đã có lỗi xảy ra, vui lòng thử lại sau",HttpStatus.NOT_FOUND);
             }
+        }
+    }
+
+    @GetMapping("/resetPassword/{tokenReset}")
+    public ResponseEntity<?> resetPassword(@PathVariable String tokenReset) {
+        if (!passwordResetTokenService.existsByToken(tokenReset)) {
+            return new ResponseEntity<>("Đường dẫn đặt lại mật khẩu không hợp lệ, hoặc đã hết hạn",HttpStatus.NOT_FOUND);
+        } else {
+            PasswordResetToken passwordResetToken = passwordResetTokenService.getPasswordResetToken(tokenReset);
+            if (new Date().after(passwordResetToken.getExpiryDate())) {
+                return new ResponseEntity<>("Đường dẫn đặt lại mật khẩu không hợp lệ, hoặc đã hết hạn",HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+        }
+    }
+
+    @PostMapping("/resetPassword/{tokenReset}")
+    public ResponseEntity<?> savePasswordNew(@PathVariable String tokenReset, @RequestBody ResetPassword resetPassword) {
+        if (!passwordResetTokenService.existsByToken(tokenReset)) {
+            return new ResponseEntity<>("Đường dẫn đặt lại mật khẩu không hợp lệ, hoặc đã hết hạn",HttpStatus.NOT_FOUND);
+        } else {
+            PasswordResetToken passwordResetToken = passwordResetTokenService.getPasswordResetToken(tokenReset);
+            Account account = passwordResetToken.getAccount();
+            account.setPassword(passwordEncoder.encode(resetPassword.getPasswordNew()));
+            accountService.updatePassword(account);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
     }
 }
