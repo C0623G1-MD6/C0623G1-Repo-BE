@@ -16,7 +16,7 @@ public interface IProductService {
      * Date: 13/12/2023
      * @param pageable
      */
-    Page<IProductResponse> findAllProducts( Pageable pageable);
+    Page<IProductResponse> findNewestProducts(Pageable pageable);
 
     /**
      * Author: LyDTH

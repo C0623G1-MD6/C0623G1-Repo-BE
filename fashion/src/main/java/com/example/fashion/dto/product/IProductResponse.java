@@ -11,5 +11,6 @@ public interface IProductResponse {
     Double getPercent();
     String getProductSize();
     String getProductImage();
+    String getPrdDescription();
 
 }
