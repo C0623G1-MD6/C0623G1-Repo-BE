@@ -1,5 +1,6 @@
 package com.example.fashion.service.auth;
 
+import com.example.fashion.dto.employee.EmployeeDto;
 import com.example.fashion.model.auth.Employee;
 
 public interface IEmployeeService {
@@ -11,4 +12,7 @@ public interface IEmployeeService {
      * @return The employee associated with the account ID.
      */
     Employee getEmployeeByAccountId (Long id);
+    void updateEmployee(Long accountId,EmployeeDto employeeDto);
+
+    Long getEmployeeIdByUsername(String username);
 }

@@ -7,8 +7,6 @@ import com.example.fashion.dto.product.IProductResponse;
 import com.example.fashion.model.product.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 
 public interface IProductService {
@@ -18,7 +16,7 @@ public interface IProductService {
      * Date: 13/12/2023
      * @param pageable
      */
-    Page<IProductResponse> findAllProducts( Pageable pageable);
+    Page<IProductResponse> findNewestProducts(Pageable pageable);
 
     /**
      * Author: LyDTH
@@ -80,8 +78,13 @@ public interface IProductService {
      */
     IProductDTO findByProductCode(String productCode);
 
+    /**
+     * LamTV
+     */
+    List<IProductResponse> getAllProducts();
 
 
     List<IProductInvoiceDto> getListProduct(String keyword);
     IProductInvoiceDto getProductByProductCode(String productCode);
+    Product findByProductName(String productName);
 }

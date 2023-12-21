@@ -1,8 +1,8 @@
 package com.example.fashion.service.notification;
 
-import com.example.fashion.model.auth.Role;
-import com.example.fashion.model.notification.NoticationDetails;
+import com.example.fashion.dto.notificationDto.NotificationDTO;
 import com.example.fashion.model.notification.Notification;
+import com.example.fashion.model.notification.ViewNotification;
 import com.example.fashion.repository.notificationRepository.INotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,6 +53,20 @@ public class NotificationService implements INotificationService{
         iNotificationRepository.createNotificationDetail(roleId);
     }
 
+    @Override
+    public Page<Notification> getNotificationByAccountId(Long accountId, Pageable pageable) {
+        return iNotificationRepository.getNotificationByAccountId(accountId, pageable);
+    }
 
+    @Override
+    public void createNotification(NotificationDTO notificationDTO) {
+        for (Long roleId: notificationDTO.getRole()) {
+            iNotificationRepository.createNotification(notificationDTO.getContent(),roleId,notificationDTO.getNoticePostingDate().toString(),notificationDTO.getTitle());
+        }
+    }
 
+    @Override
+    public List<Notification> getNotificationNotViewByAccountId(Long accountId) {
+        return iNotificationRepository.getNotificationNotViewByAccountId(accountId);
+    }
 }

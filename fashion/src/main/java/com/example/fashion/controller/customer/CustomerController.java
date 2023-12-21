@@ -144,16 +144,13 @@ public class CustomerController {
      */
     @GetMapping("/list")
     public ResponseEntity<?> getAll(
-            @RequestParam(name = "nameCustomer", defaultValue = "") String name,
-            @RequestParam(name = "typeCustomer", defaultValue = "") String typeCustomer,
+            @RequestParam(name = "nameCustomer", defaultValue = "",required = false) String name,
+            @RequestParam(name = "typeCustomer", defaultValue = "",required = false) String typeCustomer,
             @RequestParam(defaultValue = "0", required = false) int page
 
     ) {
         Pageable pageable = PageRequest.of(page, 5);
         Page<Customer> customerDtos = customerService.findAllCustomer(pageable, name, typeCustomer);
-        if (customerDtos == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
         if (customerDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

@@ -24,13 +24,13 @@ public class OverviewService implements IOverviewService{
         Integer result=0;
         switch (time){
             case "week":
-                result=repository.getTotalCustomerWeek().size();
+                result=repository.getTotalProductsSoldWeek();
                 break;
             case "month":
-                result=repository.getTotalCustomerMonth().size();
+                result=repository.getTotalProductsSoldMonth();
                 break;
             case "year":
-                result=repository.getTotalCustomerYear().size();
+                result=repository.getTotalProductsSoldYear();
                 break;
             default:
                 result=0;

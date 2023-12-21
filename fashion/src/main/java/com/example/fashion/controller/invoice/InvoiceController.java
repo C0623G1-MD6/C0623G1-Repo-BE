@@ -6,7 +6,11 @@ import com.example.fashion.dto.invoice.InvoiceDto;
 import com.example.fashion.dto.product.IProductInvoiceDto;
 import com.example.fashion.dto.product.ISizeDetailDto;
 import com.example.fashion.dto.product.ISizeDto;
+import com.example.fashion.model.auth.MyUserDetail;
+import com.example.fashion.model.customer.Customer;
+import com.example.fashion.service.auth.IEmployeeService;
 import com.example.fashion.service.customerService.ICustomerService;
+import com.example.fashion.service.impl.MyUserDetailService;
 import com.example.fashion.service.invoice.IInvoiceDetailService;
 import com.example.fashion.service.invoice.IInvoiceService;
 import com.example.fashion.service.product.IProductService;
@@ -21,6 +25,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
@@ -47,6 +52,8 @@ public class InvoiceController {
     @Autowired
     private ISizeDetailService sizeDetailService;
 
+    @Autowired
+    private IEmployeeService employeeService;
     /**
      * The method help to save invoices, save invoiceDetail, update point customer, update quantity product.
      * @author NhatNk
@@ -56,14 +63,14 @@ public class InvoiceController {
      * @return 400 Bad Request If save invoice failed
      */
     @PostMapping("/save-invoice")
-    public ResponseEntity<Void> saveInvoice(@RequestBody InvoiceDto invoiceDto) {
-//        new InvoiceDto().validate(invoiceDto,bindingResult);
+    public ResponseEntity<Void> saveInvoice(Principal principal, @RequestBody InvoiceDto invoiceDto) {
 //        if(bindingResult.hasErrors()){
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
-
+        Integer employeeId = Long.valueOf(employeeService.getEmployeeIdByUsername(principal.getName())).intValue();
         invoiceDto.setInvoiceCode(invoiceService.createInvoiceCode());
         invoiceDto.setInvoicePrintingDate(LocalDateTime.now());
+        invoiceDto.setEmployeeId(employeeId);
         Boolean statusInvoice = invoiceService.saveInvoice(invoiceDto);
         if (!statusInvoice) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -82,7 +89,13 @@ public class InvoiceController {
                     }
                 }
             }
-            customerService.updatePoint(Long.valueOf(Math.round(total/1000)).intValue(),invoiceDto.getCustomerId());
+            Boolean statusUpdatePoint = customerService.updatePoint(Long.valueOf(Math.round(total/1000)).intValue(),invoiceDto.getCustomerId());
+            if (statusUpdatePoint) {
+                Customer customer = customerService.findById(invoiceDto.getCustomerId());
+                customerService.updateCustomerType(customer.getPoint(), customer.getId());
+            } else {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
