@@ -7,6 +7,8 @@ import com.example.fashion.service.warehouse.IWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 
 @Service
 public class WarehouseServiceImpl implements IWarehouseService {
@@ -42,5 +44,14 @@ public class WarehouseServiceImpl implements IWarehouseService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public Warehouse createAndReturnReceipt(String receiptCode)  {
+        Warehouse receipt = new Warehouse();
+        receipt.setReceiptCode(receiptCode);
+        receipt.setReceiptDate(LocalDateTime.now().toString());
+        receipt = warehouseRepository.save(receipt);
+        return receipt;
     }
 }

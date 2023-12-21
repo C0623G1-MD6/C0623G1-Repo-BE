@@ -3,8 +3,8 @@ package com.example.fashion.utils;
 import java.util.Random;
 
 public class CodeGenerator {
-    private static final String PREFIX = "City6-";
-    private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String PREFIX = "PNK-";
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public static String generateCode() {
         Random random = new Random();
