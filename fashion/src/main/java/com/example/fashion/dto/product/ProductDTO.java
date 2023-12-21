@@ -7,6 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,7 @@ public class ProductDTO implements Validator {
     @NotBlank(message = "Vui lòng nhập mô tả sản phẩm")
     private String description;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
     @NotBlank(message = "Vui lòng không để trống ảnh sản phẩm")
     private String productImage;
@@ -55,7 +55,7 @@ public class ProductDTO implements Validator {
     public ProductDTO() {
     }
 
-    public ProductDTO(Integer id, String productCode, String name, String description, LocalDate createdDate,
+    public ProductDTO(Integer id, String productCode, String name, String description, LocalDateTime createdDate,
                       String productImage, String qrCode, Boolean gender, Double price, Integer categoryId,
                       List<Integer> sizeId, Integer promotionId, IProductService productService) {
         this.id = id;
@@ -105,11 +105,11 @@ public class ProductDTO implements Validator {
         this.description = description;
     }
 
-    public LocalDate getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
