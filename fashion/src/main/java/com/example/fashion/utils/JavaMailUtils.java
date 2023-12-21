@@ -20,6 +20,7 @@ import java.nio.file.Files;
 public class JavaMailUtils {
     @Autowired
     private JavaMailSender emailSender;
+    private final String URL_WEBSITE = "http://localhost:3000/resetPassword/";
     public void sendSimpleEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("kaukebonatip@outlook.com");
@@ -29,7 +30,7 @@ public class JavaMailUtils {
         emailSender.send(message);
     }
 
-    public void sendPasswordNew(String to, String username,String passwordReset) throws UnsupportedEncodingException, MessagingException {
+    public void sendPasswordNew(String to, String username,String tokenRecover) throws UnsupportedEncodingException, MessagingException {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setFrom(new InternetAddress("kaukebonatip@outlook.com", "C06 - Fashion"));
@@ -37,7 +38,7 @@ public class JavaMailUtils {
         helper.setSubject("Khôi phục mật khẩu tài khoản");
         String htmlContent = readHtmlFile("mail-template/template-mail-recover.html");
         htmlContent = htmlContent.replace("[username]", username);
-        htmlContent = htmlContent.replace("[Mật Khẩu Tạm]", passwordReset);
+        htmlContent = htmlContent.replace("[LinkRecover]", URL_WEBSITE+tokenRecover);
         helper.setText(htmlContent,true);
         emailSender.send(message);
     }
