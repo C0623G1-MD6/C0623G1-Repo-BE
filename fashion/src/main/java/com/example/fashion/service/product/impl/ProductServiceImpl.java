@@ -33,8 +33,8 @@ public class ProductServiceImpl implements IProductService {
      * @return Page<IProductDTO>
      */
     @Override
-    public Page<IProductDTO> getAllProducts(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName) {
-        return productRepository.findAll(pageable, productName, minPrice, maxPrice, sizeName);
+    public Page<IProductDTO> getAllProducts(Pageable pageable, String productName, String productCode, Double minPrice, Double maxPrice, String sizeName) {
+        return productRepository.findAll(pageable, productName,productCode, minPrice, maxPrice, sizeName);
     }
 
     /**

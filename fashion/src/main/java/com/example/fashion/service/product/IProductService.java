@@ -63,7 +63,7 @@ public interface IProductService {
      * @param sizeName
      * @return
      */
-    Page<IProductDTO> getAllProducts(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName);
+    Page<IProductDTO> getAllProducts(Pageable pageable, String productName,String productCode, Double minPrice, Double maxPrice, String sizeName);
 
     /**
      * LoanTTV

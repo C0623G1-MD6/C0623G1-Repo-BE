@@ -190,10 +190,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             join size_details sd on p.id = sd.product_id
             join sizes s on sd.size_id = s.id
             where p.name like %:productName%
+            and p.product_code like % :productCode%
             and p.price between :minPrice and :maxPrice
             and s.name like %:sizeName%
             """))
-    Page<IProductDTO> findAll(Pageable pageable, String productName, Double minPrice, Double maxPrice, String sizeName);
+    Page<IProductDTO> findAll(Pageable pageable, String productName, String productCode, Double minPrice, Double maxPrice, String sizeName);
 
     /**
      * created at 12/12/2023

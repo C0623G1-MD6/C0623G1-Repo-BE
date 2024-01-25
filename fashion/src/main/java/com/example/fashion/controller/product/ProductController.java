@@ -62,6 +62,7 @@ public class ProductController {
     public ResponseEntity<Page<IProductDTO>> getAllProducts(@RequestParam (defaultValue = "0") int page,
                                                             @RequestParam (defaultValue = "5") int size,
                                                             @RequestParam (defaultValue = "", required = false) String productName,
+                                                            @RequestParam (defaultValue = "", required = false) String productCode,
                                                             @RequestParam (defaultValue = "", required = false) String sizeName,
                                                             @RequestParam (required = false) Double minPrice,
                                                             @RequestParam (required = false) Double maxPrice,
@@ -71,7 +72,7 @@ public class ProductController {
         maxPrice = maxPrice == null ? 1000000000d : maxPrice;
         minPrice = minPrice == null ? 0 : minPrice;
         Pageable pageable = PageRequest.of(page, size, sort);
-        Page<IProductDTO> result = productService.getAllProducts(pageable, productName, minPrice, maxPrice, sizeName);
+        Page<IProductDTO> result = productService.getAllProducts(pageable, productName, productCode, minPrice, maxPrice, sizeName);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -85,7 +86,8 @@ public class ProductController {
      */
 
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(@Valid @RequestBody ProductDTO productDTO, BindingResult bindingResult) {
+    public ResponseEntity<?> createProduct(@Valid @RequestBody ProductDTO productDTO
+            , BindingResult bindingResult) {
         ProductDTO productDTO1 = new ProductDTO();
         productDTO1.setProductService(productService);
         productDTO1.validate(productDTO, bindingResult);
